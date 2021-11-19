@@ -3,7 +3,7 @@
     "version": "2.6.0",
     "license": "MIT",
     "scripts": {
-        "heroku-postbuild": "ng build --prod",
+        "postinstall": "ng build --prod",
         "ng": "ng",
         "start": "node server.js",
         "build": "ng build",
@@ -13,8 +13,8 @@
         "install:clean": ""
     },
     "engines": {
-        "node": "6.11.1",
-        "npm": "3.10.9"
+        "node": "8.11.3",
+        "npm": "6.1.0"
     },
     "private": true,
     "dependencies": {
