@@ -12,7 +12,7 @@
         "install:clean": ""
     },
     "engines": {
-        "node": "^14.18.1",
+        "node": "12.4.0",
         "npm": "6.1.0"
     },
     "private": true,
