@@ -1,0 +1,27 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ServiciosService {
+  headers = new HttpHeaders({
+    authorization: localStorage.getItem('TokenNomina'),
+    apiKeyToken: environment.APYKEY_ADMIN
+  });
+  constructor(private httpClient: HttpClient) { }
+
+  crearServicio(datos){
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonTipoService/crearServicio`,datos);
+   }
+   editarServicio(datos){
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonTipoService/editarServicio`,datos);
+   }
+   listarServicios(){
+    return this.httpClient.get<any>(`${environment.apiUrl}/api/tifonTipoService/listarServicios`);
+   }
+   actualizarEstadoServicio(datos){
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonTipoService/actualizarEstadoServicio`,datos);
+   }
+}
