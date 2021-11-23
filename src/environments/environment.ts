@@ -6,6 +6,6 @@
 export const environment = {
   production: false,
   //apiUrl: 'http://localhost:8445',
-  apiUrl: 'https://tifonback.herokuapp.com/api',
+  apiUrl: 'https://tifonback.herokuapp.com',
   APYKEY_ADMIN: ''
 };

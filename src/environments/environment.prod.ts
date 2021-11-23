@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://tifonback.herokuapp.com/api',
+  apiUrl: 'https://tifonback.herokuapp.com',
   APYKEY_ADMIN: ''
 };
