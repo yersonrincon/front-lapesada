@@ -13,6 +13,8 @@ export class VehiculosComponent implements OnInit {
   formaVehiculo: FormGroup; 
   listaVehiculos: [];
   estadoBoton: boolean = true;
+  public loading = false;
+
   constructor(private fb: FormBuilder,
               private vehiculosService: VehiculosService,
               private validacionesService: ValidacionesService
@@ -23,9 +25,12 @@ export class VehiculosComponent implements OnInit {
     this.listarVehiculos();
   }
   listarVehiculos(){
+    this.loading = true;
     this.vehiculosService.listarVehiculos().subscribe(res => {
       this.listaVehiculos = res.vehiculos;
      console.log(res);
+    this.loading = false;
+
     });
  }
  crearFormularioVehiculos(datos){
@@ -41,6 +46,7 @@ export class VehiculosComponent implements OnInit {
   }
   crearEditarVehiculo(){
     if(this.formaVehiculo.valid){
+    this.loading = true;
       if(this.estadoBoton){
         this.vehiculosService.crearVehiculo(this.formaVehiculo.value).subscribe(res =>{
           console.log(res);
@@ -48,8 +54,10 @@ export class VehiculosComponent implements OnInit {
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarVehiculos();
             this.crearFormularioVehiculos('');
+            this.loading = false;
           } else {
             this.validacionesService.showNotification('top','right','warning', res.message);
+            this.loading = false;
           }
         });
       } else {
@@ -58,6 +66,7 @@ export class VehiculosComponent implements OnInit {
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarVehiculos();
+            this.loading = false;
           }           
         });
       }
@@ -65,6 +74,7 @@ export class VehiculosComponent implements OnInit {
     }
   }  
   cambiarEstado(datos){
+    this.loading = true;
     const datosUser ={
     idtipovehiculo: datos.idtipovehiculo,
     estado: datos.estado? false: true
@@ -74,6 +84,7 @@ export class VehiculosComponent implements OnInit {
       if(res.ok){
         this.validacionesService.showNotification('top','right','success', res.message);
         this.listarVehiculos();
+        this.loading = false;
       }
     })
     }
@@ -81,6 +92,5 @@ export class VehiculosComponent implements OnInit {
     this.crearFormularioVehiculos(datos);
     this.estadoBoton = false;
     }
- 
 
 }

@@ -8,26 +8,13 @@ import { LoginComponent } from './demoPages/login/login.component';
 
 const routes: Routes =[
   {
-    path: '',
-    redirectTo: 'demoPages/login',
-    pathMatch: 'full',
-  }, {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [{
-      path: '',
-      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-    }]
+    path: '', redirectTo: 'demoPages/login', pathMatch: 'full' }, {
+    path: '',  component: AdminLayoutComponent, children: [{ path: '', loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule) }]
   },
   {
     path: '',
     component: LoginComponent,
-    children: [
-      // User Pages
-      {
-        path: 'demoPages/login', component: LoginComponent, data: { extraParameter: '' }
-      }
-    ]
+    children: [ {  path: 'demoPages/login', component: LoginComponent, data: { extraParameter: '' } } ]
   },
 ];
 

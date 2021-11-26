@@ -26,5 +26,6 @@ export class UsuariosService {
    actualizarEstadoUsuario(datos){
     return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonUsuarios/actualizarEstadoUsuario`,datos);
    }
+  
 
 }

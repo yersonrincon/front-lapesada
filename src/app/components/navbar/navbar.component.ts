@@ -1,12 +1,14 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {DatePipe, Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
-
+import { RegistroService } from '../../services/registro.service';
+import jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],  
+  providers: [DatePipe],
 })
 export class NavbarComponent implements OnInit {
     private listTitles: any[];
@@ -14,13 +16,26 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
-      this.location = location;
-          this.sidebarVisible = false;
+    totalFinalizados= [];
+    fechaActual: any;
+    fechaIngreso: any;
+    token = localStorage.getItem('TokenTifon');
+    usuario: string;
+    constructor(location: Location, 
+               private datePipe: DatePipe, 
+               private element: ElementRef, 
+               private router: Router,
+               private registroService: RegistroService) {
+               this.location = location;
+               this.sidebarVisible = false;
     }
 
     ngOnInit(){
+      this.consultarFinalizados();
+      const decoded: any = jwt_decode(this.token);
+      this.usuario = decoded.nombre;
+       this.fechaIngreso = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
@@ -121,5 +136,11 @@ export class NavbarComponent implements OnInit {
           }
       }
       return 'Dashboard';
+    }
+    consultarFinalizados(){
+        this.fechaActual = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+        this.registroService.consultarFinalizados(this.fechaActual,this.fechaActual).subscribe(res =>{
+        this.totalFinalizados = res.finalizados.finalizados;
+        });
     }
 }

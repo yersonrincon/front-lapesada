@@ -12,6 +12,8 @@ export class ServiciosComponent implements OnInit {
   formaServicios: FormGroup; 
   listaServicios: [];
   estadoBoton: boolean = true;
+  public loading = false;
+
   constructor(private fb: FormBuilder,
               private serviciosService: ServiciosService,
               private validacionesService: ValidacionesService
@@ -22,9 +24,11 @@ export class ServiciosComponent implements OnInit {
     this.listarServicios();
   }
   listarServicios(){
+    this.loading = true;
     this.serviciosService.listarServicios().subscribe(res => {
       this.listaServicios = res.tipoServicios;
      console.log(res);
+    this.loading = false;
     });
  }
  crearFormularioServicio(datos){
@@ -32,11 +36,15 @@ export class ServiciosComponent implements OnInit {
   this.formaServicios = this.fb.group({
       idtiposervicio: [ datos.idtiposervicio? datos.idtiposervicio:''],
       nombreservicio: [ datos.nombreservicio? datos.nombreservicio:'', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      valor: [ datos.valor? datos.valor:'', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       estado: [datos.estado]
     });
   }
   get nombreServicio() {
     return this.formaServicios.get('nombreservicio');
+  }
+  get valor() {
+    return this.formaServicios.get('valor');
   }
   crearEditarServicio(){
     if(this.formaServicios.valid){

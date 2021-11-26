@@ -1,0 +1,17 @@
+.cdk-overlay-container {
+    z-index: 1070 !important;
+}
+
+.table {
+    font-size: 13px !important;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}

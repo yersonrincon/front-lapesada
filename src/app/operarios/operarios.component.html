@@ -1,0 +1,127 @@
+<div class="main-content" #customLoadingTemplate>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Operarios</h4>
+                        <p class="card-category">Lista de operarios registrados</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Nombre
+                                    </th>
+                                    <th>
+                                        Documento
+                                    </th>
+                                    <th>
+                                        Teléfono
+                                    </th>
+                                    <th>
+                                        Dirección
+                                    </th>
+                                    <th>
+                                        Estado
+                                    </th>
+                                    <th>
+                                        Editar
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let operario of listaOperarios; let i = index">
+                                        <td>
+                                            {{i + 1}}
+                                        </td>
+                                        <td>
+                                            {{operario.nombre}}
+                                        </td>
+                                        <td>
+                                            {{operario.documento}}
+                                        </td>
+                                        <td>
+                                            {{operario.telefono}}
+                                        </td>
+                                        <td>
+                                            {{operario.direccion}}
+                                        </td>
+                                        <td>
+                                            <mat-slide-toggle *ngIf="operario.estado" [checked]="operario.estado" color="primary" (click)="cambiarEstado(operario)"></mat-slide-toggle>
+                                            <mat-slide-toggle *ngIf="!operario.estado" [checked]="operario.estado" color="primary" (click)="cambiarEstado(operario)"></mat-slide-toggle>
+                                        </td>
+                                        <td>
+                                            <i class="material-icons" style="cursor: pointer;" (click)="editarOperario(operario)">edit</i>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title"> Operarios</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="card-category">Crear y editar operarios</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="card-category text-right" style="cursor: pointer;" (click)="crearFormularioOperarios('')">Crear operario</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="formaOperario" autocomplete="off" (ngSubmit)="crearEditarOperario()">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="nombre" placeholder="Nombre operario" type="text">
+                                    </mat-form-field><small *ngIf="nombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                    <small *ngIf="nombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                    <small *ngIf="nombre.invalid  && nombre.touched && !nombre.errors?.minlength && !nombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="documento" placeholder="Documento" type="text">
+                                    </mat-form-field><small *ngIf="documento.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                    <small *ngIf="documento.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                    <small *ngIf="documento.invalid  && documento.touched && !documento.errors?.minlength && !documento.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="telefono" placeholder="Teléfono" type="text">
+                                    </mat-form-field><small *ngIf="telefono.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                    <small *ngIf="telefono.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                    <small *ngIf="telefono.invalid  && telefono.touched && !telefono.errors?.minlength && !telefono.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="direccion" placeholder="Dirección" type="text">
+                                    </mat-form-field><small *ngIf="direccion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                    <small *ngIf="direccion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                    <small *ngIf="direccion.invalid  && direccion.touched && !direccion.errors?.minlength && !direccion.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-slide-toggle formControlName="estado" color="primary">Estado</mat-slide-toggle>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <button *ngIf="estadoBoton" class="btn btn-info btn-round" type="submit">Registrar operario</button>
+                                    <button *ngIf="!estadoBoton" class="btn btn-info btn-round" type="submit">Actualizar operario</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</div>

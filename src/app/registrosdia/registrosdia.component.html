@@ -1,0 +1,174 @@
+<div class="main-content" #customLoadingTemplate>
+    <div class="container-fluid">
+        <form [formGroup]="formaFechas" (ngSubmit)="buscarR()">
+            <div class="form-row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <mat-form-field color="accent" appearance="fill">
+                        <mat-label>Fecha inicio</mat-label>
+                        <input matInput formControlName="fechaInicial" [matDatepicker]="picker1">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <small *ngIf="fechaInicial.invalid  && fechaInicial.touched" class="text-danger animated fadeIn">Campo requerido</small>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <mat-form-field color="accent" appearance="fill">
+                        <mat-label>Fecha final</mat-label>
+                        <input matInput formControlName="fechaFinal" [matDatepicker]="picker2">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                        <small *ngIf="fechaFinal.invalid  && fechaFinal.touched" class="text-danger animated fadeIn">Campo requerido</small>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4 text-center">
+                    <button class="btn btn-info btn-round" type="submit">Buscar registros</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Servicios</h4>
+                        <p class="card-category">Servicios realizados</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+                            <table class="table table-striped ">
+                                <thead class="text-primary">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        +/-
+                                    </th>
+                                    <th>
+                                        Servicio
+                                    </th>
+                                    <th>
+                                        FechaRegistro
+                                    </th>
+                                    <th>
+                                        Tipo vehiculo
+                                    </th>
+                                    <th>
+                                        Placa
+                                    </th>
+                                    <th>
+                                        Marca
+                                    </th>
+                                    <th>
+                                        Estado
+                                    </th>
+                                    <th>
+                                        Usuario
+                                    </th>
+
+                                    <th>
+                                        Operario
+                                    </th>
+                                    <th>
+                                        Valor servicio
+                                    </th>
+                                    <th>
+                                        Valor operario
+                                    </th>
+                                    <th>
+                                        Valor
+                                    </th>
+                                    <th>
+                                        Valor +/-
+                                    </th>
+                                    <th>
+                                        % Operario
+                                    </th>
+                                    <th>
+                                        % Porcentaje
+                                    </th>
+                                    <th>
+                                        Observaciones
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let registro of listaRegistros; let i = index">
+                                        <td>
+                                            {{i + 1}}
+                                        </td>
+                                        <td *ngIf="registro.masomenos ==='mas'">
+                                            <i class="fas fa-plus-square fa-2x" style="color: #4caf50;" matTooltip="Aumento"></i>
+                                        </td>
+                                        <td *ngIf="registro.masomenos ==='menos'">
+                                            <i class="fas fa-minus-circle fa-2x" style="color: #f44336;" matTooltip="Descuento"></i>
+                                        </td>
+                                        <td *ngIf="registro.masomenos ==='na'">
+                                            <i class="fas fa-arrow-alt-circle-up fa-2x" matTooltip="Normal"></i>
+                                        </td>
+                                        <td>
+                                            {{registro.nombreservicio}}
+                                        </td>
+                                        <td>
+                                            {{registro.fecha | date: 'yyyy-MM-dd'}}
+                                        </td>
+                                        <td>
+                                            {{registro.nombrevehiculo}}
+                                        </td>
+                                        <td>
+                                            {{registro.placa}}
+                                        </td>
+                                        <td>
+                                            {{registro.nombremarca}}
+                                        </td>
+                                        <td *ngIf="registro.estadoservicio ==='FINALIZADO'" class="text-success">
+                                            {{registro.estadoservicio}}
+                                        </td>
+                                        <td *ngIf="registro.estadoservicio ==='PROCESO'" class="text-warning">
+                                            {{registro.estadoservicio}}
+                                        </td>
+                                        <td *ngIf="registro.estadoservicio ==='CANCELADO'" class="text-danger">
+                                            {{registro.estadoservicio}}
+                                        </td>
+                                        <td>
+                                            {{registro.usuario}}
+                                        </td>
+                                        <td>
+                                            {{registro.nombreoperario}}
+                                        </td>
+                                        <td>
+                                            {{registro.valor | currency}}
+                                        </td>
+                                        <td>
+                                            {{registro.valorporcentajeoperario | currency}}
+                                        </td>
+                                        <td>
+                                            {{registro.valorporcentaje | currency}}
+                                        </td>
+                                        <td *ngIf="registro.masomenos ==='mas'" class="text-success">
+                                            {{registro.valormasomenos |currency}}
+                                        </td>
+                                        <td *ngIf="registro.masomenos ==='menos'" class="text-danger">
+                                            {{registro.valormasomenos |currency}}
+                                        </td>
+                                        <td *ngIf="registro.masomenos ==='na'" class="text-dark">
+                                            {{registro.valormasomenos |currency}}
+                                        </td>
+                                        <td>
+                                            {{registro.porcentajeoperario}}%
+                                        </td>
+                                        <td>
+                                            {{registro.porcentaje}} %
+                                        </td>
+                                        <td>
+                                            {{registro.observaciones}}
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</div>

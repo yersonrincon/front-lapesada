@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+.table thead th {
+    color: black !important;
+    font: bold;
+}
+
+.cdk-overlay-container {
+    z-index: 1070 !important;
+}

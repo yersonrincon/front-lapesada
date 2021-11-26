@@ -9,11 +9,13 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Registro de lavados',  icon: 'dashboard', class: '' },
+    { path: '/registrar-servicio', title: 'Registrar servicio',  icon: 'border_color', class: '' },
+    { path: '/registrosdia', title: 'Registros dia',  icon: 'wb_sunny', class: '' },
     { path: '/user-profile', title: 'Usuarios',  icon:'person', class: '' },
-    { path: '/servicios', title: 'Servicios',  icon:'room_service', class: '' },
-    { path: '/vehiculos', title: 'Vehiculos',  icon:'directions_car', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+    { path: '/servicios', title: 'Tipo servicios',  icon:'room_service', class: '' },
+    { path: '/vehiculos', title: 'Tipo vehiculos',  icon:'directions_car', class: '' },
+    { path: '/marcas', title: 'Marcas vehiculos',  icon:'bookmark', class: '' },
+    { path: '/operarios', title: 'Operarios',  icon:'person_pin', class: '' },
     { path: 'demoPages/login', title: 'Cerrar sesión',  icon:'power_settings_new', class: 'active-pro' },
 
 ];

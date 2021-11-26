@@ -12,8 +12,9 @@ export class UserProfileComponent implements OnInit {
   formaUsuarios: FormGroup; 
   listaUsuarios: [];
   estadoBoton: boolean = true;
-  constructor(
-              private fb: FormBuilder,
+  public loading = false;
+
+  constructor(private fb: FormBuilder,
               private validacionesService: ValidacionesService,
               private usuariosService: UsuariosService
     ) {
@@ -25,9 +26,11 @@ export class UserProfileComponent implements OnInit {
     this.listarUsuarios();
   }
   listarUsuarios(){
-     this.usuariosService.listarUsuarios().subscribe(res => {
-       this.listaUsuarios = res.usuarios;
-      console.log(res);
+      this.loading = true;
+      this.usuariosService.listarUsuarios().subscribe(res => {
+      this.listaUsuarios = res.usuarios;
+      this.loading = false;
+
      });
   }
   crearFormularioUsuarios(datos){
@@ -60,6 +63,7 @@ export class UserProfileComponent implements OnInit {
     }
     crearEditarUsuario(){
       if(this.formaUsuarios.valid){
+        this.loading = true;
         if(this.estadoBoton){
           this.usuariosService.crearUsuario(this.formaUsuarios.value).subscribe(res =>{
             console.log(res);
@@ -67,8 +71,10 @@ export class UserProfileComponent implements OnInit {
               this.validacionesService.showNotification('top','right','success', res.message);
               this.listarUsuarios();
               this.crearFormularioUsuarios('');
+              this.loading = false;
             } else {
               this.validacionesService.showNotification('top','right','warning', res.message);
+              this.loading = false;
             }
           });
         } else {
@@ -77,6 +83,7 @@ export class UserProfileComponent implements OnInit {
             if(res.ok){
               this.validacionesService.showNotification('top','right','success', res.message);
               this.listarUsuarios();
+              this.loading = false;
             }           
           });
         }
@@ -84,6 +91,7 @@ export class UserProfileComponent implements OnInit {
       }
     }
     cambiarEstado(datos){
+    this.loading = true;
     const datosUser ={
     idusuario: datos.idusuario,
     estado: datos.estado? false: true
@@ -93,6 +101,7 @@ export class UserProfileComponent implements OnInit {
       if(res.ok){
         this.validacionesService.showNotification('top','right','success', res.message);
         this.listarUsuarios();
+        this.loading = false;
       }
     })
     }

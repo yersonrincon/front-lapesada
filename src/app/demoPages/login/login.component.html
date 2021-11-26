@@ -1,29 +1,35 @@
 <div class="container">
-    <div class="row text-center login-page">
+    <div class="row text-center login-page" #customLoadingTemplate>
         <div class="col-md-12 login-form">
-            <form action="" method="post">
+            <form [formGroup]="formaUsuario" (ngSubmit)="login()">
                 <div class="row">
                     <div class="col-md-12 login-form-header">
                         <p class="login-form-font-header">Autolavado<span>Tifon</span>
                             <p>
                     </div>
                 </div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput formControlName="usuario">
+                    <small *ngIf="usuario.invalid  && usuario.touched " class="text-danger animated fadeIn">Campo requerido</small>
+
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="clave">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <small *ngIf="clave.invalid  && clave.touched " class="text-danger animated fadeIn">Campo requerido</small>
+                </mat-form-field>
                 <div class="row">
                     <div class="col-md-12 login-from-row">
-                        <input name="usuario" type="text" placeholder="Usuario" required/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 login-from-row">
-                        <input name="password" type="password" placeholder="Contraseña" required/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 login-from-row">
-                        <button class="btn botonInicio" routerLink="/dashboard">Entrar</button>
+                        <!--<button class="btn botonInicio" routerLink="/dashboard">Entrar</button>-->
+                        <button class="btn botonInicio" type="submit">Entrar</button>
                     </div>
                 </div>
             </form>
         </div>
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
     </div>
 </div>

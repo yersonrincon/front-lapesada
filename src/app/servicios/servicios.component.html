@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="main-content" #customLoadingTemplate>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
@@ -18,6 +18,9 @@
                                         Nombre
                                     </th>
                                     <th>
+                                        Precio
+                                    </th>
+                                    <th>
                                         Estado
                                     </th>
                                     <th>
@@ -31,6 +34,9 @@
                                         </td>
                                         <td>
                                             {{servicio.nombreservicio}}
+                                        </td>
+                                        <td>
+                                            {{servicio.valor |currency}}
                                         </td>
                                         <td>
                                             <mat-slide-toggle *ngIf="servicio.estado" [checked]="servicio.estado" color="primary" (click)="cambiarEstado(servicio)"></mat-slide-toggle>
@@ -71,6 +77,13 @@
                                     <small *ngIf="nombreServicio.invalid  && nombreServicio.touched && !nombreServicio.errors?.minlength && !nombreServicio.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input currencyMask [options]="{ precision : 0, align: 'left'}" matInput formControlName="valor" placeholder="Precio" type="text">
+                                    </mat-form-field><small *ngIf="valor.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
+                                    <small *ngIf="valor.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                    <small *ngIf="valor.invalid  && valor.touched && !valor.errors?.minlength && !valor.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                </div>
+                                <div class="col-md-6">
                                     <mat-slide-toggle formControlName="estado" color="primary">Estado</mat-slide-toggle>
                                 </div>
                                 <div class="col-md-12 text-center">
@@ -84,4 +97,5 @@
             </div>
         </div>
     </div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
 </div>

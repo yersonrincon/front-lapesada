@@ -4,8 +4,8 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header card-header-info">
-                        <h4 class="card-title">Tipo vehiculos</h4>
-                        <p class="card-category">Lista de tipo vehiculos registrados</p>
+                        <h4 class="card-title">Marcas de vehiculos</h4>
+                        <p class="card-category">Lista de marcas registradas</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -15,7 +15,7 @@
                                         #
                                     </th>
                                     <th>
-                                        Nombre
+                                        Nombre marca
                                     </th>
                                     <th>
                                         Estado
@@ -25,19 +25,19 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let vehiculo of listaVehiculos; let i = index">
+                                    <tr *ngFor="let marca of listaMarcas; let i = index">
                                         <td>
                                             {{i + 1}}
                                         </td>
                                         <td>
-                                            {{vehiculo.nombrevehiculo}}
+                                            {{marca.nombremarca}}
                                         </td>
                                         <td>
-                                            <mat-slide-toggle *ngIf="vehiculo.estado" [checked]="vehiculo.estado" color="primary" (click)="cambiarEstado(vehiculo)"></mat-slide-toggle>
-                                            <mat-slide-toggle *ngIf="!vehiculo.estado" [checked]="vehiculo.estado" color="primary" (click)="cambiarEstado(vehiculo)"></mat-slide-toggle>
+                                            <mat-slide-toggle *ngIf="marca.estado" [checked]="marca.estado" color="primary" (click)="cambiarEstado(marca)"></mat-slide-toggle>
+                                            <mat-slide-toggle *ngIf="!marca.estado" [checked]="marca.estado" color="primary" (click)="cambiarEstado(marca)"></mat-slide-toggle>
                                         </td>
                                         <td>
-                                            <i class="material-icons" style="cursor: pointer;" (click)="editarVehiculo(vehiculo)">edit</i>
+                                            <i class="material-icons" style="cursor: pointer;" (click)="editarMarca(marca)">edit</i>
                                         </td>
                                     </tr>
 
@@ -50,32 +50,32 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header card-header-warning">
-                        <h4 class="card-title"> Tipo Vehiculos</h4>
+                        <h4 class="card-title"> Marcas de vehiculos</h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <p class="card-category">Crear y editar tipo vehiculos</p>
+                                <p class="card-category">Crear y editar marcas</p>
                             </div>
                             <div class="col-md-6">
-                                <p class="card-category text-right" style="cursor: pointer;" (click)="crearFormularioVehiculos('')">Crear tipo vehiculo</p>
+                                <p class="card-category text-right" style="cursor: pointer;" (click)="crearFormularioMarcas('')">Crear marca vehiculo</p>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form [formGroup]="formaVehiculo" (ngSubmit)="crearEditarVehiculo()">
+                        <form [formGroup]="formaMarca" (ngSubmit)="crearEditarMarca()" autocomplete="off">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput formControlName="nombrevehiculo" placeholder="Nombre tipo vehiculo" type="text">
-                                    </mat-form-field><small *ngIf="nombrevehiculo.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
-                                    <small *ngIf="nombrevehiculo.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="nombrevehiculo.invalid  && nombrevehiculo.touched && !nombrevehiculo.errors?.minlength && !nombrevehiculo.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                        <input matInput formControlName="nombremarca" placeholder="Nombre marca vehiculo" type="text">
+                                    </mat-form-field><small *ngIf="nombremarca.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                    <small *ngIf="nombremarca.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                    <small *ngIf="nombremarca.invalid  && nombremarca.touched && !nombremarca.errors?.minlength && !nombremarca.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-slide-toggle formControlName="estado" color="primary">Estado</mat-slide-toggle>
                                 </div>
                                 <div class="col-md-12 text-center">
-                                    <button *ngIf="estadoBoton" class="btn btn-info btn-round" type="submit">Registrar tipo vehiculo</button>
-                                    <button *ngIf="!estadoBoton" class="btn btn-info btn-round" type="submit">Actualizar tipo vehiculo</button>
+                                    <button *ngIf="estadoBoton" class="btn btn-info btn-round" type="submit">Registrar marca vehiculo</button>
+                                    <button *ngIf="!estadoBoton" class="btn btn-info btn-round" type="submit">Actualizar marca vehiculo</button>
                                 </div>
                             </div>
                         </form>
@@ -85,5 +85,4 @@
         </div>
     </div>
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
-
 </div>
