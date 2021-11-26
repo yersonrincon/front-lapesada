@@ -4,3 +4,99 @@
     background-color: #dff0d8;
     color: #3c763d;
 }
+
+@media(min-width: 320px) {
+    .saludo {
+        font-size: 6px;
+    }
+}
+
+@media(min-width: 375px) {
+    .saludo {
+        font-size: 7px;
+    }
+}
+
+@media(min-width: 400px) {
+    .saludo {
+        font-size: 8px;
+    }
+}
+
+@media(min-width: 425px) {
+    .saludo {
+        font-size: 10px;
+    }
+}
+
+@media(min-width: 520px) {
+    .saludo {
+        font-size: 11px;
+    }
+}
+
+@media(min-width: 600px) {
+    .saludo {
+        font-size: 13px;
+    }
+}
+
+@media(min-width: 700px) {
+    .saludo {
+        font-size: 14px;
+    }
+}
+
+@media(min-width: 800px) {
+    .saludo {
+        font-size: 16px;
+    }
+}
+
+@media(min-width: 830px) {
+    .saludo {
+        font-size: 16px;
+    }
+}
+
+@media(min-width: 900px) {
+    .saludo {
+        font-size: 21px;
+    }
+}
+
+@media(min-width: 992px) {
+    .saludo {
+        font-size: 14px;
+    }
+}
+
+@media(min-width: 1050px) {
+    .saludo {
+        font-size: 15px;
+    }
+}
+
+@media(min-width: 1100px) {
+    .saludo {
+        font-size: 16px;
+    }
+}
+
+@media(min-width: 1200px) {
+    .saludo {
+        font-size: 18px;
+    }
+}
+
+@media(min-width: 1370px) {
+    .saludo {
+        font-size: 23px;
+    }
+}
+
+@media(min-width: 1500px) {
+    .saludo {
+        font-size: 30px;
+    }
+}
