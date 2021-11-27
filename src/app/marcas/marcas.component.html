@@ -66,9 +66,10 @@
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="nombremarca" placeholder="Nombre marca vehiculo" type="text">
-                                    </mat-form-field><small *ngIf="nombremarca.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
-                                    <small *ngIf="nombremarca.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="nombremarca.invalid  && nombremarca.touched && !nombremarca.errors?.minlength && !nombremarca.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                        <small *ngIf="nombremarca.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="nombremarca.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="nombremarca.invalid  && nombremarca.touched && !nombremarca.errors?.minlength && !nombremarca.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-slide-toggle formControlName="estado" color="primary">Estado</mat-slide-toggle>

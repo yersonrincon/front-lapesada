@@ -72,31 +72,32 @@
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="nombre" placeholder="Nombre" type="text">
-                                    </mat-form-field><small *ngIf="nombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
-                                    <small *ngIf="nombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="nombre.invalid  && nombre.touched && !nombre.errors?.minlength && !nombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                        <small *ngIf="nombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
+                                        <small *ngIf="nombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="nombre.invalid  && nombre.touched && !nombre.errors?.minlength && !nombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="usuario" placeholder="Usuario" type="text">
+                                        <small *ngIf="usuario.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="usuario.errors?.maxlength" class="text-danger animated fadeIn">Máximo 10 carácteres</small>
+                                        <small *ngIf="usuario.invalid  && usuario.touched && !usuario.errors?.minlength && !usuario.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
-                                    <small *ngIf="usuario.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
-                                    <small *ngIf="usuario.errors?.maxlength" class="text-danger animated fadeIn">Máximo 10 carácteres</small>
-                                    <small *ngIf="usuario.invalid  && usuario.touched && !usuario.errors?.minlength && !usuario.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="clave" placeholder="Clave" type="password">
+                                        <small *ngIf="clave.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="clave.errors?.maxlength" class="text-danger animated fadeIn">Máximo 10 carácteres</small>
+                                        <small *ngIf="clave.invalid  && clave.touched && !clave.errors?.minlength && !clave.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
-                                    <small *ngIf="clave.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
-                                    <small *ngIf="clave.errors?.maxlength" class="text-danger animated fadeIn">Máximo 10 carácteres</small>
-                                    <small *ngIf="clave.invalid  && clave.touched && !clave.errors?.minlength && !clave.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="clave2" placeholder="Repite clave" type="password">
+                                        <small *ngIf="passw2NoValido" class="text-danger">Las claves deben ser iguales.</small>
                                     </mat-form-field>
-                                    <small *ngIf="passw2NoValido" class="text-danger">Las claves deben ser iguales.</small>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-slide-toggle formControlName="estado" color="primary">Estado</mat-slide-toggle>

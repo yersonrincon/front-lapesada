@@ -72,16 +72,18 @@
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="nombreservicio" placeholder="Nombre servicio" type="text">
-                                    </mat-form-field><small *ngIf="nombreServicio.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
-                                    <small *ngIf="nombreServicio.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="nombreServicio.invalid  && nombreServicio.touched && !nombreServicio.errors?.minlength && !nombreServicio.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                        <small *ngIf="nombreServicio.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
+                                        <small *ngIf="nombreServicio.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="nombreServicio.invalid  && nombreServicio.touched && !nombreServicio.errors?.minlength && !nombreServicio.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input currencyMask [options]="{ precision : 0, align: 'left'}" matInput formControlName="valor" placeholder="Precio" type="text">
-                                    </mat-form-field><small *ngIf="valor.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
-                                    <small *ngIf="valor.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="valor.invalid  && valor.touched && !valor.errors?.minlength && !valor.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                        <small *ngIf="valor.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
+                                        <small *ngIf="valor.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="valor.invalid  && valor.touched && !valor.errors?.minlength && !valor.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-slide-toggle formControlName="estado" color="primary">Estado</mat-slide-toggle>

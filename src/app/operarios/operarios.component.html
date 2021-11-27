@@ -84,30 +84,34 @@
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="nombre" placeholder="Nombre operario" type="text">
-                                    </mat-form-field><small *ngIf="nombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
-                                    <small *ngIf="nombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="nombre.invalid  && nombre.touched && !nombre.errors?.minlength && !nombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                        <small *ngIf="nombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="nombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="nombre.invalid  && nombre.touched && !nombre.errors?.minlength && !nombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="documento" placeholder="Documento" type="text">
-                                    </mat-form-field><small *ngIf="documento.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
-                                    <small *ngIf="documento.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="documento.invalid  && documento.touched && !documento.errors?.minlength && !documento.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                        <small *ngIf="documento.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="documento.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="documento.invalid  && documento.touched && !documento.errors?.minlength && !documento.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="telefono" placeholder="Teléfono" type="text">
-                                    </mat-form-field><small *ngIf="telefono.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
-                                    <small *ngIf="telefono.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="telefono.invalid  && telefono.touched && !telefono.errors?.minlength && !telefono.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                        <small *ngIf="telefono.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="telefono.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="telefono.invalid  && telefono.touched && !telefono.errors?.minlength && !telefono.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
                                         <input matInput formControlName="direccion" placeholder="Dirección" type="text">
-                                    </mat-form-field><small *ngIf="direccion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
-                                    <small *ngIf="direccion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="direccion.invalid  && direccion.touched && !direccion.errors?.minlength && !direccion.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                        <small *ngIf="direccion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="direccion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="direccion.invalid  && direccion.touched && !direccion.errors?.minlength && !direccion.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-slide-toggle formControlName="estado" color="primary">Estado</mat-slide-toggle>

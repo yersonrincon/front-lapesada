@@ -19,8 +19,8 @@
                                                 {{servicio.nombreservicio}}
                                             </mat-option>
                                         </mat-select>
+                                        <small *ngIf="idtiposervicio.invalid  && idtiposervicio.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
-                                    <small *ngIf="idtiposervicio.invalid  && idtiposervicio.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field appearance="fill">
@@ -30,8 +30,8 @@
                                                 {{vehiculo.nombrevehiculo}}
                                             </mat-option>
                                         </mat-select>
+                                        <small *ngIf="idtipovehiculo.invalid  && idtipovehiculo.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
-                                    <small *ngIf="idtipovehiculo.invalid  && idtipovehiculo.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field appearance="fill">
@@ -41,26 +41,26 @@
                                                 {{marca.nombremarca}}
                                             </mat-option>
                                         </mat-select>
+                                        <small *ngIf="idmarca.invalid  && idmarca.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
-                                    <small *ngIf="idmarca.invalid  && idmarca.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Placa vehiculo</mat-label>
                                         <input matInput formControlName="placa" placeholder="Placa vehiculo" type="text">
+                                        <small *ngIf="placa.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
+                                        <small *ngIf="placa.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="placa.invalid  && placa.touched && !placa.errors?.minlength && !placa.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
-                                    <small *ngIf="placa.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
-                                    <small *ngIf="placa.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="placa.invalid  && placa.touched && !placa.errors?.minlength && !placa.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Color vehiculo</mat-label>
                                         <input matInput formControlName="color" placeholder="Color vehiculo" type="text">
+                                        <small *ngIf="color.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="color.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="color.invalid  && color.touched && !color.errors?.minlength && !color.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
-                                    <small *ngIf="color.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
-                                    <small *ngIf="color.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                    <small *ngIf="color.invalid  && color.touched && !color.errors?.minlength && !color.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field appearance="fill">
@@ -70,8 +70,8 @@
                                                 {{operario.nombre}}
                                             </mat-option>
                                         </mat-select>
+                                        <small *ngIf="idoperario.invalid  && idoperario.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
-                                    <small *ngIf="idoperario.invalid  && idoperario.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="row">
@@ -92,8 +92,8 @@
                                     <mat-form-field appearance="fill">
                                         <mat-label>Valor</mat-label>
                                         <input currencyMask [options]="{ precision : 0, align: 'left'}" matInput formControlName="valormasomenos" placeholder="valor" type="text">
+                                        <small *ngIf="valormasomenos.invalid  && valormasomenos.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
-                                    <small *ngIf="valormasomenos.invalid  && valormasomenos.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                 </div>
                                 <div class="col-md-5">
                                     <mat-form-field appearance="fill">
