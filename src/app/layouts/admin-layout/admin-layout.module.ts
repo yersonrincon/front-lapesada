@@ -12,6 +12,8 @@ import { OperariosComponent } from '../../operarios/operarios.component';
 import { MarcasComponent } from '../../marcas/marcas.component';
 import { RegistrarServicioComponent } from '../../registrar-servicio/registrar-servicio.component';
 import { RegistrosdiaComponent } from '../../registrosdia/registrosdia.component';
+import { SuministrosComponent } from '../../suministros/suministros.component';
+import { RegistrosuministroComponent } from '../../registrosuministro/registrosuministro.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -26,6 +28,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxCurrencyModule } from "ngx-currency";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxLoadingModule } from 'ngx-loading';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -44,6 +48,7 @@ import { NgxLoadingModule } from 'ngx-loading';
     ModalModule.forRoot(),
     MatDatepickerModule,
     MatNativeDateModule,
+    SelectDropDownModule,
     NgxLoadingModule.forRoot({})
   ],
   declarations: [
@@ -54,7 +59,9 @@ import { NgxLoadingModule } from 'ngx-loading';
     OperariosComponent,
     MarcasComponent,
     RegistrarServicioComponent,
-    RegistrosdiaComponent
+    RegistrosdiaComponent,
+    SuministrosComponent,
+    RegistrosuministroComponent
   ]
 })
 

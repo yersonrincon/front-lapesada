@@ -1,0 +1,45 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Suministros</h4>
+                        <p class="card-category">Venta de suministros</p>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="formaRegistroSuministro" (ngSubmit)="crearSuministro()" autocomplete="off">
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Suministro</mat-label>
+                                        <mat-select formControlName="idsuministro">
+                                            <mat-option *ngFor="let suministro of listaSuministros" [value]="suministro.idsuministro">
+                                                {{suministro.nombre}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <small *ngIf="idsuministro.invalid  && idsuministro.touched" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Operario</mat-label>
+                                        <mat-select formControlName="idoperario">
+                                            <mat-option *ngFor="let operario of listaOperarios" [value]="operario.idoperario">
+                                                {{operario.nombre}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <small *ngIf="idoperario.invalid  && idoperario.touched" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <button class="btn btn-info btn-round" type="submit">Crear registro</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

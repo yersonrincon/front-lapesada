@@ -5,12 +5,42 @@
                 <div class="card">
                     <div class="card-header card-header-info">
                         <h4 class="card-title">Registro de lavado</h4>
-                        <p class="card-category">Regstrar lavado</p>
+                        <p class="card-category">Registrar lavado</p>
                     </div>
                     <div class="card-body">
-                        {{this.fechaActual}}
                         <form [formGroup]="formaServicios" (ngSubmit)="crearEditarService()" autocomplete="off">
                             <div class="form-row">
+                                <div class="col-md-3">
+                                    <ngx-select-dropdown [multiple]="false" formControlName="placaB" [config]="config" [options]="listaPlacas" (change)="changeValue($event)"></ngx-select-dropdown>
+                                    <p class="mt-1 mb-1">Placa seleccionada: {{placaBusqueda}} </p>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Placa vehiculo</mat-label>
+                                        <input [ngModel]="placaBusqueda" matInput formControlName="placa" placeholder="Placa vehiculo" type="text">
+                                        <small *ngIf="placa.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
+                                        <small *ngIf="placa.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="placa.invalid  && placa.touched && !placa.errors?.minlength && !placa.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Nombre Cliente</mat-label>
+                                        <input [ngModel]="nombreClienteBusqueda" matInput formControlName="nombrecliente" placeholder="Nombre Cliente" type="text">
+                                        <small *ngIf="nombrecliente.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="nombrecliente.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="nombrecliente.invalid  && nombrecliente.touched && !nombrecliente.errors?.minlength && !nombrecliente.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Teléfono</mat-label>
+                                        <input [ngModel]="telefonoBusqueda" matInput formControlName="telefono" placeholder="Teléfono" type="text">
+                                        <small *ngIf="telefono.invalid  && telefono.touched" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
+                                </div>
                                 <div class="col-md-3">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Tipo servicio</mat-label>
@@ -42,15 +72,6 @@
                                             </mat-option>
                                         </mat-select>
                                         <small *ngIf="idmarca.invalid  && idmarca.touched" class="text-danger animated fadeIn">Campo requerido</small>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Placa vehiculo</mat-label>
-                                        <input matInput formControlName="placa" placeholder="Placa vehiculo" type="text">
-                                        <small *ngIf="placa.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
-                                        <small *ngIf="placa.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                                        <small *ngIf="placa.invalid  && placa.touched && !placa.errors?.minlength && !placa.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">

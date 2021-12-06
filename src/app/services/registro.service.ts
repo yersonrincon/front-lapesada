@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment.prod';
 export class RegistroService {
 
   headers = new HttpHeaders({
-    authorization: localStorage.getItem('TokenNomina'),
+    authorization: localStorage.getItem('TokenTifon'),
     apiKeyToken: environment.APYKEY_ADMIN
   });
   constructor(private httpClient: HttpClient) { }
@@ -57,5 +57,11 @@ export class RegistroService {
    buscarCancelados(fechaInicial,fechaFinal){
     const datos = {fechaInicial,fechaFinal};
     return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonRegistros/buscarCancelados`,datos);
+   }
+   consultarPlacas(){
+    return this.httpClient.get<any>(`${environment.apiUrl}/api/tifonRegistros/consultarPlacas`);
+   }
+   actualizarOperarioServicio(datos){
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonRegistros/actualizarOperarioServicio`,datos);
    }
 }

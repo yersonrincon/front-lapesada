@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment.prod';
 export class UsuariosService {
 
   headers = new HttpHeaders({
-    authorization: localStorage.getItem('TokenNomina'),
+    authorization: localStorage.getItem('TokenTifon'),
     apiKeyToken: environment.APYKEY_ADMIN
   });
   constructor(private httpClient: HttpClient) { }
@@ -22,6 +22,9 @@ export class UsuariosService {
    }
    listarUsuarios(){
     return this.httpClient.get<any>(`${environment.apiUrl}/api/tifonUsuarios/listarUsuarios`);
+   }
+   listarRoles(){
+    return this.httpClient.get<any>(`${environment.apiUrl}/api/tifonUsuarios/listarRoles`);
    }
    actualizarEstadoUsuario(datos){
     return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonUsuarios/actualizarEstadoUsuario`,datos);

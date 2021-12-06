@@ -27,8 +27,7 @@ export class OperariosComponent implements OnInit {
   listarOperarios(){
     this.loading = true;
     this.operariosService.listarOperarios().subscribe(res => {
-      this.listaOperarios = res.operarios;
-     console.log(res);
+    this.listaOperarios = res.operarios;
     this.loading = false;
     });
  }

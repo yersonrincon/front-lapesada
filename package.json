@@ -44,10 +44,12 @@
         "express": "^4.17.1",
         "hammerjs": "2.0.8",
         "jquery": "3.6.0",
+        "jwt-decode": "^3.0.0",
         "moment": "2.29.1",
         "ngx-bootstrap": "^6.2.0",
         "ngx-currency": "^2.5.3",
         "ngx-loading": "^8.0.0",
+        "ngx-select-dropdown": "^2.1.0",
         "ngx-ui-switch": "^12.0.1",
         "path": "^0.12.7",
         "perfect-scrollbar": "1.5.0",
@@ -56,8 +58,7 @@
         "rxjs-compat": "6.6.3",
         "typescript": "4.3.5",
         "web-animations-js": "2.3.2",
-        "zone.js": "0.11.4",
-        "jwt-decode": "^3.0.0"
+        "zone.js": "0.11.4"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "12.1.2",

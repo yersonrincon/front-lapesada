@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row text-center login-page" #customLoadingTemplate>
-        <div class="col-md-12 login-form">
+    <div class="row text-center login-page">
+        <div class="col-md-12 login-form" #customLoadingTemplate>
             <form [formGroup]="formaUsuario" (ngSubmit)="login()">
                 <div class="row">
                     <div class="col-md-12 login-form-header">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </form>
+            <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
         </div>
-        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
     </div>
 </div>

@@ -21,6 +21,9 @@
                                         Usuario
                                     </th>
                                     <th>
+                                        Rol
+                                    </th>
+                                    <th>
                                         Estado
                                     </th>
                                     <th>
@@ -37,6 +40,9 @@
                                         </td>
                                         <td>
                                             {{usuario.usuario}}
+                                        </td>
+                                        <td>
+                                            {{usuario.nombrerol}}
                                         </td>
                                         <td>
                                             <mat-slide-toggle *ngIf="usuario.estado" [checked]="usuario.estado" color="primary" (click)="cambiarEstado(usuario)"></mat-slide-toggle>
@@ -83,6 +89,17 @@
                                         <small *ngIf="usuario.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
                                         <small *ngIf="usuario.errors?.maxlength" class="text-danger animated fadeIn">Máximo 10 carácteres</small>
                                         <small *ngIf="usuario.invalid  && usuario.touched && !usuario.errors?.minlength && !usuario.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Operario</mat-label>
+                                        <mat-select formControlName="rol">
+                                            <mat-option *ngFor="let operario of listaRoles" [value]="operario.idrol">
+                                                {{operario.nombre}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <small *ngIf="rol.invalid  && rol.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">

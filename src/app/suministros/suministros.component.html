@@ -1,0 +1,104 @@
+<div class="main-content" #customLoadingTemplate>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Suministros</h4>
+                        <p class="card-category">Lista de suministros registrados</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Nombre
+                                    </th>
+                                    <th>
+                                        Valor
+                                    </th>
+                                    <th>
+                                        Estado
+                                    </th>
+                                    <th>
+                                        Editar
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let suministro of listaSuministros; let i = index">
+                                        <td>
+                                            {{i + 1}}
+                                        </td>
+                                        <td>
+                                            {{suministro.nombre}}
+                                        </td>
+                                        <td>
+                                            {{suministro.valor |currency}}
+                                        </td>
+                                        <td>
+                                            <mat-slide-toggle *ngIf="suministro.estado" [checked]="suministro.estado" color="primary" (click)="cambiarEstado(suministro)"></mat-slide-toggle>
+                                            <mat-slide-toggle *ngIf="!suministro.estado" [checked]="suministro.estado" color="primary" (click)="cambiarEstado(suministro)"></mat-slide-toggle>
+                                        </td>
+                                        <td>
+                                            <i class="material-icons" style="cursor: pointer;" (click)="editarSuministro(suministro)">edit</i>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title"> Suministros</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="card-category">Crear y editar tipo vehiculos</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="card-category text-right" style="cursor: pointer;" (click)="crearFormularioSuministros('')">Crear suministro</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="formaSuministro" (ngSubmit)="crearEditarSuministro()">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput formControlName="nombre" placeholder="Nombre suministro" type="text">
+                                        <small *ngIf="nombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 3 carácteres</small>
+                                        <small *ngIf="nombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="nombre.invalid  && nombre.touched && !nombre.errors?.minlength && !nombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input currencyMask [options]="{ precision : 0, align: 'left'}" matInput formControlName="valor" placeholder="Precio" type="text">
+                                        <small *ngIf="valor.errors?.minlength" class="text-danger animated fadeIn">Mínimo 5 carácteres</small>
+                                        <small *ngIf="valor.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                                        <small *ngIf="valor.invalid  && valor.touched && !valor.errors?.minlength && !valor.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-slide-toggle formControlName="estado" color="primary">Estado</mat-slide-toggle>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <button *ngIf="estadoBoton" class="btn btn-info btn-round" type="submit">Registrar suministro</button>
+                                    <button *ngIf="!estadoBoton" class="btn btn-info btn-round" type="submit">Actualizar suministro</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+
+</div>

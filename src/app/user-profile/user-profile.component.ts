@@ -11,6 +11,7 @@ import { ValidacionesService } from 'app/services/validaciones.service';
 export class UserProfileComponent implements OnInit {
   formaUsuarios: FormGroup; 
   listaUsuarios: [];
+  listaRoles: [];
   estadoBoton: boolean = true;
   public loading = false;
 
@@ -24,6 +25,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.crearFormularioUsuarios('');
     this.listarUsuarios();
+    this.listarRoles();
   }
   listarUsuarios(){
       this.loading = true;
@@ -33,12 +35,18 @@ export class UserProfileComponent implements OnInit {
 
      });
   }
+  listarRoles(){
+    this.usuariosService.listarRoles().subscribe(res => {
+    this.listaRoles = res.roles;
+   });
+}
   crearFormularioUsuarios(datos){
     this.estadoBoton = datos ? false: true;
     this.formaUsuarios = this.fb.group({
         idusuario: [ datos.idusuario? datos.idusuario:''],
         nombre: [ datos.nombre? datos.nombre:'', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
         usuario: [ datos.usuario? datos.usuario:'', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+        rol: [datos.idrol? datos.idrol:'', [Validators.required]],
         clave: [datos.clave? datos.clave:'', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
         clave2: [datos.clave? datos.clave:'', [Validators.required]],
         estado: [datos.estado]
@@ -49,6 +57,9 @@ export class UserProfileComponent implements OnInit {
     }    
     get usuario() {
       return this.formaUsuarios.get('usuario');
+    }
+    get rol() {
+      return this.formaUsuarios.get('rol');
     }
     get clave() {
       return this.formaUsuarios.get('clave');

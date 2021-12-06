@@ -43,11 +43,77 @@
             </li>
         </ul>
     </div>-->
-    <ul class="nav">
-        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+    <ul [ngClass]="idrol === 1 ? 'nav  table-wrapper-scroll-y my-custom-scrollbar' : 'nav'">
+        <!--<li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a class="nav-link" [routerLink]="[menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>
                 <p>{{menuItem.title}}</p>
+            </a>
+        </li>-->
+        <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">
+                <i class="material-icons">dashboard</i>
+                <p>Registro de lavados</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/registrar-servicio">
+                <i class="material-icons">border_color</i>
+                <p>Registrar servicio</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/registrosdia">
+                <i class="material-icons">wb_sunny</i>
+                <p>Registros dia</p>
+            </a>
+        </li>
+        <li *ngIf="idrol === 1" routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/user-profile">
+                <i class="material-icons">person</i>
+                <p>Usuarios</p>
+            </a>
+        </li>
+        <li *ngIf="idrol === 1" routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/servicios">
+                <i class="material-icons">room_service</i>
+                <p>Tipo servicios</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/vehiculos">
+                <i class="material-icons">directions_car</i>
+                <p>Tipo vehiculos</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/marcas">
+                <i class="material-icons">bookmark</i>
+                <p>Marcas vehiculos</p>
+            </a>
+        </li>
+        <li *ngIf="idrol === 1" routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/operarios">
+                <i class="material-icons">person_pin</i>
+                <p>Operarios</p>
+            </a>
+        </li>
+        <li *ngIf="idrol === 1" routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/suministros">
+                <i class="material-icons">bookmark</i>
+                <p>Suministros</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/registrosuministro">
+                <i class="material-icons">battery_std</i>
+                <p>Venta suministro</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" [ngClass]="idrol === 1 ? 'nav-item' : 'active-pro nav-item'">
+            <a class="nav-link" routerLink="demoPages/login">
+                <i class="material-icons">power_settings_new</i>
+                <p>Cerrar sesión</p>
             </a>
         </li>
     </ul>

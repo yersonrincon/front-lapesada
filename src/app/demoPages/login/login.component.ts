@@ -33,8 +33,7 @@ export class LoginComponent implements OnInit {
       return this.formaUsuario.get('clave');
     }
     login(){
-      if(this.formaUsuario.valid){
-        this.loading = true;
+      if(this.formaUsuario.valid){        
         this.loginService.loginUsuario(this.formaUsuario.value);
       }
     }

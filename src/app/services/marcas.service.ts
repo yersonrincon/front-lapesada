@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment.prod';
 export class MarcasService {
 
   headers = new HttpHeaders({
-    authorization: localStorage.getItem('TokenNomina'),
+    authorization: localStorage.getItem('TokenTifon'),
     apiKeyToken: environment.APYKEY_ADMIN
   });
   constructor(private httpClient: HttpClient) { }

@@ -8,7 +8,7 @@ import { environment } from 'environments/environment';
 export class OperariosService {
 
   headers = new HttpHeaders({
-    authorization: localStorage.getItem('TokenNomina'),
+    authorization: localStorage.getItem('TokenTifon'),
     apiKeyToken: environment.APYKEY_ADMIN
   });
   constructor(private httpClient: HttpClient) { }

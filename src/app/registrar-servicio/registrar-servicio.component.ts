@@ -8,6 +8,7 @@ import { VehiculosService } from '../services/vehiculos.service';
 import { OperariosService } from '../services/operarios.service';
 import { RegistroService } from '../services/registro.service';
 import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'registrar-servicio',
@@ -22,10 +23,16 @@ export class RegistrarServicioComponent implements OnInit {
   listaServicios = [];
   listaVehiculos = [];
   listaOperarios =[];
+  placaBusqueda: any;
+  telefonoBusqueda: any;
+  nombreClienteBusqueda: any;
+  listaPlacas: [];  
   hidden: boolean = false;
   public loading = false;
   usuario: any;
   token = localStorage.getItem('TokenTifon');
+  config = { displayKey: 'placa', search: true, limitTo: 3, searchPlaceholder: 'Filtrar', height: '150px', placeholder:'Buscar placa' };
+
 
   constructor(private fb: FormBuilder,
               private datePipe: DatePipe, 
@@ -34,17 +41,26 @@ export class RegistrarServicioComponent implements OnInit {
               private vehiculosService: VehiculosService,
               private operariosService: OperariosService,
               private registroService: RegistroService,
-              private validacionesService: ValidacionesService) { }
+              private validacionesService: ValidacionesService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.fechaActual = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
     const decoded: any = jwt_decode(this.token);
     this.usuario = decoded.idusuario;
+    this.consultarPlacas();
     this.listarMarcas();
     this.listarServicios();
     this.listarVehiculos();
     this.listarOperarios();
     this.crearFormularioServicio();
+  }
+  consultarPlacas(){
+  this.registroService.consultarPlacas().subscribe(res =>{
+    console.log(res);
+    this.listaPlacas = res.listaPlacas;
+
+})
   }
   listarMarcas(){
     this.loading = true;
@@ -79,7 +95,10 @@ listarOperarios(){
     this.formaServicios = this.fb.group({
         idservicio: [''],
         fecha: [this.fechaActual, Validators.required],
+        nombrecliente: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+        telefono: ['', Validators.required],
         idmarca: ['', Validators.required],
+        placaB:  ['', ],
         placa:  ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
         idtiposervicio: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
         idtipovehiculo: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
@@ -91,6 +110,12 @@ listarOperarios(){
         observaciones: ['']
       });
       this.habilitarCampo('3');
+    }
+    get nombrecliente() {
+      return this.formaServicios.get('nombrecliente');
+    }
+    get telefono() {
+      return this.formaServicios.get('telefono');
     }
     get idmarca() {
       return this.formaServicios.get('idmarca');
@@ -133,11 +158,20 @@ listarOperarios(){
          this.loading = true;
         this.registroService.crearRegistro(this.formaServicios.value).subscribe(res =>{
           if(res.ok){
-            this.validacionesService.showNotification('top','right','success', res.message);
-            this.crearFormularioServicio();
+            this.validacionesService.showNotification('top','right','success', res.message);            
+            this.placaBusqueda ='';
+            this.router.navigateByUrl('/dashboard');
             this.loading = false;
           }
         })
       }
     }
+    changeValue(event){
+      if(event){
+        this.placaBusqueda = event.value.placa;
+        this.telefonoBusqueda =event.value.telefono;
+        this.nombreClienteBusqueda =event.value.nombrecliente;
+
+      }
+      }
 }

@@ -21,6 +21,7 @@ export class LoginService {
   }
 
   loginUsuario(datos){
+    this.loading = true;
     return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonUsuarios/loginUsuario`,datos).subscribe( res =>{
       console.log(res);
       if(res.ok){

@@ -6,6 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ValidacionesService } from '../services/validaciones.service';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
+import { OperariosService } from '../services/operarios.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,23 +20,29 @@ export class DashboardComponent implements OnInit {
   listaRegistros= [];
   listaEstados = [];
   serviciosBusqueda = [];
+  listaOperarios =[];
   totalFinalizados: any;
   totalEnProceso: any;
   totalCancelados: any;
   totalserviciosDia: any;
+  valorTotalFinalizados: any;
   totales: any;
   totalP: any;
   ventanaModal: BsModalRef;
   formaEstado: FormGroup; 
   formaFechas: FormGroup;
+  formaOperarios: FormGroup;
   public loading = false;
   style1 =false;
   style2 = false;
   tituloModal: string;
+  mensaje: string ='Buen día,☀️ señor(a) ';
+  mensaje1: string =' nos comunicamos del autolavado Monster para informarle que su vehículo🚗🏍️🚛 ya se encuentra listo ✔️';
   constructor(private registroService: RegistroService,
               private modalService: BsModalService,
               private fb: FormBuilder,
               private validacionesService: ValidacionesService,
+              private operariosService: OperariosService,
               private datePipe: DatePipe) { }
 
   ngOnInit(): void { 
@@ -52,11 +59,19 @@ export class DashboardComponent implements OnInit {
 
   }
 //////////////////////////////////////
+listarOperarios(){
+  this.loading = true;
+  this.operariosService.listarOperarios().subscribe(res => {
+    this.listaOperarios = res.operarios.filter(datos => datos.estado == true); 
+  this.loading = false;
 
+  });
+}
 consultarFinalizados(fechaInicial,fechaFinal){
   this.loading = true;
   this.registroService.consultarFinalizados(fechaInicial,fechaFinal).subscribe(res =>{
-  this.totalFinalizados = res.finalizados.finalizados;
+  this.totalFinalizados = res.finalizados.finalizados;  
+  console.log(res);
   this.loading = false;
   });
 }
@@ -178,6 +193,7 @@ crearFormularioEstado(datos){
     this.registroService.serviciosFinalizados(fechaIncio,fechaFin).subscribe(res =>{
       console.log(res);
       this.serviciosBusqueda = res.serviciosFinalizados;
+      this.valorTotalFinalizados = res.valorTotal;
     });
   }
   buscarProcesos(fechaIncio,fechaFin){
@@ -192,6 +208,34 @@ crearFormularioEstado(datos){
       this.serviciosBusqueda = res.serviciosCancelados;
     });
   }
+  openModalCambiarOperario(templateOperarios: TemplateRef<any>, datos) { 
+    this.crearFormularioOperarios(datos);
+    this.listarOperarios();
+    this.ventanaModal = this.modalService.show(templateOperarios);
+    this.ventanaModal.setClass('modal-md');
+    }
+  crearFormularioOperarios(datos){
+    this.formaOperarios = this.fb.group({
+        idservicio: [datos.idservicio],
+        idoperario:['',[Validators.required]]
+      });
+    }
+    get idoperario() {
+      return this.formaOperarios.get('idoperario');
+    }
+actualizarOperario(){
+  if(this.formaOperarios.valid){
+    this.loading =true;
+    this.registroService.actualizarOperarioServicio(this.formaOperarios.value).subscribe( res =>{
+    if(res.ok){
+    this.closeVentana();
+    this.validacionesService.showNotification('top','right','success', res.message);
+    this.ngOnInit();
+    this.loading = false;
+    }
+    });
+  }
+}
 closeVentana(): void {
   this.serviciosBusqueda =[];
   this.ventanaModal.hide();
