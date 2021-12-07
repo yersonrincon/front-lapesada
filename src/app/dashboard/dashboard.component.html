@@ -384,7 +384,7 @@
 
                 </tbody>
             </table>
-            <div class="row col-12">
+            <div *ngIf="tituloModal ==='finalizados'" class="row col-12">
                 <div class="col-md-12 text-right">
                     <strong>Total gananacia: {{valorTotalFinalizados | currency}}</strong>
                 </div>
