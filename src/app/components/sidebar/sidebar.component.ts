@@ -38,7 +38,6 @@ export class SidebarComponent implements OnInit {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     const decoded: any = jwt_decode(this.token);
     this.idrol = decoded.idrol;
-    console.log(this.idrol);
   }
   isMobileMenu() {
       if ($(window).width() > 991) {

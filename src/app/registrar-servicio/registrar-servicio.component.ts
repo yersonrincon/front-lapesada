@@ -26,6 +26,7 @@ export class RegistrarServicioComponent implements OnInit {
   placaBusqueda: any;
   telefonoBusqueda: any;
   nombreClienteBusqueda: any;
+  valorServicio: any;
   listaPlacas: [];  
   hidden: boolean = false;
   public loading = false;
@@ -57,10 +58,8 @@ export class RegistrarServicioComponent implements OnInit {
   }
   consultarPlacas(){
   this.registroService.consultarPlacas().subscribe(res =>{
-    console.log(res);
     this.listaPlacas = res.listaPlacas;
-
-})
+});
   }
   listarMarcas(){
     this.loading = true;
@@ -166,12 +165,16 @@ listarOperarios(){
         })
       }
     }
-    changeValue(event){
+  changeValue(event){
       if(event){
         this.placaBusqueda = event.value.placa;
         this.telefonoBusqueda =event.value.telefono;
         this.nombreClienteBusqueda =event.value.nombrecliente;
-
       }
-      }
+  }
+  changeService(event){
+    if(event){
+      [this.valorServicio] = this.listaServicios.filter(datos => datos.idtiposervicio == event.value);
+    }
+}
 }

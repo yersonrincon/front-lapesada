@@ -27,8 +27,7 @@ export class VehiculosComponent implements OnInit {
   listarVehiculos(){
     this.loading = true;
     this.vehiculosService.listarVehiculos().subscribe(res => {
-      this.listaVehiculos = res.vehiculos;
-     console.log(res);
+    this.listaVehiculos = res.vehiculos;
     this.loading = false;
 
     });
@@ -49,7 +48,6 @@ export class VehiculosComponent implements OnInit {
     this.loading = true;
       if(this.estadoBoton){
         this.vehiculosService.crearVehiculo(this.formaVehiculo.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarVehiculos();
@@ -62,7 +60,6 @@ export class VehiculosComponent implements OnInit {
         });
       } else {
         this.vehiculosService.editarVehiculo(this.formaVehiculo.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarVehiculos();
@@ -80,7 +77,6 @@ export class VehiculosComponent implements OnInit {
     estado: datos.estado? false: true
     }
     this.vehiculosService.actualizarEstadoVehiculo(datosUser).subscribe(res =>{
-      console.log(res);
       if(res.ok){
         this.validacionesService.showNotification('top','right','success', res.message);
         this.listarVehiculos();

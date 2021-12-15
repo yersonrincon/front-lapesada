@@ -23,7 +23,6 @@ export class LoginService {
   loginUsuario(datos){
     this.loading = true;
     return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonUsuarios/loginUsuario`,datos).subscribe( res =>{
-      console.log(res);
       if(res.ok){
         localStorage.setItem('TokenTifon', `Bearer ${res.token}`);
         this.token = res.token;
@@ -50,7 +49,6 @@ export class LoginService {
       return false;
     }   
     const decoded: any = jwt_decode(this.token);
-    console.log(decoded);
 
     var dateString = _moment.unix(decoded.exp).toDate();
     if (dateString > new Date()) {

@@ -31,7 +31,6 @@ export class RegistrosdiaComponent implements OnInit {
   listarRegistros(fechaInicial,fechaFinal){
     this.loading = true;
     this.registroService.listarRegistros(fechaInicial,fechaFinal).subscribe(res =>{
-      console.log(res);
     this.listaRegistros = res.listaRegistros;
     this.loading = false;
     });

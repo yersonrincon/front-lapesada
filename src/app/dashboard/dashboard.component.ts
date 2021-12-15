@@ -71,7 +71,6 @@ consultarFinalizados(fechaInicial,fechaFinal){
   this.loading = true;
   this.registroService.consultarFinalizados(fechaInicial,fechaFinal).subscribe(res =>{
   this.totalFinalizados = res.finalizados.finalizados;  
-  console.log(res);
   this.loading = false;
   });
 }
@@ -166,7 +165,6 @@ crearFormularioEstado(datos){
   openModalFinalizados(templateFinalizados: TemplateRef<any>, tipo){
      let fechaI ='';
      let fechaF ='';
-     console.log(this.formaFechas.value.fechaInicial);
      this.formaFechas.value.fechaInicial==='' && this.formaFechas.value.fechaFinal===''? fechaI = this.fechaActual: fechaI = this.formaFechas.value.fechaInicial;
      this.formaFechas.value.fechaInicial==='' && this.formaFechas.value.fechaInicial===''? fechaF = this.fechaActual: fechaF = this.formaFechas.value.fechaFinal;
 
@@ -191,20 +189,17 @@ crearFormularioEstado(datos){
   }
   buscarFinalizados(fechaIncio,fechaFin){
     this.registroService.serviciosFinalizados(fechaIncio,fechaFin).subscribe(res =>{
-      console.log(res);
       this.serviciosBusqueda = res.serviciosFinalizados;
       this.valorTotalFinalizados = res.valorTotal;
     });
   }
   buscarProcesos(fechaIncio,fechaFin){
     this.registroService.buscarProcesos(fechaIncio,fechaFin).subscribe(res =>{
-      console.log(res);
       this.serviciosBusqueda = res.serviciosEnProceso;
     });
   }
   buscarCancelados(fechaIncio,fechaFin){
     this.registroService.buscarCancelados(fechaIncio,fechaFin).subscribe(res =>{
-      console.log(res);
       this.serviciosBusqueda = res.serviciosCancelados;
     });
   }

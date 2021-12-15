@@ -52,7 +52,6 @@ export class SuministrosComponent implements OnInit {
     this.loading = true;
       if(this.estadoBoton){
         this.suministrosService.crearSuministro(this.formaSuministro.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarSuministros();
@@ -65,7 +64,6 @@ export class SuministrosComponent implements OnInit {
         });
       } else {
         this.suministrosService.editarSuministro(this.formaSuministro.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarSuministros();
@@ -83,7 +81,6 @@ export class SuministrosComponent implements OnInit {
     estado: datos.estado? false: true
     }
     this.suministrosService.actualizarEstadoSuministro(datosUser).subscribe(res =>{
-      console.log(res);
       if(res.ok){
         this.validacionesService.showNotification('top','right','success', res.message);
         this.listarSuministros();

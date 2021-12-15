@@ -77,7 +77,6 @@ export class UserProfileComponent implements OnInit {
         this.loading = true;
         if(this.estadoBoton){
           this.usuariosService.crearUsuario(this.formaUsuarios.value).subscribe(res =>{
-            console.log(res);
             if(res.ok){
               this.validacionesService.showNotification('top','right','success', res.message);
               this.listarUsuarios();
@@ -90,7 +89,6 @@ export class UserProfileComponent implements OnInit {
           });
         } else {
           this.usuariosService.editarUsuario(this.formaUsuarios.value).subscribe(res =>{
-            console.log(res);
             if(res.ok){
               this.validacionesService.showNotification('top','right','success', res.message);
               this.listarUsuarios();
@@ -108,7 +106,6 @@ export class UserProfileComponent implements OnInit {
     estado: datos.estado? false: true
     }
     this.usuariosService.actualizarEstadoUsuario(datosUser).subscribe(res =>{
-      console.log(res);
       if(res.ok){
         this.validacionesService.showNotification('top','right','success', res.message);
         this.listarUsuarios();

@@ -27,7 +27,6 @@ export class ServiciosComponent implements OnInit {
     this.loading = true;
     this.serviciosService.listarServicios().subscribe(res => {
       this.listaServicios = res.tipoServicios;
-     console.log(res);
     this.loading = false;
     });
  }
@@ -50,7 +49,6 @@ export class ServiciosComponent implements OnInit {
     if(this.formaServicios.valid){
       if(this.estadoBoton){
         this.serviciosService.crearServicio(this.formaServicios.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarServicios();
@@ -61,7 +59,6 @@ export class ServiciosComponent implements OnInit {
         });
       } else {
         this.serviciosService.editarServicio(this.formaServicios.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarServicios();
@@ -77,7 +74,6 @@ export class ServiciosComponent implements OnInit {
     estado: datos.estado? false: true
     }
     this.serviciosService.actualizarEstadoServicio(datosUser).subscribe(res =>{
-      console.log(res);
       if(res.ok){
         this.validacionesService.showNotification('top','right','success', res.message);
         this.listarServicios();

@@ -55,13 +55,14 @@
                                 <div class="col-md-6">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Tipo servicio</mat-label>
-                                        <mat-select formControlName="idtiposervicio">
+                                        <mat-select formControlName="idtiposervicio" (selectionChange)="changeService($event)">
                                             <mat-option *ngFor="let servicio of listaServicios" [value]="servicio.idtiposervicio">
                                                 {{servicio.nombreservicio}} - <strong>{{servicio.valor | currency}}</strong>
                                             </mat-option>
                                         </mat-select>
                                         <small *ngIf="idtiposervicio.invalid  && idtiposervicio.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
+                                    <p class="ml-2">Valor servicio: <strong>{{valorServicio?.valor | currency}}</strong> </p>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field appearance="fill">

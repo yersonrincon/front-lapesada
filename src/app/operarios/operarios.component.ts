@@ -59,7 +59,6 @@ export class OperariosComponent implements OnInit {
     this.loading = true;
       if(this.estadoBoton){
         this.operariosService.crearOperario(this.formaOperario.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarOperarios();
@@ -72,7 +71,6 @@ export class OperariosComponent implements OnInit {
         });
       } else {
         this.operariosService.editarOperario(this.formaOperario.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarOperarios();
@@ -90,7 +88,6 @@ export class OperariosComponent implements OnInit {
     estado: datos.estado? false: true
     }
     this.operariosService.actualizarEstadoOperario(datosUser).subscribe(res =>{
-      console.log(res);
       if(res.ok){
         this.validacionesService.showNotification('top','right','success', res.message);
         this.listarOperarios();

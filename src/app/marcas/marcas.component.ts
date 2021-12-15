@@ -28,7 +28,6 @@ export class MarcasComponent implements OnInit {
     this.loading = true;
     this.marcasService.listarMarcas().subscribe(res => {
       this.listaMarcas = res.marcas;
-     console.log(res);
      this.loading = false;
     });
  }
@@ -48,7 +47,6 @@ export class MarcasComponent implements OnInit {
       this.loading = true;
       if(this.estadoBoton){
         this.marcasService.crearMarca(this.formaMarca.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarMarcas();
@@ -61,7 +59,6 @@ export class MarcasComponent implements OnInit {
         });
       } else {
         this.marcasService.editarMarca(this.formaMarca.value).subscribe(res =>{
-          console.log(res);
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);
             this.listarMarcas();
@@ -79,7 +76,6 @@ export class MarcasComponent implements OnInit {
       estado: datos.estado? false: true
     }
     this.marcasService.actualizarEstadoMarca(datosUser).subscribe(res =>{
-      console.log(res);
       if(res.ok){
         this.validacionesService.showNotification('top','right','success', res.message);
         this.listarMarcas();
