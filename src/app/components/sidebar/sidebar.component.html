@@ -63,6 +63,12 @@
             </a>
         </li>
         <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" routerLink="/registrosuministro">
+                <i class="material-icons">battery_std</i>
+                <p>Venta suministro</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
             <a class="nav-link" routerLink="/registrosdia">
                 <i class="material-icons">wb_sunny</i>
                 <p>Registros dia</p>
@@ -102,12 +108,6 @@
             <a class="nav-link" routerLink="/suministros">
                 <i class="material-icons">bookmark</i>
                 <p>Suministros</p>
-            </a>
-        </li>
-        <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/registrosuministro">
-                <i class="material-icons">battery_std</i>
-                <p>Venta suministro</p>
             </a>
         </li>
         <li routerLinkActive="active" [ngClass]="idrol === 1 ? 'nav-item' : 'active-pro nav-item'">

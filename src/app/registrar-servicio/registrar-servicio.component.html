@@ -43,17 +43,6 @@
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field appearance="fill">
-                                        <mat-label>Tipo servicio</mat-label>
-                                        <mat-select formControlName="idtiposervicio">
-                                            <mat-option *ngFor="let servicio of listaServicios" [value]="servicio.idtiposervicio">
-                                                {{servicio.nombreservicio}}
-                                            </mat-option>
-                                        </mat-select>
-                                        <small *ngIf="idtiposervicio.invalid  && idtiposervicio.touched" class="text-danger animated fadeIn">Campo requerido</small>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3">
-                                    <mat-form-field appearance="fill">
                                         <mat-label>Tipo vehiculo</mat-label>
                                         <mat-select formControlName="idtipovehiculo">
                                             <mat-option *ngFor="let vehiculo of listaVehiculos" [value]="vehiculo.idtipovehiculo">
@@ -61,6 +50,17 @@
                                             </mat-option>
                                         </mat-select>
                                         <small *ngIf="idtipovehiculo.invalid  && idtipovehiculo.touched" class="text-danger animated fadeIn">Campo requerido</small>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Tipo servicio</mat-label>
+                                        <mat-select formControlName="idtiposervicio">
+                                            <mat-option *ngFor="let servicio of listaServicios" [value]="servicio.idtiposervicio">
+                                                {{servicio.nombreservicio}} - <strong>{{servicio.valor | currency}}</strong>
+                                            </mat-option>
+                                        </mat-select>
+                                        <small *ngIf="idtiposervicio.invalid  && idtiposervicio.touched" class="text-danger animated fadeIn">Campo requerido</small>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
