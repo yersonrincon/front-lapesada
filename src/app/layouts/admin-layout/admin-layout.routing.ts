@@ -10,6 +10,7 @@ import { RegistrosdiaComponent } from '../../registrosdia/registrosdia.component
 import { GuardGuard } from '../../guards/guard.guard';
 import { SuministrosComponent } from '../../suministros/suministros.component';
 import { RegistrosuministroComponent } from '../../registrosuministro/registrosuministro.component';
+import { LiquidarlavadorComponent } from '../../liquidarlavador/liquidarlavador.component';
 
 export const AdminLayoutRoutes: Routes = [
    
@@ -22,6 +23,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'registrar-servicio', canActivate: [GuardGuard], component: RegistrarServicioComponent },
     { path: 'registrosdia',       canActivate: [GuardGuard], component: RegistrosdiaComponent },  
     { path: 'suministros',       canActivate: [GuardGuard], component: SuministrosComponent },   
-    { path: 'registrosuministro',canActivate: [GuardGuard], component: RegistrosuministroComponent}
+    { path: 'registrosuministro',canActivate: [GuardGuard], component: RegistrosuministroComponent},
+    { path: 'liquidarlavador',canActivate: [GuardGuard], component: LiquidarlavadorComponent}
 
 ];

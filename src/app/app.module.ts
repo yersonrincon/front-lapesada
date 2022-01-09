@@ -26,7 +26,7 @@ import { DemoPagesModule } from './demoPages/demoPages.module';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent    
+    AdminLayoutComponent,  
     
   ],
   providers: [],

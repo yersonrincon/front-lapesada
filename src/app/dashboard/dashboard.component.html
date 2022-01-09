@@ -338,9 +338,6 @@
                         $ servicio
                     </th>
                     <th>
-                        % servicio
-                    </th>
-                    <th>
                         Operario
                     </th>
                     <th>
@@ -371,9 +368,6 @@
                             {{registro.valorservicetotal | currency}}
                         </td>
                         <td>
-                            {{registro.valorporcentaje | currency}}
-                        </td>
-                        <td>
                             {{registro.nombreoperario}}
                         </td>
 
@@ -389,7 +383,7 @@
                     <strong>Total gananacia: {{valorTotalFinalizados | currency}}</strong>
                 </div>
             </div>
-            <div class="row-md-12">
+            <div class="row col-12">
                 <div class="alert alert-secondary text-center" *ngIf="serviciosBusqueda?.length === 0">
                     <h5 class="alert-heading">No se encontraron registros.</h5>
                     <p>
