@@ -16,7 +16,10 @@ export class LiquidarlavadorComponent implements OnInit {
   formaOperarios: FormGroup;
   listaOperarios =[];
   serviciosBusqueda = [];
+  listaSuministroLavador = [];
   valorTotalFinalizados: any;
+  valorSuministros: any;
+  totalGanacia: any;
   bandera = false;
   public loading = false;
 
@@ -59,7 +62,10 @@ export class LiquidarlavadorComponent implements OnInit {
     this.liquidarlavadorService.listarServiciosLavador(datos).subscribe(res =>{
       console.log(res);
       this.serviciosBusqueda = res.listaServiciosLavador;
+      this.listaSuministroLavador = res.listaSuministroLavador;
       this.valorTotalFinalizados = res.valorTotal;
+      this.valorSuministros = res.valorSuministros;
+      this.totalGanacia = res.totalGanacia;
       this.bandera = true;
       this.loading = false;
 

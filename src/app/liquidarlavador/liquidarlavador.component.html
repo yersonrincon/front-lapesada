@@ -91,17 +91,75 @@
 
                 </tbody>
             </table>
-            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0">
-                <div class="col-md-12 text-right">
-                    <strong>Total gananacia: {{valorTotalFinalizados | currency}}</strong>
-                </div>
-            </div>
+
             <div class="row col-12" *ngIf="bandera">
                 <div class=" col-md-12 alert alert-secondary text-center" *ngIf="serviciosBusqueda?.length === 0">
                     <h5 class="alert-heading">No se encontraron registros.</h5>
                     <p>
                         <i class="fa fa-exclamation fa-2x"></i>
                     </p>
+                </div>
+            </div>
+            <table class="table-responsive table-sm table-bordered" *ngIf="serviciosBusqueda?.length > 0">
+                <thead style="background-color: #00bcd4">
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Fecha registro
+                    </th>
+                    <th>
+                        Suministro
+                    </th>
+                    <th>
+                        $ valor
+                    </th>
+                    <th>
+                        Operario
+                    </th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let suministro of listaSuministroLavador; let i = index">
+                        <td>
+                            {{i + 1}}
+                        </td>
+                        <td>
+                            {{suministro.fecha | date: 'yyyy-MM-dd'}}
+                        </td>
+                        <td>
+                            {{suministro.nombre}}
+                        </td>
+                        <td>
+                            {{suministro.valor | currency}}
+                        </td>
+                        <td>
+                            {{suministro.operario}}
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="row col-5" *ngIf="bandera">
+                <div class=" col-md-12 alert alert-secondary text-center" *ngIf="listaSuministroLavador?.length === 0">
+                    <h5 class="alert-heading">No se encontraron registros.</h5>
+                    <p>
+                        <i class="fa fa-exclamation fa-2x"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0">
+                <div class="col-md-12 text-right">
+                    <strong>Total servicios: {{valorTotalFinalizados | currency}}</strong>
+                </div>
+            </div>
+            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0">
+                <div class="col-md-12 text-right">
+                    <strong>Total suministros: {{valorSuministros | currency}}</strong>
+                </div>
+            </div>
+            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0">
+                <div class="col-md-12 text-right">
+                    <strong>Total ganancia: {{totalGanacia | currency}}</strong>
                 </div>
             </div>
         </div>
