@@ -60,7 +60,6 @@ export class LiquidarlavadorComponent implements OnInit {
        idoperario: this.formaOperarios.value.idoperario
      }
     this.liquidarlavadorService.listarServiciosLavador(datos).subscribe(res =>{
-      console.log(res);
       this.serviciosBusqueda = res.listaServiciosLavador;
       this.listaSuministroLavador = res.listaSuministroLavador;
       this.valorTotalFinalizados = res.valorTotal;

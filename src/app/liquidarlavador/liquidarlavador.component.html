@@ -100,7 +100,7 @@
                     </p>
                 </div>
             </div>
-            <table class="table-responsive table-sm table-bordered" *ngIf="serviciosBusqueda?.length > 0">
+            <table class="table-responsive table-sm table-bordered" *ngIf="listaSuministroLavador?.length > 0">
                 <thead style="background-color: #00bcd4">
                     <th>
                         #
@@ -139,7 +139,7 @@
 
                 </tbody>
             </table>
-            <div class="row col-5" *ngIf="bandera">
+            <div class="row col-lg-12" *ngIf="bandera">
                 <div class=" col-md-12 alert alert-secondary text-center" *ngIf="listaSuministroLavador?.length === 0">
                     <h5 class="alert-heading">No se encontraron registros.</h5>
                     <p>
@@ -147,17 +147,17 @@
                     </p>
                 </div>
             </div>
-            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0">
+            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0 || listaSuministroLavador?.length > 0">
                 <div class="col-md-12 text-right">
                     <strong>Total servicios: {{valorTotalFinalizados | currency}}</strong>
                 </div>
             </div>
-            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0">
+            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0 || listaSuministroLavador?.length > 0">
                 <div class="col-md-12 text-right">
                     <strong>Total suministros: {{valorSuministros | currency}}</strong>
                 </div>
             </div>
-            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0">
+            <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0 || listaSuministroLavador?.length > 0">
                 <div class="col-md-12 text-right">
                     <strong>Total ganancia: {{totalGanacia | currency}}</strong>
                 </div>
