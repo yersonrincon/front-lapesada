@@ -36,8 +36,8 @@ export class DashboardComponent implements OnInit {
   style1 =false;
   style2 = false;
   tituloModal: string;
-  mensaje: string ='Buen día,☀️ señor(a) ';
-  mensaje1: string =' nos comunicamos del autolavado Monster para informarle que su vehículo🚗🏍️🚛 ya se encuentra listo ✔️';
+  mensaje: string ='Buen día,☀️';
+  mensaje1: string =' nos comunicamos del autolavado MONSTER para informarle que su vehículo🚗🏍️🚛 ya se encuentra listo ✔️. Tambien le informamos que contamos con parqueadero 🏁 nocturno 🌚';
   constructor(private registroService: RegistroService,
               private modalService: BsModalService,
               private fb: FormBuilder,
@@ -67,6 +67,7 @@ listarOperarios(){
 
   });
 }
+
 consultarFinalizados(fechaInicial,fechaFinal){
   this.loading = true;
   this.registroService.consultarFinalizados(fechaInicial,fechaFinal).subscribe(res =>{

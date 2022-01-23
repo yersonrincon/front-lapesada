@@ -64,4 +64,7 @@ export class RegistroService {
    actualizarOperarioServicio(datos){
     return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonRegistros/actualizarOperarioServicio`,datos);
    }
+   consultarServiciosOperarios(fecha){
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonRegistros/consultarServiciosOperarios`, {fecha});
+   }
 }

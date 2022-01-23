@@ -33,8 +33,13 @@ export class LoginComponent implements OnInit {
       return this.formaUsuario.get('clave');
     }
     login(){
-      if(this.formaUsuario.valid){        
-        this.loginService.loginUsuario(this.formaUsuario.value);
+      if(this.formaUsuario.valid){  
+        this.loading = true;      
+        let res =this.loginService.loginUsuario(this.formaUsuario.value);
+        if(res){
+          this.loading = false;   
+
+        }
       }
     }
     cerrarSesion(){

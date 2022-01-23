@@ -14,7 +14,8 @@ import { RegistrarServicioComponent } from '../../registrar-servicio/registrar-s
 import { RegistrosdiaComponent } from '../../registrosdia/registrosdia.component';
 import { SuministrosComponent } from '../../suministros/suministros.component';
 import { RegistrosuministroComponent } from '../../registrosuministro/registrosuministro.component';
-import { LiquidarlavadorComponent } from 'app/liquidarlavador/liquidarlavador.component';
+import { LiquidarlavadorComponent } from '../../liquidarlavador/liquidarlavador.component';
+import { InicioComponent } from '../../inicio/inicio.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -63,7 +64,8 @@ import { SelectDropDownModule } from 'ngx-select-dropdown';
     RegistrosdiaComponent,
     SuministrosComponent,
     RegistrosuministroComponent,
-    LiquidarlavadorComponent
+    LiquidarlavadorComponent,
+    InicioComponent
   ]
 })
 

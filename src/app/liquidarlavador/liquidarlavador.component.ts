@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LiquidarlavadorService } from 'app/services/liquidarlavador.service';
 import { OperariosService } from 'app/services/operarios.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'liquidarlavador',
@@ -37,11 +38,15 @@ export class LiquidarlavadorComponent implements OnInit {
   }
   crearFormularioOperarios(){
     this.formaOperarios = this.fb.group({
-        idoperario:['', [Validators.required]]
+        idoperario:['', [Validators.required]],
+        fecha:['', [Validators.required]],
       });
     }
     get idoperario() {
       return this.formaOperarios.get('idoperario');
+    }
+    get fecha() {
+      return this.formaOperarios.get('fecha');
     }
     listarOperarios(){
       this.loading = true;
@@ -52,11 +57,12 @@ export class LiquidarlavadorComponent implements OnInit {
       });
     }
   buscarServicios(){
+    console.log(this.formaOperarios.value);
    if(this.formaOperarios.valid){
     this.loading = true;
 
      const datos ={ 
-       fecha: this.fechaActual,
+       fecha: moment(this.formaOperarios.value.fecha).format('YYYY-MM-DD'),
        idoperario: this.formaOperarios.value.idoperario
      }
     this.liquidarlavadorService.listarServiciosLavador(datos).subscribe(res =>{

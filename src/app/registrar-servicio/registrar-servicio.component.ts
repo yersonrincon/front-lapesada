@@ -159,7 +159,7 @@ listarOperarios(){
           if(res.ok){
             this.validacionesService.showNotification('top','right','success', res.message);            
             this.placaBusqueda ='';
-            this.router.navigateByUrl('/dashboard');
+            this.router.navigateByUrl('/inicio');
             this.loading = false;
           }
         })

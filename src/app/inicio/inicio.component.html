@@ -1,0 +1,38 @@
+<div class="main-content" #customLoadingTemplate>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card bg-success cursor">
+                    <div class="card-body" routerLink="/registrar-servicio">
+                        <i class="col-lg-12 fas fa-align-justify text-center fontIcon"></i>
+                        <h5 class="card-title text-center">Entradas</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card bg-info cursor">
+                    <div class="card-body" routerLink="/registrosuministro">
+                        <i class="col-lg-12 fas fa-align-justify text-center fontIcon"></i>
+                        <h5 class="card-title text-center">Suministros</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let registro of servicioOperarios; let i = index">
+                <div class="card bg-light text-dark cursor">
+                    <div class="card-body">
+                        <i class="col-lg-12 fas fa-user-alt text-center fontIcon"></i>
+                        <h5 class="card-title text-center text-dark">{{registro.operario}}</h5>
+                        <div class="col-lg-12 text-center">
+                            <span class="notificationVerde">{{registro.finalizado}}</span>
+                            <span class="notificationAzul">{{registro.proceso}}</span>
+                            <span class="notificationRojo">{{registro.cancelado}}</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+    </div>

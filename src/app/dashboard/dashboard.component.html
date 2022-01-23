@@ -144,7 +144,7 @@
                                                 <h3 class="text-uppercase">{{registro.placa}}</h3>
                                                 <p class="text-uppercase" style="font-size: 14px;">{{registro.nombrecliente}}</p>
                                                 <p>{{registro.telefono}}
-                                                    <a class="fab fa-whatsapp-square wapp" style="vertical-align: bottom;" href="https://api.whatsapp.com/send?phone=57{{registro.telefono}}&text={{mensaje}}{{registro.nombrecliente}}{{mensaje1}}" target="_blank"></a>
+                                                    <a class="fab fa-whatsapp-square wapp" style="vertical-align: bottom;" href="https://api.whatsapp.com/send?phone=57{{registro.telefono}}&text={{mensaje}}{{mensaje1}}" target="_blank"></a>
                                                 </p>
                                                 <h6>{{registro.nombrevehiculo}}</h6>
                                                 <span class="badge badge-primary" style="font: inherit;font-size: 13px; padding: 3px; cursor: pointer;" (click)="openModalCambiarOperario(templateOperarios, registro)">Cambiar operario</span>
@@ -227,7 +227,7 @@
                                         </td>
                                         <td>
                                             {{registro.telefono}}
-                                            <i *ngIf="registro.telefono" class="fab fa-whatsapp-square wapp"> <a href="https://api.whatsapp.com/send?phone=57{{registro.telefono}}&text={{mensaje}}{{registro.nombrecliente}}{{mensaje1}}" target="_blank"></a></i>
+                                            <i *ngIf="registro.telefono" class="fab fa-whatsapp-square wapp"> <a href="https://api.whatsapp.com/send?phone=57{{registro.telefono}}&text={{mensaje}}{{mensaje1}}" target="_blank"></a></i>
                                         </td>
                                         <td>
                                             {{registro.nombremarca}}

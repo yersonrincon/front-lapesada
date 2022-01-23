@@ -27,7 +27,7 @@ export class LoginService {
         localStorage.setItem('TokenTifon', `Bearer ${res.token}`);
         this.token = res.token;
         this.validacionesService.showNotification('top','right','success', res.message);
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/inicio');
         this.loading = false;
       } else {
         this.validacionesService.showNotification('top','right','danger', res.message);
