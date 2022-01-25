@@ -12,7 +12,7 @@
 
 .notificationAzul {
     margin: 6px;
-    background: #00bcd4;
+    background: #fd7e14;
     color: #FFFFFF;
     min-width: 20px;
     padding: 2px 8px;
@@ -39,5 +39,11 @@
 }
 
 .cursor {
+    cursor: pointer;
+}
+
+.wapp {
+    color: #25d366;
+    font-size: 23px;
     cursor: pointer;
 }

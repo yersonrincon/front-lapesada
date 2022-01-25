@@ -67,4 +67,16 @@ export class RegistroService {
    consultarServiciosOperarios(fecha){
     return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonRegistros/consultarServiciosOperarios`, {fecha});
    }
+   buscarFinalizadosOperario(fechaInicial,operario){
+    const datos = {fechaInicial,operario};
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonRegistros/buscarFinalizadosOperario`,datos);
+   }
+   buscarProcesosOperario(fechaInicial,operario){
+    const datos = {fechaInicial,operario};
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonRegistros/buscarProcesosOperario`,datos);
+   }
+   buscarCanceladosOperario(fechaInicial,operario){
+    const datos = {fechaInicial,operario};
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonRegistros/buscarCanceladosOperario`,datos);
+   }
 }

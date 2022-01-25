@@ -116,50 +116,6 @@
             <div class="col-lg-3 col-md-6 col-sm-6"></div>
         </div>
         <div class="row">
-            <div class="grey-bg container-fluid">
-                <section id="minimal-statistics">
-                    <div class="row">
-                        <div class="col-12 mt-3 mb-1">
-                            <h4 class="text-uppercase">Servicios en proceso</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-3 col-sm-6 col-12" *ngFor="let registro of totalserviciosDia; let i = index">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <div class="media d-flex">
-                                            <div class="align-self-center">
-                                                <i *ngIf="registro.nombrevehiculo ==='MOTO'" class="fas fa-motorcycle fa-3x"></i>
-                                                <i *ngIf="registro.nombrevehiculo ==='AUTOMOVIL'" class="fas fa-car-side fa-3x"></i>
-                                                <i *ngIf="registro.nombrevehiculo ==='TAXI'" class="fas fa-taxi fa-3x"></i>
-                                                <i *ngIf="registro.nombrevehiculo ==='CAMION'" class="fas fa-truck fa-3x"></i>
-                                                <i *ngIf="registro.nombrevehiculo ==='CAMIONETA'" class="fas fa-truck-monster fa-3x"></i>
-                                                <i *ngIf="registro.nombrevehiculo ==='BICICLETA'" class="fas fa-biking fa-3x"></i>
-                                                <i *ngIf="registro.nombrevehiculo ==='BUS'" class="fas fa-bus-alt fa-3x"></i>
-                                                <i *ngIf="registro.nombrevehiculo ==='DOBLETROQUE'" class="fas fa-truck-moving fa-3x"></i>
-                                                <i *ngIf="registro.nombrevehiculo ==='MOTOTAXI'" class="fas fa-caravanfa-3x"></i>
-                                            </div>
-                                            <div class="media-body text-right">
-                                                <h3 class="text-uppercase">{{registro.placa}}</h3>
-                                                <p class="text-uppercase" style="font-size: 14px;">{{registro.nombrecliente}}</p>
-                                                <p>{{registro.telefono}}
-                                                    <a class="fab fa-whatsapp-square wapp" style="vertical-align: bottom;" href="https://api.whatsapp.com/send?phone=57{{registro.telefono}}&text={{mensaje}}{{mensaje1}}" target="_blank"></a>
-                                                </p>
-                                                <h6>{{registro.nombrevehiculo}}</h6>
-                                                <span class="badge badge-primary" style="font: inherit;font-size: 13px; padding: 3px; cursor: pointer;" (click)="openModalCambiarOperario(templateOperarios, registro)">Cambiar operario</span>
-                                                <span class="badge badge-warning mt-1" style="font: inherit; width: 107px;font-size: 13px; padding: 3px;cursor: pointer;" (click)="openModalCambiarEstado(templateCambiarEstado, registro)">
-                                                    Cerrar servicio
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-info">
@@ -392,34 +348,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</ng-template>
-<ng-template #templateOperarios>
-
-    <div class="modal-header">
-        <h3 class="modal-title">Cambiar operario</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeVentana()">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="formaOperarios" (ngSubmit)="actualizarOperario()" autocomplete="off">
-            <div class="form-row">
-                <div class="col-md-8">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Operario</mat-label>
-                        <mat-select formControlName="idoperario">
-                            <mat-option *ngFor="let operario of listaOperarios" [value]="operario.idoperario">
-                                {{operario.nombre}}
-                            </mat-option>
-                        </mat-select>
-                        <small *ngIf="idoperario.invalid  && idoperario.touched" class="text-danger animated fadeIn">Campo requerido</small>
-                    </mat-form-field>
-                </div>
-                <div class="col-md-12 text-center">
-                    <button class="btn btn-info btn-round" type="submit">Cambiar operario</button>
-                </div>
-            </div>
-        </form>
     </div>
 </ng-template>

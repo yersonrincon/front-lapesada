@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
   listaRegistros= [];
   listaEstados = [];
   serviciosBusqueda = [];
-  listaOperarios =[];
   totalFinalizados: any;
   totalEnProceso: any;
   totalCancelados: any;
@@ -31,7 +30,6 @@ export class DashboardComponent implements OnInit {
   ventanaModal: BsModalRef;
   formaEstado: FormGroup; 
   formaFechas: FormGroup;
-  formaOperarios: FormGroup;
   public loading = false;
   style1 =false;
   style2 = false;
@@ -42,7 +40,6 @@ export class DashboardComponent implements OnInit {
               private modalService: BsModalService,
               private fb: FormBuilder,
               private validacionesService: ValidacionesService,
-              private operariosService: OperariosService,
               private datePipe: DatePipe) { }
 
   ngOnInit(): void { 
@@ -59,14 +56,7 @@ export class DashboardComponent implements OnInit {
 
   }
 //////////////////////////////////////
-listarOperarios(){
-  this.loading = true;
-  this.operariosService.listarOperarios().subscribe(res => {
-    this.listaOperarios = res.operarios.filter(datos => datos.estado == true); 
-  this.loading = false;
 
-  });
-}
 
 consultarFinalizados(fechaInicial,fechaFinal){
   this.loading = true;
@@ -204,34 +194,7 @@ crearFormularioEstado(datos){
       this.serviciosBusqueda = res.serviciosCancelados;
     });
   }
-  openModalCambiarOperario(templateOperarios: TemplateRef<any>, datos) { 
-    this.crearFormularioOperarios(datos);
-    this.listarOperarios();
-    this.ventanaModal = this.modalService.show(templateOperarios);
-    this.ventanaModal.setClass('modal-md');
-    }
-  crearFormularioOperarios(datos){
-    this.formaOperarios = this.fb.group({
-        idservicio: [datos.idservicio],
-        idoperario:['',[Validators.required]]
-      });
-    }
-    get idoperario() {
-      return this.formaOperarios.get('idoperario');
-    }
-actualizarOperario(){
-  if(this.formaOperarios.valid){
-    this.loading =true;
-    this.registroService.actualizarOperarioServicio(this.formaOperarios.value).subscribe( res =>{
-    if(res.ok){
-    this.closeVentana();
-    this.validacionesService.showNotification('top','right','success', res.message);
-    this.ngOnInit();
-    this.loading = false;
-    }
-    });
-  }
-}
+
 closeVentana(): void {
   this.serviciosBusqueda =[];
   this.ventanaModal.hide();
