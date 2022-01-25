@@ -17,7 +17,7 @@ export class InicioComponent implements OnInit {
   public loading = false;
   servicioOperarios = [];
   fechaActual: any;
-  totalserviciosDia: any;
+  totalserviciosDia = [];
   ventanaModal: BsModalRef;
   formaOperarios: FormGroup;
   listaOperarios =[];
