@@ -156,8 +156,8 @@ crearFormularioEstado(datos){
   openModalFinalizados(templateFinalizados: TemplateRef<any>, tipo){
      let fechaI ='';
      let fechaF ='';
-     this.formaFechas.value.fechaInicial==='' && this.formaFechas.value.fechaFinal===''? fechaI = this.fechaActual: fechaI = this.formaFechas.value.fechaInicial;
-     this.formaFechas.value.fechaInicial==='' && this.formaFechas.value.fechaInicial===''? fechaF = this.fechaActual: fechaF = this.formaFechas.value.fechaFinal;
+     this.formaFechas.value.fechaInicial==='' && this.formaFechas.value.fechaFinal===''? fechaI = moment(this.fechaActual).format('YYYY-MM-DD'): fechaI = moment(this.formaFechas.value.fechaInicial).format('YYYY-MM-DD');
+     this.formaFechas.value.fechaInicial==='' && this.formaFechas.value.fechaInicial===''? fechaF = moment(this.fechaActual).format('YYYY-MM-DD'): fechaF = moment(this.formaFechas.value.fechaFinal).format('YYYY-MM-DD');
 
     if(tipo ==='F'){
       this.buscarFinalizados(fechaI,fechaF);
