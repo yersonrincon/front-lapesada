@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -31,7 +31,9 @@ import { NgxCurrencyModule } from "ngx-currency";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxLoadingModule } from 'ngx-loading';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
-
+import { registerLocaleData } from '@angular/common';
+import localEs from '@angular/common/locales/es-CO';
+registerLocaleData(localEs);
 @NgModule({
   imports: [
     CommonModule,
@@ -66,6 +68,12 @@ import { SelectDropDownModule } from 'ngx-select-dropdown';
     RegistrosuministroComponent,
     LiquidarlavadorComponent,
     InicioComponent
+  ],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'es-co'
+    }
   ]
 })
 

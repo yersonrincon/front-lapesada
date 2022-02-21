@@ -7,15 +7,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './demoPages/login/login.component';
 
 const routes: Routes =[
-  {
-    path: '', redirectTo: 'demoPages/login', pathMatch: 'full' }, {
-    path: '',  component: AdminLayoutComponent, children: [{ path: '', loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule) }]
-  },
-  {
-    path: '',
-    component: LoginComponent,
-    children: [ {  path: 'demoPages/login', component: LoginComponent, data: { extraParameter: '' } } ]
-  },
+  { path: '', redirectTo: 'demoPages/login', pathMatch: 'full' }, 
+  { path: '',  component: AdminLayoutComponent, children: [{ path: '', loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule) }]},
+  { path: '',  component: LoginComponent, children: [ {  path: 'demoPages/login', component: LoginComponent, data: { extraParameter: '' } } ] },
 ];
 
 @NgModule({

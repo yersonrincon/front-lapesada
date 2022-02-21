@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -12,7 +12,9 @@ import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { DemoPagesModule } from './demoPages/demoPages.module';
-
+import { registerLocaleData } from '@angular/common';
+import localEs from '@angular/common/locales/es-CO';
+registerLocaleData(localEs);
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -29,7 +31,12 @@ import { DemoPagesModule } from './demoPages/demoPages.module';
     AdminLayoutComponent
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'es-co'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

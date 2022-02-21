@@ -9,7 +9,7 @@ import { OperariosService } from '../services/operarios.service';
 import { RegistroService } from '../services/registro.service';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
-
+import * as moment from 'moment-timezone';
 @Component({
   selector: 'registrar-servicio',
   templateUrl: './registrar-servicio.component.html',
@@ -177,4 +177,13 @@ listarOperarios(){
       [this.valorServicio] = this.listaServicios.filter(datos => datos.idtiposervicio == event.value);
     }
 }
+
+}
+const formarFecha = (fecha) => {
+  console.log('esta es la fecha', fecha);
+  const partesFecha = fecha.split('/');
+  console.log(partesFecha);
+  const nuevaFecha = `${partesFecha[2]}/${partesFecha[1]}/${partesFecha[0]}`;
+  console.log('nuevaFecha', nuevaFecha);
+  return moment.utc(nuevaFecha).tz('America/Bogota', true).format('YYYY-MM-DD');
 }

@@ -3,9 +3,6 @@ import { RegistroService } from '../services/registro.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
-
-
-
 @Component({
   selector: 'registrosdia',
   templateUrl: './registrosdia.component.html',
@@ -32,6 +29,7 @@ export class RegistrosdiaComponent implements OnInit {
     this.loading = true;
     this.registroService.listarRegistros(fechaInicial,fechaFinal).subscribe(res =>{
     this.listaRegistros = res.listaRegistros;
+    console.log(this.listaRegistros);
     this.loading = false;
     });
   }
