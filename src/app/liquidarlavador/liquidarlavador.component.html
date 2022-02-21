@@ -84,10 +84,10 @@
                             {{registro.nombremarca}}
                         </td>
                         <td>
-                            {{registro.valorservicetotal | currency}}
+                            {{registro.valorservicetotal | currency: '$'}}
                         </td>
                         <td style="color: #4caf50">
-                            {{registro.valorporcentajeoperario | currency}}
+                            {{registro.valorporcentajeoperario | currency: '$'}}
                         </td>
                         <td>
                             {{registro.nombreoperario}}
@@ -139,7 +139,7 @@
                             {{suministro.nombre}}
                         </td>
                         <td>
-                            {{suministro.valor | currency}}
+                            {{suministro.valor | currency: '$'}}
                         </td>
                         <td>
                             {{suministro.operario}}
@@ -158,17 +158,17 @@
             </div>
             <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0 || listaSuministroLavador?.length > 0">
                 <div class="col-md-12 text-right">
-                    <strong>Total servicios: {{valorTotalFinalizados | currency}}</strong>
+                    <strong>Total servicios: {{valorTotalFinalizados | currency: '$'}}</strong>
                 </div>
             </div>
             <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0 || listaSuministroLavador?.length > 0">
                 <div class="col-md-12 text-right">
-                    <strong>Total suministros: {{valorSuministros | currency}}</strong>
+                    <strong>Total suministros: {{valorSuministros | currency: '$'}}</strong>
                 </div>
             </div>
             <div class="row col-12" *ngIf="serviciosBusqueda?.length > 0 || listaSuministroLavador?.length > 0">
                 <div class="col-md-12 text-right">
-                    <strong>Total ganancia: {{totalGanacia | currency}}</strong>
+                    <strong>Total ganancia: {{totalGanacia | currency: '$'}}</strong>
                 </div>
             </div>
         </div>

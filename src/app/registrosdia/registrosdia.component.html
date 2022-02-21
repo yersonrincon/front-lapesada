@@ -134,22 +134,22 @@
                                             {{registro.nombreoperario}}
                                         </td>
                                         <td>
-                                            {{registro.valor | currency}}
+                                            {{registro.valor | currency: '$'}}
                                         </td>
                                         <td>
-                                            {{registro.valorporcentajeoperario | currency}}
+                                            {{registro.valorporcentajeoperario | currency: '$'}}
                                         </td>
                                         <td>
-                                            {{registro.valorporcentaje | currency}}
+                                            {{registro.valorporcentaje | currency: '$'}}
                                         </td>
                                         <td *ngIf="registro.masomenos ==='mas'" class="text-success">
-                                            {{registro.valormasomenos |currency}}
+                                            {{registro.valormasomenos |currency: '$'}}
                                         </td>
                                         <td *ngIf="registro.masomenos ==='menos'" class="text-danger">
-                                            {{registro.valormasomenos |currency}}
+                                            {{registro.valormasomenos |currency: '$'}}
                                         </td>
                                         <td *ngIf="registro.masomenos ==='na'" class="text-dark">
-                                            {{registro.valormasomenos |currency}}
+                                            {{registro.valormasomenos |currency: '$'}}
                                         </td>
                                         <td>
                                             {{registro.porcentajeoperario}}%

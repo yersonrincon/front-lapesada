@@ -36,7 +36,7 @@
                                             {{suministro.nombre}}
                                         </td>
                                         <td>
-                                            {{suministro.valor |currency}}
+                                            {{suministro.valor |currency: '$'}}
                                         </td>
                                         <td>
                                             <mat-slide-toggle *ngIf="suministro.estado" [checked]="suministro.estado" color="primary" (click)="cambiarEstado(suministro)"></mat-slide-toggle>

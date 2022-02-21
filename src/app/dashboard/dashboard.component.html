@@ -95,15 +95,15 @@
                         <div class="card-icon">
                             <i class="far fa-check-square"></i>
                         </div>
-                        <h4 class="card-title">Valor venta: {{this.totales?.totalVenta |currency}}</h4>
+                        <h4 class="card-title">Valor venta: {{this.totales?.totalVenta |currency: '$'}}</h4>
                         <a class="card-title" style="font-size: 18px;">+/- Valor:</a>
-                        <a class="card-title text-success" style="font-size: 18px;">{{ this.totales?.totalMas | currency}} - </a>
-                        <a class="card-title text-danger" style="font-size: 18px;">{{ this.totales?.totalMenos | currency}} </a>
+                        <a class="card-title text-success" style="font-size: 18px;">{{ this.totales?.totalMas | currency: '$'}} - </a>
+                        <a class="card-title text-danger" style="font-size: 18px;">{{ this.totales?.totalMenos | currency: '$'}} </a>
 
-                        <h4 class="card-title">Suministros vendidos: {{this.totales?.totalSuministros | currency }} </h4>
-                        <h4 class="card-title text-success">Total producido: {{this.totales?.totalProducido | currency}} </h4>
-                        <h4 class="card-title">Total operarios: {{this.totales?.totalOperarios | currency}} </h4>
-                        <h2 class="text-info">Gran total: {{this.totales?.totalGanaciaAutolavado | currency}} </h2>
+                        <h4 class="card-title">Suministros vendidos: {{this.totales?.totalSuministros | currency: '$'}} </h4>
+                        <h4 class="card-title text-success">Total producido: {{this.totales?.totalProducido | currency: '$'}} </h4>
+                        <h4 class="card-title">Total operarios: {{this.totales?.totalOperarios | currency: '$'}} </h4>
+                        <h2 class="text-info">Gran total: {{this.totales?.totalGanaciaAutolavado | currency: '$'}} </h2>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -192,7 +192,7 @@
                                             {{registro.nombreoperario}}
                                         </td>
                                         <td>
-                                            {{registro.valorservicetotal | currency}}
+                                            {{registro.valorservicetotal | currency: '$'}}
                                         </td>
                                         <td>
                                             {{registro.observaciones}}
@@ -321,7 +321,7 @@
                             {{registro.nombremarca}}
                         </td>
                         <td>
-                            {{registro.valorservicetotal | currency}}
+                            {{registro.valorservicetotal | currency: '$'}}
                         </td>
                         <td>
                             {{registro.nombreoperario}}
@@ -336,7 +336,7 @@
             </table>
             <div *ngIf="tituloModal ==='finalizados'" class="row col-12">
                 <div class="col-md-12 text-right">
-                    <strong>Total gananacia: {{valorTotalFinalizados | currency}}</strong>
+                    <strong>Total gananacia: {{valorTotalFinalizados | currency: '$'}}</strong>
                 </div>
             </div>
             <div class="row col-12">

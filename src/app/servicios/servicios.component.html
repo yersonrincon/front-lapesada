@@ -36,7 +36,7 @@
                                             {{servicio.nombreservicio}}
                                         </td>
                                         <td>
-                                            {{servicio.valor |currency}}
+                                            {{servicio.valor |currency: '$'}}
                                         </td>
                                         <td>
                                             <mat-slide-toggle *ngIf="servicio.estado" [checked]="servicio.estado" color="primary" (click)="cambiarEstado(servicio)"></mat-slide-toggle>
