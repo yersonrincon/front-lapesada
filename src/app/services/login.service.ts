@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ValidacionesService } from './validaciones.service';
+import { map } from 'rxjs/operators';
 import * as _moment from 'moment';
 import jwt_decode from 'jwt-decode';
 
@@ -19,8 +20,20 @@ export class LoginService {
   ngOnInit() {
     this.leerToken();    
   }
-
+  
   loginUsuario(datos){
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonUsuarios/loginUsuario`,datos)
+   .pipe(
+    map( respuesta =>{
+      if(respuesta.ok){
+      localStorage.setItem('TokenTifon', `Bearer ${respuesta.token}`);
+      this.token = respuesta.token;
+      }
+      return respuesta;
+    })
+  );
+}
+  /*loginUsuario(datos){
     this.loading = true;
     return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonUsuarios/loginUsuario`,datos).subscribe( res =>{
       if(res.ok){
@@ -35,7 +48,7 @@ export class LoginService {
       }       
 
     });
-   }
+   }*/
    leerToken() {
     if (localStorage.getItem('TokenTifon')) {
       this.token = localStorage.getItem('TokenTifon');

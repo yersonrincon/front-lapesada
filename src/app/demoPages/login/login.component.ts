@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
+import { ValidacionesService } from '../../services/validaciones.service';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'login',
@@ -14,6 +17,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private loginService: LoginService,
+              private validacionesService: ValidacionesService,
+              private router: Router,
+              private spinner: NgxSpinnerService,
               ) { }
   
   ngOnInit(): void {
@@ -34,12 +40,18 @@ export class LoginComponent implements OnInit {
     }
     login(){
       if(this.formaUsuario.valid){  
-        this.loading = true;      
-        let res =this.loginService.loginUsuario(this.formaUsuario.value);
-        if(res){
-          this.loading = false;   
-
-        }
+        this.spinner.show();    
+        this.loginService.loginUsuario(this.formaUsuario.value).subscribe(res =>{
+          if(res.ok){            
+            this.validacionesService.showNotification('top','right','success', res.message);
+            this.router.navigateByUrl('/inicio');
+            this.spinner.hide();
+          } else {
+            this.validacionesService.showNotification('top','right','danger', res.message);
+            this.spinner.hide();
+          } 
+        });
+       
       }
     }
     cerrarSesion(){

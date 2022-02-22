@@ -9,6 +9,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { NgxLoadingModule } from 'ngx-loading';
 import {MatButtonModule} from '@angular/material/button';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     NgxLoadingModule.forRoot({}),
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxSpinnerModule
   ],
   declarations: [
     LoginComponent
