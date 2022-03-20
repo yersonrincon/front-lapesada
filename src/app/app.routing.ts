@@ -8,7 +8,7 @@ import { PaginaInicioComponent } from './demoPages/pagina-inicio/pagina-inicio.c
 import { LoginComponent } from './demoPages/login/login.component';
 
 
-//import { PaginaClienteComponent } from './pagina-cliente/pagina-cliente.component';
+import { PaginaClienteComponent } from './pagina-cliente/pagina-cliente.component';
 
 import { DemoPagesModule } from './demoPages/demoPages.module';
 /*const routes: Routes =[
@@ -28,7 +28,7 @@ const routes: Routes =[
    { path: '', redirectTo: 'demoPages/pagina-inicio',  pathMatch: 'full' },   
    { path: '',component: PaginaInicioComponent, children:  [{path: 'demoPages/pagina-inicio', component: PaginaInicioComponent, data: {extraparameter: ''}}]},
    { path: '',component: LoginComponent, children:  [{path: 'demoPages/login', component: LoginComponent, data: {extraparameter: ''}}]},
- //  { path: '',component: PaginaClienteComponent, children:  [{path: 'demoPages/pagina-cliente', component: PaginaClienteComponent, data: {extraparameter: ''}}]},
+   { path: '',component: PaginaClienteComponent, children:  [{path: 'demoPages/pagina-cliente', component: PaginaClienteComponent, data: {extraparameter: ''}}]},
    { path: '',component: AdminLayoutComponent, children:  [{path: '',loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)}]},
 
 ];

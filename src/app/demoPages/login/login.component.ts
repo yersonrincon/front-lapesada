@@ -54,6 +54,7 @@ hide = true;
       openModalEliminarRegistro(templateEliminarRegistro: TemplateRef<any>) {
    
         this.ventanaModal = this.modalService.show(templateEliminarRegistro, { class: 'modal-sm' });
+        this.ventanaModal.hide();
       }
       signInWithGoogle(): void {
         this.authGoogle.signIn(GoogleLoginProvider.PROVIDER_ID).then(respuesta =>{

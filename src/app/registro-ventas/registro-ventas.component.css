@@ -1,0 +1,134 @@
+
+.modal-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 250%;
+  
+    left: 50%;
+    top: 50%; 
+    margin-left: -250px;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgb(248, 73, 4);
+    border-radius: .3rem;
+    outline: 0;
+  }
+  .col-md-12 {
+      flex: 0 0 100%;
+      max-width: 83%;
+  }
+  
+    table {
+      width: 100%;
+    }
+  
+    .col-md-9 {
+      flex: 65%;
+      max-width: 55%;
+  }
+  .mat-cell, .mat-footer-cell {
+    font-size: 17px;
+}
+  .btn-primary {
+      color: #fff;
+      background-color: #eb530d;
+      border-color: #eb530d;
+  }
+  
+  .modal-footer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #f05d23;
+    color: #fff;
+  }
+  
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 130%;
+    height: 10%;
+    margin-left: -40px;
+    margin-top: 60px;
+    word-wrap: break-word;
+    background-color: rgb(253, 253, 253);
+    background-clip: border-box;
+    border: 1.5px solid rgba(236, 98, 6, 0.979);
+    border-radius: .65rem;
+  
+  }
+  .fa-trash-alt:before {
+    content: "\f2ed";
+    color: rgb(255, 105, 5);
+  }
+  .fa-edit:before {
+    content: "\f044";
+    color: rgb(9, 83, 219);
+  }
+  .file-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .file-container img {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .file-container input[type="file"] {
+    display: none;
+  }
+  
+  .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  
+  .inputfile+label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 5px 10px 5px 5px;
+  }
+  
+  .iborrainputfile {
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 10px;
+  }
+  
+  
+  /* style 1 */
+  
+  .inputfile-1+label {
+    color: #fff;
+    background-color: #6b4b8b;
+    border-radius: 3px;
+  }
+  
+  .inputfile-1:focus+label,
+  .inputfile-1.has-focus+label,
+  .inputfile-1+label:hover {
+    background-color: #6b4b8b;
+  }
+  img {
+    vertical-align: middle;
+    border-style: none;
+    width: 120px
+  ;
+  }
+  
+  
+  

@@ -1,131 +1,178 @@
 <div class="logo">
-    <a class="simple-text">
+   
         <div class="logo-img">
-            <img src="assets/img/logo.png" />
+            <img src="/assets/img/Recurso93.png"/>
+       
         </div>
-        Autolavado El tifon
-    </a>
+     
 </div>
-<div class="sidebar-wrapper">
-    <!--<div *ngIf="isMobileMenu()">
-        <ul class="nav navbar-nav nav-mobile-menu">
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">
-                    <i class="material-icons">dashboard</i>
-                    <p>
-                        <span class="d-lg-none d-md-block">Stats</span>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons">notifications</i>
-                    <span class="notification">5</span>
-                    <p>
-                        <span class="d-lg-none d-md-block">Some Actions</span>
-                    </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                    <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                    <a class="dropdown-item" href="#">Another Notification</a>
-                    <a class="dropdown-item" href="#">Another One</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">
-                    <i class="material-icons">person</i>
-                    <p>
-                        <span class="d-lg-none d-md-block">Account</span>
-                    </p>
-                </a>
-            </li>
-        </ul>
-    </div>-->
-    <ul [ngClass]="idrol === 1 ? 'nav' : 'nav'">
+<div class="sidebar-wrapper" >
+  <div *ngIf="isMobileMenu()">
+    <form class="navbar-form">
+      <span class="bmd-form-group">
+        <div class="input-group no-border">
+          <input type="text" value="" class="form-control" placeholder="Search...">
+          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </span>
+    </form>
+    <ul class="nav navbar-nav nav-mobile-menu">
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">
+                <i class="material-icons">dashboard</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">notifications</i>
+                <span class="notification">5</span>
+                <p>
+                    <span class="d-lg-none d-md-block">Some Actions</span>
+                </p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                <a class="dropdown-item" href="#">Another Notification</a>
+                <a class="dropdown-item" href="#">Another One</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">
+                <i class="material-icons">person</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                </p>
+            </a>
+        </li>
+    </ul>
+  </div>
+  <!--<ul class="nav" *ngIf="decoded.roles ===2">-->
+
+    <ul class="nav" >
         <!--<li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a class="nav-link" [routerLink]="[menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>
                 <p>{{menuItem.title}}</p>
             </a>
         </li>-->
-        <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/inicio">
-                <i class="material-icons">home</i>
-                <p>Inicio</p>
-            </a>
-        </li>
-        <li routerLinkActive="active" class="nav-item">
+        <li routerLinkActive="active"*ngIf="decoded.roles ===1|| decoded.roles ===2"   class="nav-item">
             <a class="nav-link" routerLink="/dashboard">
                 <i class="material-icons">dashboard</i>
-                <p>Registro de lavados</p>
+                <p>dashboard</p>
             </a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/registrar-servicio">
-                <i class="material-icons">border_color</i>
-                <p>Registrar servicio</p>
+
+       
+        <li routerLinkActive="active" *ngIf="decoded.roles ===1 || decoded.roles ===2" class="nav-item">
+            <a class="nav-link" routerLink="/listar-usuariovendedor">
+                <i class="material-icons"><span class="material-icons">group_add</span></i>
+                <p>listar usuario</p>
             </a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/registrosuministro">
-                <i class="material-icons">battery_std</i>
-                <p>Venta suministro</p>
+        <li routerLinkActive="active"  *ngIf="decoded.roles ===1 || decoded.roles ===2"class="nav-item">
+            <a class="nav-link" routerLink="/listar-proveedor">
+                <i class="material-icons">people_alt</i>
+                <p>proveedor</p>
             </a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/registrosdia">
-                <i class="material-icons">wb_sunny</i>
-                <p>Registros dia</p>
+    
+        <li routerLinkActive="active" *ngIf="decoded.roles ===1|| decoded.roles ===2"  class="nav-item">
+            <a class="nav-link" routerLink="/listar-roles">
+                <i class="material-icons">groups</i>
+                <p>lista roles</p>
             </a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/liquidarlavador">
-                <i class="material-icons">euro_symbol</i>
-                <p>Liquidar lavador</p>
+        <li routerLinkActive="active"  *ngIf="decoded.roles ===1 || decoded.roles ===2" class="nav-item">
+            <a class="nav-link" routerLink="/listar-marcas">
+                <i class="material-icons">preview</i>
+                <p>lista marcas</p>
             </a>
         </li>
-        <li *ngIf="idrol === 1" routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/user-profile">
-                <i class="material-icons">person</i>
-                <p>Usuarios</p>
+        <li routerLinkActive="active" *ngIf="decoded.roles ===1 || decoded.roles ===2"class="nav-item">
+            <a class="nav-link" routerLink="/listar-categorias">
+                <i class="material-icons">apps</i>
+                <p>listar categorias</p>
             </a>
         </li>
-        <li *ngIf="idrol === 1" routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/servicios">
-                <i class="material-icons">room_service</i>
-                <p>Tipo servicios</p>
+        <li routerLinkActive="active"*ngIf="decoded.roles ===1 || decoded.roles ===2" class="nav-item">
+            <a class="nav-link" routerLink="/listar-ventas">
+                <i class="material-icons">monetization_on</i>
+                <p>lista ventas</p>
             </a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/vehiculos">
-                <i class="material-icons">directions_car</i>
-                <p>Tipo vehiculos</p>
+        <li routerLinkActive="active"*ngIf="decoded.roles ===1 || decoded.roles ===2" class="nav-item">
+            <a class="nav-link" routerLink="/listar-productos">
+                <i class="material-icons">cases</i>
+                <p>lista productos</p>
             </a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/marcas">
-                <i class="material-icons">bookmark</i>
-                <p>Marcas vehiculos</p>
+        <li routerLinkActive="active" *ngIf="decoded.roles ===1 || decoded.roles ===2"class="nav-item">
+            <a class="nav-link" routerLink="/cotizacion">
+                <i class="material-icons">send</i>
+                <p>cotizacion</p>
             </a>
         </li>
-        <li *ngIf="idrol === 1" routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/operarios">
-                <i class="material-icons">person_pin</i>
-                <p>Operarios</p>
+        <li routerLinkActive="active"*ngIf="decoded.roles ===1" class="nav-item">
+            <a class="nav-link" routerLink="/registro-almacen">
+                <i class="material-icons">Store</i>
+                <p>registro almacen</p>
             </a>
         </li>
-        <li *ngIf="idrol === 1" routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/suministros">
-                <i class="material-icons">bookmark</i>
-                <p>Suministros</p>
+        <li routerLinkActive="active"*ngIf=" decoded.roles ===1|| decoded.roles ===2" class="nav-item">
+            <a class="nav-link" routerLink="/registro-ventas">
+                <i class="material-icons">receipt_long</i>
+                <p>registro ventas</p>
             </a>
         </li>
-        <li routerLinkActive="active" [ngClass]="idrol === 1 ? 'nav-item' : 'active-pro nav-item'">
+        <li routerLinkActive="active" *ngIf="decoded.roles ===1 || decoded.roles ===2"class="nav-item">
+            <a class="nav-link" routerLink="/registro-cotizacion">
+                <i class="material-icons"> shopping_bag</i>
+                <p>registro cotizacion</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" *ngIf="decoded.roles ===1 || decoded.roles ===2"class="nav-item">
+            <a class="nav-link" routerLink="/ventas">
+                <i class="material-icons"> receipt_long</i>
+                <p>ventas</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" *ngIf="decoded.roles ===1 || decoded.roles ===2"class="nav-item">
+            <a class="nav-link" routerLink="/listar-clientes">
+                <i class="material-icons">person_add</i>
+                <p>listar clientes</p>
+            </a>
+        </li>
+
+        <li routerLinkActive="active" *ngIf="decoded.roles ===3"class="nav-item">
+            <a class="nav-link" routerLink="/ver-tienda">
+                <i class="material-icons">storefront</i>
+                <p>ver tienda</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" *ngIf="decoded.roles ===3"class="nav-item">
+            <a class="nav-link" routerLink="/productos-cliente">
+                <i class="material-icons">local_mall</i>
+                <p> productos cliente</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" *ngIf="decoded.roles ===3"class="nav-item">
+            <a class="nav-link" routerLink="/producto-carrito">
+                <i class="material-icons">shopping_cart</i>
+                <p>producto carrito</p>
+            </a>
+        </li>
+        <li routerLinkActive="active"*ngIf="decoded.roles ===3 || decoded.roles ===1 || decoded.roles ===2" class="nav-item">
             <a class="nav-link" routerLink="demoPages/login">
                 <i class="material-icons">power_settings_new</i>
-                <p>Cerrar sesión</p>
+                <p>Cerrar Secion</p>
             </a>
         </li>
     </ul>

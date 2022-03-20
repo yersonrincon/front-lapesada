@@ -614,7 +614,7 @@
     .navbar-toggler .icon-bar {
           display: block;
           position: relative;
-          background: #555 !important;
+          background: rgb(255, 255, 255) !important;
           width: 24px;
           height: 2px;
           border-radius: 1px;
@@ -745,9 +745,7 @@
     .dropdown-menu {
         display: none;
     }
-    .navbar-fixed-top {
-        -webkit-backface-visibility: hidden;
-    }
+   
     #bodyClick {
         height: 100%;
         width: 100%;

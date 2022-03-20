@@ -1,5 +1,5 @@
 import { Component, OnInit,OnDestroy, HostListener  } from '@angular/core';
-
+import { BsModalRef,BsModalService  } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'pagina-inicio',
   templateUrl: './pagina-inicio.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit,OnDestroy, HostListener  } from '@angular/core';
 
 })
 export class PaginaInicioComponent implements OnInit , OnDestroy  {
- 
+  ventanaModal!: BsModalRef<any>;
   constructor() { }
 
 
@@ -21,5 +21,7 @@ export class PaginaInicioComponent implements OnInit , OnDestroy  {
     body.classList.remove("register-page");
   }
 
-  
+  closeVentana(): void {
+    this.ventanaModal.hide();
+  }
 }
