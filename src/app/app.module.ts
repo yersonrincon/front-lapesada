@@ -69,7 +69,7 @@ import { ɵparseCookieValue } from '@angular/common';
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('https://lapesada.herokuapp.com/217139744467-i0i93nv0da7jdvfiq5lhl7vo0jnn2jpv.apps.googleusercontent.com')},
+            provider: new GoogleLoginProvider('217139744467-i0i93nv0da7jdvfiq5lhl7vo0jnn2jpv.apps.googleusercontent.com')},
           {
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('clientId')
