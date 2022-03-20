@@ -52,12 +52,7 @@
                            </td>
                      
                        </ng-container>
-                      <ng-container matColumnDef="eliminar">
-                        <th mat-header-cell *matHeaderCellDef> <h4>ELIMINAR</h4></th>
-                        <td mat-cell *matCellDef="let row">
-                      <i class="fa fa-trash-o" (click)="eliminarMarca(row.id)"></i>
-                        </td>
-                    </ng-container>
+                     
 
                     <ng-container matColumnDef="editar" >
                       <th mat-header-cell *matHeaderCellDef>  <h4>EDITAR</h4></th>
@@ -65,7 +60,12 @@
                         <i  class="fa fa-edit botonEditar" (click)="openModalRegistroMarcas(templateRegistro, row)"></i>                             
                     </td>     
                   </ng-container>    
-                    
+                  <ng-container matColumnDef="eliminar">
+                    <th mat-header-cell *matHeaderCellDef> <h4>ELIMINAR</h4></th>
+                    <td mat-cell *matCellDef="let row">
+                  <i class="fa fa-trash-o" (click)="eliminarMarca(row.id)"></i>
+                    </td>
+                </ng-container>
   
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -129,16 +129,7 @@
                       <small *ngIf="getDescripcion.invalid  && getDescripcion.touched && !getDescripcion.errors?.minlength && !getNombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small> 
                   </div>
                 </div>
-                <div class="col-md-6 mb-4 ">
-                  <label for="estado">Estado</label>
-                  <small *ngIf="getEstado?.errors?.required  && getEstado?.touched" class="text-danger animated fadeIn">el  estado  no es valido</small>
-                  <br>
-                  <select formControlName="estado" class="form-control">
-                      <option value="">Seleccione</option>
-                      <option value="1">ACTIVO</option>
-                      <option value="0">INACTIVO</option>
-                  </select>
-              </div>
+               
             
                 
               <div class="col-md-6 form-group mt-4">

@@ -41,7 +41,10 @@
   background-color: #f05d23;
   color: #fff;
 }
-
+.fa-trash-o {
+  content: "\f044";
+  color: rgb(235, 94, 13);
+}
 .card {
     position: relative;
     display: flex;
@@ -57,10 +60,7 @@
     border-radius: .65rem;
   
   }
-  .fa-trash-o:before {
-    content: "\f014";
-    color: rgb(235, 94, 13);
-  }
+
 .fa-edit:before {
   content: "\f044";
   color: rgb(9, 83, 219);

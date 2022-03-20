@@ -30,7 +30,7 @@ export class ListarMarcasComponent implements OnInit {
     private modalService: BsModalService,
   ) { }
 
-  displayedColumns: string[] = ['id', 'nombre', 'descripcion','estado','eliminar','editar'];
+  displayedColumns: string[] = ['id', 'nombre', 'descripcion','estado','editar','eliminar'];
   datosInsertados!: MatTableDataSource<any>;
   @ViewChild(MatPaginator ,{static: false }) listaMarcas!: MatPaginator;
   @ViewChild(MatSort, {static :true }) sortMarcas!: MatSort;
@@ -53,7 +53,7 @@ export class ListarMarcasComponent implements OnInit {
      id: [datos.id],
      nombre: [datos.nombre ? datos.nombre : '',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
      descripcion: [datos.descripcion ? datos.descripcion : '',[Validators.required, Validators.minLength(6), Validators.maxLength(150)]],
-     estado:[datos.estado?datos.estado:'',Validators.required],
+
   
 
 
@@ -66,9 +66,7 @@ export class ListarMarcasComponent implements OnInit {
   get getDescripcion(){
    return this.registrarMarca.get('descripcion')
  }
- get getEstado(){
-   return this.registrarMarca.get('estado');
- }
+
 
  closeVentana(): void {
   this.ventanaModal.hide();

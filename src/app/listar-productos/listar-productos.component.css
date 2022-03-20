@@ -131,8 +131,8 @@
     color: rgb(9, 83, 219);
 }
 
-.fa-trash-o:before {
-  content: "\f014";
+.fa-trash-o {
+  content: "\f044";
   color: rgb(235, 94, 13);
 }
 .col-md-12[_ngcontent-hjp-c102] {

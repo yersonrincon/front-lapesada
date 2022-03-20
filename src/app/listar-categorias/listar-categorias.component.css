@@ -43,8 +43,8 @@
 }
 
 
-  .fa-trash-o:before {
-    content: "\f014";
+  .fa-trash-o {
+    content: "\f044";
     color: rgb(235, 94, 13);
   }
 .fa-edit:before {

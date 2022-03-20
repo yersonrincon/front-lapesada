@@ -60,9 +60,9 @@ mat-grid-tile {
   border-radius: .65rem;
 
 }
-.fa-trash-alt:before {
-  content: "\f2ed";
-  color: rgb(255, 105, 5);
+.fa-trash-o {
+  content: "\f044";
+  color: rgb(235, 94, 13);
 }
 .fa-edit:before {
   content: "\f044";
