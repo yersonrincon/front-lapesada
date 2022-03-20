@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LiquidarlavadorComponent } from './liquidarlavador.component';
+import { PaginaInicioComponent } from './pagina-inicio.component';
 
-describe('LiquidarlavadorComponent', () => {
-  let component: LiquidarlavadorComponent;
-  let fixture: ComponentFixture<LiquidarlavadorComponent>;
+describe('PaginaInicioComponent', () => {
+  let component: PaginaInicioComponent;
+  let fixture: ComponentFixture<PaginaInicioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LiquidarlavadorComponent ]
+      declarations: [ PaginaInicioComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LiquidarlavadorComponent);
+    fixture = TestBed.createComponent(PaginaInicioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,77 +2,82 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ValidacionesService } from './validaciones.service';
-import { map } from 'rxjs/operators';
+import { GestionUsuariosService } from './gestion-usuarios.service';
+import { ValidacionService } from './validacion.service';
 import * as _moment from 'moment';
 import jwt_decode from 'jwt-decode';
+import { subscribeOn } from 'rxjs-compat/operator/subscribeOn';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   public loading = false;
-   token ='';
+  token ='';
   constructor(private httpClient: HttpClient,
               private router: Router,
-              private validacionesService: ValidacionesService) { }
+              private ValidacionService: ValidacionService) { }
 
-  ngOnInit() {
-    this.leerToken();    
-  }
-  
-  loginUsuario(datos){
-    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonUsuarios/loginUsuario`,datos)
-   .pipe(
-    map( respuesta =>{
-      if(respuesta.ok){
-      localStorage.setItem('TokenTifon', `Bearer ${respuesta.token}`);
-      this.token = respuesta.token;
-      }
-      return respuesta;
-    })
-  );
-}
-  /*loginUsuario(datos){
+              
+              ngOnInit() {
+                this.leerToken();    
+              
+              }
+              
+
+ loginUsuario(datos){
     this.loading = true;
-    return this.httpClient.post<any>(`${environment.apiUrl}/api/tifonUsuarios/loginUsuario`,datos).subscribe( res =>{
-      if(res.ok){
-        localStorage.setItem('TokenTifon', `Bearer ${res.token}`);
-        this.token = res.token;
-        this.validacionesService.showNotification('top','right','success', res.message);
-        this.router.navigateByUrl('/inicio');
-        this.loading = false;
-      } else {
-        this.validacionesService.showNotification('top','right','danger', res.message);
-        this.loading = false;
-      }       
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/loginUsuario`,datos).subscribe( respuesta =>{
+        
+       
+            if(respuesta.ok){
+              localStorage.setItem('tokenlapesada', `${respuesta.token}`);
+           
+              this.ValidacionService.showNotification('top','right','success', respuesta.message);
+              this.router.navigateByUrl('/dashboard');
+              this.loading = false;
+            } else {
+              this.ValidacionService.showNotification('top','right','danger', respuesta.message);
+              this.loading = false;
+            }       
+      
+          });
+         }  
+         
+         
+     leerToken() {
+          if (localStorage.getItem('tokenlapesada')) {
+            this.token = localStorage.getItem('tokenlapesada');
+          } else {
+            this.token = '';
+          }
+        }
+        estaAutenticado(): boolean {
+          this.leerToken();
+          if (!this.token || this.token.length < 2) {
+            return false;
+          }   
+          const decoded: any = jwt_decode(this.token);
+          console.log(decoded);
+      
+          var dateString = _moment.unix(decoded.exp).toDate();
+          if (dateString > new Date()) {
+            return true;
+          } else {
+            localStorage.removeItem('tokenlapesada');
+            return false;
+          }
+        }
+  
 
-    });
-   }*/
-   leerToken() {
-    if (localStorage.getItem('TokenTifon')) {
-      this.token = localStorage.getItem('TokenTifon');
-    } else {
-      this.token = '';
-    }
-  }
-  estaAutenticado(): boolean {
-    this.leerToken();
-    if (!this.token || this.token.length < 2) {
-      return false;
-    }   
-    const decoded: any = jwt_decode(this.token);
-
-    var dateString = _moment.unix(decoded.exp).toDate();
-    if (dateString > new Date()) {
-      return true;
-    } else {
-      localStorage.removeItem('TokenTifon');
-      return false;
-    }
-  }
-  signOut(): void {
-    localStorage.removeItem('TokenTifon');
-    this.router.navigateByUrl('/demoPages/login');  
-}
-}
+  
+             signOut(): void {
+              localStorage.removeItem('tokenlapesada');
+              this.router.navigateByUrl('/demoPages/login');  
+       
+          }
+           
+      
+      }

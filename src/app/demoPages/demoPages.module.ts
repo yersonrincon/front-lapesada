@@ -1,16 +1,18 @@
+
+import { NgxSpinnerModule } from "ngx-spinner";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-
+import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
-import { NgxLoadingModule } from 'ngx-loading';
 import {MatButtonModule} from '@angular/material/button';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { LoginComponent } from './login/login.component';
 
+//import { PaginaClienteComponent } from '../pagina-cliente/pagina-cliente.component';
+//import { PaginaClienteComponent } from '../pagina-cliente/pagina-cliente.component';
 
 @NgModule({
   imports: [
@@ -19,15 +21,18 @@ import { NgxSpinnerModule } from "ngx-spinner";
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,
-    NgxLoadingModule.forRoot({}),
+    MatInputModule,  
     MatIconModule,
-    MatButtonModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatButtonModule
   ],
   declarations: [
-    LoginComponent
+  PaginaInicioComponent,
+  LoginComponent,
+ 
+  //PaginaClienteComponent
   ]
 })
 
 export class DemoPagesModule {}
+

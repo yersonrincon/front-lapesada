@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 declare var $: any;
+
 @Injectable({
   providedIn: 'root'
 })
-export class ValidacionesService {
+export class ValidacionService {
+
   constructor() { }
 
-  
+
   passwordsIguales( passw1: string, passw2: string){
     return ( form: FormGroup) => {
     const passw1Control = form.controls[passw1];
@@ -20,6 +22,7 @@ export class ValidacionesService {
     }
   }
 }
+
 showNotification(from, align, color, message){
   const type = ['','info','success','warning','danger'];
 
