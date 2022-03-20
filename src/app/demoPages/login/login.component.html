@@ -37,7 +37,7 @@ background-color: #ffffff;" >
                     </div>
                   
     
-                    <form [formGroup]="loginForma" (ngSubmit)="loginUsuario()">
+                 
     
                       
                       <div class="form-outline form-white mb-4">
@@ -71,7 +71,7 @@ background-color: #ffffff;" >
     
                   
                   </div>
-                    </form>
+                  
                 </div>
                
               </div>
@@ -107,7 +107,7 @@ background-color: #ffffff;" >
            
           </div>
         </ng-template>
-        <div class="col-md-6" *ngIf ="user">
+      <!--  <div class="col-md-6" *ngIf ="user">
           <img src="{{user.photoUrl}}">
     
           <div>
@@ -115,9 +115,7 @@ background-color: #ffffff;" >
               <p>{{user.email}}</p>
           </div>
       </div>
-    
+      
+    -->
     </body>
     
-<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
-    <p style="font-size: 20px; color: white">Por favor, espere.</p>
-</ngx-spinner>

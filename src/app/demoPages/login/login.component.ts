@@ -85,28 +85,7 @@ hide = true;
       signOut(): void {
         this.authGoogle.signOut();
       }
-  loginUsuarios(){
-    this.loginForma = this.fb.group({
-      correo: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],   
-      password : ['', [Validators.required, Validators.minLength(3)]]
-    });
-  }
 
-  get  getCorreo(){
-    return this.loginForma.get('correo');
-
-  }
-  get  getPassword(){
-    return this.loginForma.get('password');
-  
-  }
-
-  
- loginUsuario(){
-    if(this.loginForma.valid){        
-      this.loginService.loginUsuario(this.loginForma.value);
-    }
-  }
 
 /* loginUsuario(){
     console.log(this.loginForma);
