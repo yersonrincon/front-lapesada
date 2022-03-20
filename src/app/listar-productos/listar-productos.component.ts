@@ -24,6 +24,7 @@ export class ListarProductosComponent implements OnInit {
   imagenProducto! : FormGroup;
   accion!:string;
   selectedcategoria : string;
+  selectedMarca : string;
   listaMarca:  [];
   accionEditar!: any ;
   ventanaModal!: BsModalRef<any>;
