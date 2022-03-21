@@ -157,16 +157,11 @@
                 <p>ver tienda</p>
             </a>
         </li>
+        
         <li routerLinkActive="active" *ngIf="decoded.roles ===3"class="nav-item">
             <a class="nav-link" routerLink="/productos-cliente">
                 <i class="material-icons">local_mall</i>
                 <p> productos cliente</p>
-            </a>
-        </li>
-        <li routerLinkActive="active" *ngIf="decoded.roles ===3"class="nav-item">
-            <a class="nav-link" routerLink="/producto-carrito">
-                <i class="material-icons">shopping_cart</i>
-                <p>producto carrito</p>
             </a>
         </li>
         <li routerLinkActive="active"*ngIf="decoded.roles ===3 || decoded.roles ===1 || decoded.roles ===2" class="nav-item">
