@@ -33,7 +33,7 @@ form {
   transition: background 0s ease-out;
   padding-left: 0;
   padding-right: 0;
-  border-radius: 0;
+  padding: 25px 20px;
   font-size: $mdb-input-font-size-base;
 
   // The border bottom should be static in all states, the decorator will be animated over this.
@@ -412,13 +412,13 @@ form .ng-valid{
   &.mat-focused .mat-form-field-label,
   .mat-focused .mat-form-field-label,
   .mat-form-field-label{
-    // color: #4caf50;
+    color: #ffffff;
   }
     .mat-input-underline{
-      // background-color: #4caf50;
+       background-color: #ffffff;
       height: 2px;
       .mat-input-ripple{
-        // background-color: #4caf50;
+         background-color: #ffffff;
       }
     }
 

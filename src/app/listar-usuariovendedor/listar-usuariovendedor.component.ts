@@ -105,7 +105,6 @@ export class ListarUsuariovendedorComponent implements OnInit {
       apellido: [datos.apellido ? datos.apellido : '',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
       correo: [datos.correo?datos.correo:'', [Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       roles:[datos.roles?datos.roles:'',[Validators.required]],
-      estado: [datos.estado?datos.estado:'', Validators.required],
       telefono:[datos.telefono?datos.telefono:'',[Validators.required, Validators.minLength(6), Validators.maxLength(10)]]  
      } )
    }
@@ -123,9 +122,7 @@ export class ListarUsuariovendedorComponent implements OnInit {
    get getRoles() {
     return this.  registroVendedor.get('roles');
   }
-   get getEstado() {
-     return this.registroVendedor.get('estado');
-   }
+
    get getTelefono() {
      return this.registroVendedor.get('telefono');
    }
