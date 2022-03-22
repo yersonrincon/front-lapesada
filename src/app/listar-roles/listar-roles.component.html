@@ -94,7 +94,7 @@
       
       <div class="modal-body">
    
-        <form [formGroup]="registroRoles" (ngSubmit)="editarusuariorol()">
+        <form [formGroup]="registroRoles" (ngSubmit)="editarRoles()">
           <div class="card-body p-md-2 mx-md-1">
             <div class="col-lg-12">
           <div class="text-center">
@@ -102,36 +102,38 @@
           </div>
   
           <div class="form-row">
-            <div class="col-md-6 form-group">
-                  <div role="group">
-                  <label for="nombre">Nombre rol Completos</label>
-                  <input formControlName="nombre" type="text" class="form-control styleForm" id="nombre">
-                  <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-                  <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                  <small *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-                  </div>              
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <mat-label> Ingrese nombre rol </mat-label>  
+                <input matInput type="text"  formControlName="nombre" placeholder="Nombre">
+                    <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
+                    <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                    <small *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                  </mat-form-field>
                 </div>
-           
-                <div class="col-md-6 form-group">
-                  <div role= "group">
-                  <label for="descripcion">Ingrese la descripcion  </label>
-                  <input formControlName="descripcion" type="text" class="form-control styleForm" id="descripcion">
-                  <small *ngIf="getDescripcion.errors?.minlength" class="text-danger animated fadeIn">Mínimo  carácteres</small>
+
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                  <mat-label>Ingrese su descripción  </mat-label>  
+                  <input matInput type="text"  formControlName="descripcion" placeholder="Descripcion">
+                  <small *ngIf="getDescripcion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
                   <small *ngIf="getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
                   <small *ngIf="getDescripcion.invalid  && getDescripcion.touched && !getDescripcion.errors?.minlength && !getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                </mat-form-field>
                 </div>
-              </div>
-       
+           
+          
               
            
           <div class="col-md-6 form-group mt-4">
-            <button type="submit" class="btn btn-primary"  *ngIf="!accionEditar">GUARDAR DATOS</button>
+            <button type="submit" class="btn btn-primary"  *ngIf="!accionEditar" style=" cursor: pointer; left: 150%; top: 94%;">GUARDAR DATOS</button>
             </div>
   
             
           <div class="col-md-6 form-group mt-4">
         
-            <button type="submit" class="btn btn-primary" *ngIf="accionEditar" >ACTUALIZAR</button>
+            <button type="submit" class="btn btn-primary" *ngIf="accionEditar"  style=" cursor: pointer; left: 60%; top: 94%;" >ACTUALIZAR</button>
+
         </div>
   
           

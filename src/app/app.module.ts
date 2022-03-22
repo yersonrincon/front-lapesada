@@ -18,12 +18,16 @@ import {GoogleLoginProvider,FacebookLoginProvider} from 'angularx-social-login';
 import { PaginaInicioComponent } from './demoPages/pagina-inicio/pagina-inicio.component';
 import { ɵparseCookieValue } from '@angular/common';
 
-
-
+import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 
 //import { LayoutModule } from '@angular/cdk/layout';
-
-
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatListModule } from "@angular/material/list";
 
 
 
@@ -35,11 +39,18 @@ import { ɵparseCookieValue } from '@angular/common';
     HttpClientModule,
     ComponentsModule,
     SocialLoginModule,
+    MatButtonModule,
     RouterModule,
-  
+    MatDividerModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatListModule,
+    MatIconModule,
+    MatInputModule,
     AppRoutingModule,
     DemoPagesModule,
     ModalModule.forRoot(),  
+    NgBootstrapFormValidationModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })

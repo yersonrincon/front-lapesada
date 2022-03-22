@@ -148,6 +148,7 @@ export class ListarUsuariovendedorComponent implements OnInit {
              `${respuesta.message}`,
              'success'
            );
+           this.ventanaModal.hide();     
            this.cargarListaUsuarios();
          }else if (respuesta.ok ==false){
            Swal.fire({
@@ -155,6 +156,7 @@ export class ListarUsuariovendedorComponent implements OnInit {
              text: `${respuesta.message}`,
              icon: 'info'
            });
+        
          }
          
        });
@@ -166,13 +168,15 @@ export class ListarUsuariovendedorComponent implements OnInit {
              text: `${respuesta.message}`,
              icon: 'success'
            });
+           this.ventanaModal.hide();     
            this.cargarListaUsuarios();
          }else  if (respuesta.ok === false){
            Swal.fire({
              title: 'Mensaje',
              text: `${respuesta.message}`,
              icon: 'info'
-           });      
+           }); 
+           
          }
        })
      }

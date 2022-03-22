@@ -8,6 +8,10 @@ import { BsModalRef,BsModalService  } from 'ngx-bootstrap/modal';
 import { MatSort } from '@angular/material/sort';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 @Component({
   selector: 'cotizacion',
   templateUrl: './cotizacion.component.html',
@@ -19,11 +23,12 @@ export class CotizacionComponent implements OnInit {
   accion!:any;
   ventanaModal!: BsModalRef<any>;
   datos = true;
-  total:number;
+  total: number = 0;
   blob!:any;
   datosCotizacion =[];
   datosCotizacionTotal = [];
   datosBusquedaDuplicado =[];
+  dd: any;
   constructor( private fb: FormBuilder,
     private gestionUsuariosService: GestionUsuariosService,
     private modalService: BsModalService,
@@ -167,13 +172,12 @@ export class CotizacionComponent implements OnInit {
 
     console.log('this.datosCotizacionTotal', this.datosCotizacionTotal);
 
-    this.total = this.datosCotizacionTotal.reduce((
-      acc,
-       obj,
-    
-    ) => acc + (obj.precioventa), 0);
-    console.log("Total: ", this.total)
+    this.total = 0;
+    this.datosCotizacionTotal.forEach(datos => {  
+      this.total = Number(datos.precioventa) + this.total;
+      console.log("Total: ", this.total)
 
+    });
   }
   
 
@@ -192,7 +196,7 @@ console.log(this.datosCotizacionTotal)
 
   downloadPDF() {
     // Extraemos el
-    const DATA = document.getElementById('htmlData');
+   /*const DATA = document.getElementById('htmlData');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
       background: 'white',
@@ -213,9 +217,48 @@ console.log(this.datosCotizacionTotal)
     }).then((docResult) => {
       docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
      this.blob = doc.output('blob');
+    });*/
+    const newArray =[ [{text:'Nombre'}, {text:'Precio'}, {text:'cantidad'}]];
+    this.datosCotizacionTotal.forEach(datos=>{
+      newArray.push([{ text: datos.nombre},{ text: datos.precioventa},{ text: datos.cantidad}])
     });
+    console.log(newArray);
+    this.dd = {
+      content: [
+        {
+          
+          table: {
+            widths:['*', '*', '*'],
+            body: 
+              //['Nombre', 'Precio', 'cantidad'],
+              newArray
+           
+          }
+        },
+        {
+          text: [
+            `TOTAL :${formatterPeso.format(this.total)}`
+            ],
+          style: 'header',
+          bold: false
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          alignment: 'right'
+        }
+      }
+    }
+    pdfMake.createPdf(this.dd).download('archivo');
   }
 
-  
+ 
 }
 
+const formatterPeso = new Intl.NumberFormat('es-CO', {
+  style: 'currency',
+  currency: 'COP',
+  minimumFractionDigits: 0
+})

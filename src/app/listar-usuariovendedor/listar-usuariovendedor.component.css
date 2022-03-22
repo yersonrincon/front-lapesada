@@ -30,11 +30,10 @@
     max-width: 55%;
 }
 .btn-primary {
-  color: #fff;
-  background-color: #eb530d;
-  border-color: #eb530d;
-  padding: 10px;
-  margin: 0 85px;
+    color: #fff;
+    background-color: #eb530d;
+    border-color: #eb530d;
+   
 }
 
 .modal-footer {
@@ -44,26 +43,11 @@
   color: #fff;
 }
 
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 130%;
-  height: 10%;
-  margin-left: -40px;
-  margin-top: 60px;
-  word-wrap: break-word;
-  background-color: rgb(253, 253, 253);
-  background-clip: border-box;
-  border: 1.5px solid rgba(236, 98, 6, 0.979);
-  border-radius: .65rem;
 
-}
-
-.fa-trash-o {
-  content: "\f044";
-  color: rgb(235, 94, 13);
-}
+  .fa-trash-o {
+    content: "\f044";
+    color: rgb(235, 94, 13);
+  }
 .fa-edit:before {
   content: "\f044";
   color: rgb(9, 83, 219);
@@ -74,6 +58,21 @@
   align-items: center;
 }
 
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 10%;
+  margin-left: 100px;
+  margin-top: 60px;
+  margin-top: 60px;
+  word-wrap: break-word;
+  background-color: rgb(253, 253, 253);
+  background-clip: border-box;
+  border: 1.5px solid rgba(236, 98, 6, 0.979);
+  border-radius: .65rem;
+
+}
 .file-container img {
   height: 100px;
   width: 100px;

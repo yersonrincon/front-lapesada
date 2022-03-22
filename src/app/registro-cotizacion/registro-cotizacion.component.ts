@@ -30,7 +30,8 @@ export class RegistroCotizacionComponent implements OnInit {
   base64textString: any;
   ventanaModal!: BsModalRef<any>;
   datos = true;
-
+  file_store: FileList;
+  file_list: Array<string> = [];
   
   constructor(private fb: FormBuilder,
               private gestionUsuariosService: GestionUsuariosService,
@@ -55,36 +56,72 @@ export class RegistroCotizacionComponent implements OnInit {
           }
            
   openModalRegistroCotizacion(templateRegistro: TemplateRef<any>,datos:any) {
-    this.registrocotizacion(datos);
+    this.registrocotizacion();
     this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-sm' });
     this.accionEditar =!! datos;
     datos ? this.accion ='Editar' : this.accion ='Registrar';
   }
-  registrocotizacion(datos:any){
-    this. registroCotizacion = this.fb.group({
-     id: [datos.id],
-     correo: [datos.correo ? datos.correo:'', [Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-     imagen : [datos.imagen ? this.image = datos.imagen : this.base64textString,Validators.required],
-    
+  registrocotizacion(){
+    this.registroCotizacion = this.fb.group({
+     correo: ['', [Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+     archivo: ['', Validators.required],  
     
     });
 
-  }
-
-
-
-
- 
+  } 
   get getCorreo() {
     return this.registroCotizacion.get('correo');
   }
-
-  get getImagen() {
-    return this.registroCotizacion.get('imagen');
+  get archivo() {
+    return this.registroCotizacion.get('archivo');
   }
- 
- 
 
+  onFileChangeHojaDeVida(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.registroCotizacion.patchValue({
+        fileSource: file
+      });
+    }
+  }
+  handleFileInputChange(l: FileList): void {
+    this.file_store = l;
+    if (l.length) {
+      const f = l[0];
+      const count = l.length > 1 ? `(+${l.length - 1} files)` : "";
+      this.archivo.patchValue(`${f.name}${count}`);
+    } else {
+      this.archivo.patchValue("");
+    }
+  }
+
+  handleSubmit(): void {
+     if(this.registroCotizacion.valid){
+      let formData = new FormData();
+      this.file_list = [];
+      /*for (let i = 0; i < this.file_store.length; i++) {
+        fd.append("archivo", this.file_store[i], this.file_store[i].name);
+        this.file_list.push(this.file_store[i].name);
+      }*/
+      
+     
+      formData.append("archivo", this.file_store[0], `${this.registroCotizacion.value.correo}.pdf`);
+       
+  console.log(formData);
+      this.gestionUsuariosService.enviarCotizacion(formData,this.registroCotizacion.value.correo).subscribe(respuesta=>{
+
+        Swal.fire({
+          title: 'OK',
+          text: `${respuesta.message}`,
+          icon: 'success'
+        });
+        this.ventanaModal.hide();
+        console.log(respuesta)
+
+      });
+    }
+   
+  }
 
   closeVentana(): void {
     this.ventanaModal.hide();

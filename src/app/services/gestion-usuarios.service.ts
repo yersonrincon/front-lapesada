@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders,  } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams,  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 @Injectable({
@@ -222,4 +222,9 @@ consultaIdproducto(){
  actualizarEstadoRol(datos: any){
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/actualizarEstadoRol`, datos);
  }
+ enviarCotizacion(archivos, correo: any) {
+  const headers = new HttpHeaders({ });
+  const params = new HttpParams({fromString: `correo=${correo}&_limit=10`});
+  return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/cargar`, archivos, {headers, params});
+  }
 }

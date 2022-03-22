@@ -51,7 +51,7 @@ export class ListarMarcasComponent implements OnInit {
   registrarmarca(datos:any){
    this.registrarMarca = this.fb.group({
      id: [datos.id],
-     nombre: [datos.nombre ? datos.nombre : '',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
+     nombre: [datos.nombre ? datos.nombre : '',[Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
      descripcion: [datos.descripcion ? datos.descripcion : '',[Validators.required, Validators.minLength(6), Validators.maxLength(150)]],
 
   

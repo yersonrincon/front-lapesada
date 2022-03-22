@@ -118,67 +118,58 @@
 
 <!-- 2 column grid layout with text inputs for the first and last names -->
 <div class="form-row">
-  <div class="col-md-6 form-group">
-      <div role= "group">
-        <label for="nombre">Ingrese sus Nombres </label>
-        <input formControlName="nombre" type="text" class="form-control styleForm" id="nombre">
+
+  <div class="col-md-6">
+  <mat-form-field class="example-full-width">
+    <mat-label> Ingrese sus Nombres</mat-label>  
+    <input matInput type="text"  formControlName="nombre" placeholder="Nombre">
         <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
         <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
         <small *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+      </mat-form-field>
     </div>
-    </div>
+<div class="col-md-6">
+  <mat-form-field class="example-full-width">
+  <mat-label>Ingrese sus Apellidos </mat-label>  
+  <input matInput type="text"  formControlName="apellido" placeholder="Apellido">
+  <small *ngIf="getApellido.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
+  <small *ngIf="getApellido.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+  <small *ngIf="getApellido.invalid  && getApellido.touched && !getApellido.errors?.minlength && !getApellido.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+</mat-form-field>
+</div>
 
 
-    <div class="col-md-6 form-group">
-      <div role="group">
-        <label for="apellido">Ingrese sus Apellidos</label>
-        <input formControlName="apellido" type="text" class="form-control styleForm" id="apellido">
-        <small *ngIf="getApellido.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-        <small *ngIf="getApellido.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-        <small *ngIf="getApellido.invalid  && getApellido.touched && !getApellido.errors?.minlength && !getApellido.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-    </div>
-      </div>
-    
-
-
-<!-- Text input -->
-
-<div class=" col-md-6 form-group">
-  <div role= "group">
-   <label for="telefono">Ingrese sus telefono</label>
-    <input formControlName="telefono" type="text" class="form-control styleForm" id="telefono">
+<div class="col-md-6">
+  <mat-form-field class="example-full-width">
+   <mat-label>Ingrese sus telefono</mat-label>
+   <input matInput type="text"  formControlName="telefono" placeholder="Telefono">
     <small *ngIf="getTelefono.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
     <small *ngIf="getTelefono.errors?.maxlength" class="text-danger animated fadeIn">Máximo 10 carácteres</small>
     <small *ngIf="getTelefono.invalid  && getTelefono.touched && !getTelefono.errors?.minlength && !getTelefono.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-  </div>
+  </mat-form-field>
 </div>
 
-<!-- Email input -->
-
-<div class="col-md-6 form-group">
-  <div role="group">
-    <label for="correo">Ingrese su correo</label>
-    <input formControlName="correo" type="text" class="form-control styleForm" id="correo">
-    <small *ngIf="getCorreo.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-    <small *ngIf="getCorreo.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-    <small *ngIf="getCorreo.invalid  && getCorreo.touched && !getCorreo.errors?.minlength && !getCorreo.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+<div class="col-md-6">
+  <mat-form-field class="example-full-width">
+    <mat-label>Ingrese su correo</mat-label>
+    <input matInput type="text"  formControlName="correo" placeholder="Correo">
+  <small *ngIf="getCorreo?.errors?.required  && getCorreo?.touched">el correo no es valido</small>
+  
+</mat-form-field>
 </div>
-  </div>
 <div class="col-md-6 form-group">
-  <div role= "group">
-  <label for="roles">Ingrese el rol</label>
-  <select type="text" id="roles" class="form-control" formControlName="roles" >
-    <option value=""> seleccione</option>
-  <option *ngFor="let roles of listarRoles" [value]="roles.id"> {{roles.nombre}}</option>
+<mat-form-field appearance="fill">
+  <mat-label>Roles</mat-label>
+  <select matNativeControl formControlName="roles">
+    <option *ngFor="let roles of listarRoles" [value]="roles.id"> {{roles.nombre}}</option>   
   </select>
   <small *ngIf="getRoles?.errors?.required  && getRoles?.touched" class="text-danger animated fadeIn">el campo apellido es requerido</small>
-</div>
+</mat-form-field>
 </div>
 
-<br>
-<br>
 <div class="col-md-6 form-group mt-4">
-  <button type="submit" class="btn btn-primary">GUARDAR DATOS</button>
+  <button type="submit" class="btn btn-primary" style=" cursor: pointer; left: 50%; top: 94%;">
+GUARDAR DATOS</button>
   </div>
   
 </div>
