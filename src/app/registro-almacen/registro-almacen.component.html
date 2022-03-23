@@ -107,53 +107,53 @@
             <H2>REGISTRO ALMACEN</H2><br>
           </div>
             <div class="form-row">       
-              <div class="col-md-6 form-group">
-                <div role="group">
-                  <label for="nombre">Ingrese el nombre la empresa</label>
-                  <input formControlName="nombre" type="text" class="form-control styleForm" id="nombre">
-                  <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo  carácteres</small>
-                  <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                  <small *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-                </div>              
-              </div>
-              <div class="col-md-6 form-group">
-                <div role="group">
-                  <label for="nit">Ingrese el nit de  la empresa</label>
-                  <input formControlName="nit" type="text" class="form-control styleForm" id="nit">
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <mat-label> Ingrese nombre empresa</mat-label>  
+                  <input matInput type="text"  formControlName="nombre" placeholder="Nombre">
+                      <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
+                      <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                      <small *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                    </mat-form-field>
+                  </div>
+           
+                  <div class="col-md-6">
+                   <mat-form-field class="example-full-width">
+                  <mat-label> Ingrese el nit de  la empresa</mat-label>  
+                  <input matInput type="text"  formControlName="nit" placeholder="Nit">
                   <small *ngIf="getNit.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
                   <small *ngIf="getNit.errors?.maxlength" class="text-danger animated fadeIn">Máximo 20 carácteres</small>
                   <small *ngIf="getNit.invalid  && getNit.touched && !getNit.errors?.minlength && !getNit.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-                  
-                </div>              
+                </mat-form-field>
               </div>
-              <div class="col-md-6 form-group">
-                <div role="group">
-                  <label for="correo">Ingrese correo emmpresa</label>
-                  <input formControlName="correo" type="text" class="form-control styleForm" id="correo">
-                  <small *ngIf="getCorreo.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-                  <small *ngIf="getCorreo.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                  <small *ngIf="getCorreo.invalid  && getCorreo.touched && !getCorreo.errors?.minlength && !getCorreo.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+             
+            
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Ingrese  correo empresa</mat-label>
+                  <input matInput type="text"  formControlName="correo" placeholder="Correo">
+                <small *ngIf="getCorreo?.errors?.required  && getCorreo?.touched">el correo no es valido</small>
+                
+              </mat-form-field>
               </div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <div role= "group">
-                <label for="telefono">Ingrese su telefono</label>    
-                <input formControlName="telefono" type="text" class="form-control styleForm" id="telefono">
-                <small *ngIf="getTelefono.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-                <small *ngIf="getTelefono.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                <small *ngIf="getTelefono.invalid  && getTelefono.touched && !getTelefono.errors?.minlength && !getTelefono.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                <mat-label>Ingrese sus telefono</mat-label>
+                   <input matInput type="number"  formControlName="telefono" placeholder="Telefono">
+                  <small *ngIf="getTelefono.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
+                 <small *ngIf="getTelefono.errors?.maxlength" class="text-danger animated fadeIn">Máximo 10 carácteres</small>
+               <small *ngIf="getTelefono.invalid  && getTelefono.touched && !getTelefono.errors?.minlength && !getTelefono.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                  </mat-form-field>
+               </div>
+               <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                <mat-label>Ingrese su dirección </mat-label>  
+                <input matInput type="text"  formControlName="direccion" placeholder="Direccion">
+                <small *ngIf="getdireccion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
+                <small *ngIf="getdireccion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                <small *ngIf="getdireccion.invalid  && getdireccion.touched && !getdireccion.errors?.minlength && !getdireccion.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+              </mat-form-field>
               </div>
-              </div>
-            <div class="col-md-6 form-group">
-              <div role= "group">
-            <label for="direccion">Ingrese su direccion </label>
-            <input formControlName="direccion" type="text" class="form-control styleForm" id="direccion">    
-            <small *ngIf="getdireccion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-            <small *ngIf="getdireccion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-            <small *ngIf="getdireccion.invalid  && getdireccion.touched && !getdireccion.errors?.minlength && !getdireccion.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-          </div>
-          </div>
-              
             <div class="col-md-6">
               <div role="group">
                 <div class="file-container">

@@ -8,3 +8,25 @@
     content: "\f044";
     color: rgb(235, 94, 13);
   }
+  
+.modal-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 250%;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgb(248, 73, 4);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+.modal-footer {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #f05d23;
+  color: #fff;
+}

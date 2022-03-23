@@ -40,7 +40,7 @@ export class ListarProveeedorComponent implements OnInit {
            @ViewChild(MatSort, {static :true }) sortProveedores!: MatSort;
          
            
-        
+            
   openModalRegistroProveedor(templateRegistro: TemplateRef<any>,datos:any) {
     this.registroproveedor(datos);
     this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-sm' });

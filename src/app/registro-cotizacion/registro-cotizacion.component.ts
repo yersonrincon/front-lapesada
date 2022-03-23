@@ -40,7 +40,7 @@ export class RegistroCotizacionComponent implements OnInit {
              
            ){ } 
          
-           displayedColumns: string[] = ['id', 'fecha', 'correo','editar','eliminar' ];
+           displayedColumns: string[] = ['id', 'fecha', 'correo', ];
            datosInsertados!: MatTableDataSource<any>;
            @ViewChild(MatPaginator ,{static: false }) listaCotizaciones!: MatPaginator;
            @ViewChild(MatSort, {static :true }) sortCotizaciones!: MatSort;
@@ -56,15 +56,15 @@ export class RegistroCotizacionComponent implements OnInit {
           }
            
   openModalRegistroCotizacion(templateRegistro: TemplateRef<any>,datos:any) {
-    this.registrocotizacion();
+    this.registrocotizacion(datos);
     this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-sm' });
     this.accionEditar =!! datos;
     datos ? this.accion ='Editar' : this.accion ='Registrar';
   }
-  registrocotizacion(){
+  registrocotizacion(datos:any){
     this.registroCotizacion = this.fb.group({
-     correo: ['', [Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-     archivo: ['', Validators.required],  
+     correo: [ datos.correo ? datos.correo:'', [Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+     archivo: [ datos.archivo ? datos.archivo:'', Validators.required],  
     
     });
 
@@ -115,20 +115,23 @@ export class RegistroCotizacionComponent implements OnInit {
           text: `${respuesta.message}`,
           icon: 'success'
         });
+       
+   
         this.ventanaModal.hide();
         console.log(respuesta)
 
       });
     }
-   
+  
+      this.editarcotizaciones();
   }
-
   closeVentana(): void {
     this.ventanaModal.hide();
   }
 
    ngOnInit(): void {
     this. cargarListaCotizaciones();
+
  
 
   }
@@ -173,17 +176,17 @@ export class RegistroCotizacionComponent implements OnInit {
    
 
 
-  eliminarUsuarioProveedor(id :any ) {
+  eliminarCotizacion(id :any ) {
     Swal.fire({
       title: 'Seguro!!',
-      text: 'Esta seguro que desea eliminar el usuario.',
+      text: 'Esta seguro de eiminar la  cotización .',
       icon: 'question',
       showConfirmButton: true,
       showCancelButton: true,
       cancelButtonColor: '#d33',
     }).then(res => {
       if (res.value) {
-        this.gestionUsuariosService.eliminarUsuarioProveedor(id).subscribe(respuesta=> {
+        this.gestionUsuariosService.eliminarCotizacion(id).subscribe(respuesta=> {
 
           if (respuesta.ok === true) {
             Swal.fire({
@@ -227,24 +230,6 @@ export class RegistroCotizacionComponent implements OnInit {
             icon: 'info'
           });
         }
-      });
-    } else {
-      this.gestionUsuariosService.editarCotizacion(this.registroCotizacion.value).subscribe(respuesta =>{
-        if (respuesta.ok === true){
-          Swal.fire({
-            title : 'edicion exitosa',
-            text: `${respuesta.message}`,
-            icon: 'success'
-          });
-             this.cargarListaCotizaciones();
-        }else if(respuesta.ok === false){
-          Swal.fire({
-            title: 'Mensaje',
-            text: `${respuesta.message}`,
-            icon: 'info'
-          });            
-      }
-
       });
     }
   }

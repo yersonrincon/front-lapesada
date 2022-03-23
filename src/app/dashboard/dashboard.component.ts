@@ -10,6 +10,8 @@ import { GestionUsuariosService } from 'app/services/gestion-usuarios.service';
 export class DashboardComponent implements OnInit {
   datosInsertados!:any;
 
+  totalcantidad: any;
+
   constructor(
     private gestionUsuariosService: GestionUsuariosService,
 
@@ -153,11 +155,11 @@ export class DashboardComponent implements OnInit {
   }
   
   cargarListaProducto(){
-    this.gestionUsuariosService.consultarListaProductos().subscribe(respuesta=> {
+    this.gestionUsuariosService.consultarCantidad().subscribe(respuesta=> {
       console.log(respuesta);
       if (respuesta.ok) {
-      this.datosInsertados = respuesta.datosInsertados;
-      console.log('productos',this.datosInsertados);
+      this.totalcantidad = respuesta.cantidad.count;
+      console.log('productos',this.totalcantidad);
       }
       else{
       }
@@ -166,5 +168,7 @@ export class DashboardComponent implements OnInit {
 
   
   }
+
+  
 
 }

@@ -20,14 +20,15 @@ export class ListarVentasComponent implements OnInit {
 
   registroCompra!:FormGroup;
   base64textString: any;
-  image!:string;
   element: any;
+  accionEditar!: any ;
   registroVenta!: FormGroup;
   seleccioneArchivo!: string;
   fechaActual = new Date();
   ventanaModal!: BsModalRef<any>;
   listaProductos: any;
   datos = true;
+  accion!:string;
 
 
   constructor(
@@ -37,7 +38,7 @@ export class ListarVentasComponent implements OnInit {
     private route: Router
   ) { }
 
-  displayedColumns: string[] = ['id', 'imagen','nombre', 'marca', 'precioventa', 'cantidad','codigo','venta'];
+  displayedColumns: string[] = ['id', 'nombre', 'precioventa', 'cantidad','codigo',];
   datosInsertados!: MatTableDataSource<any>;
   @ViewChild(MatPaginator ,{static: false }) ListaproductosCompra!: MatPaginator;
   @ViewChild(MatSort, {static :true }) sortProductosCompra!: MatSort;
@@ -100,7 +101,8 @@ export class ListarVentasComponent implements OnInit {
     this.FormularioRegistroVenta(datos);
     this.consultarproductoId();   
     this.ventanaModal = this.modalService.show(templateVenta,{ class: 'modal-lg' });
-
+    this.accionEditar =!! datos;
+    datos ? this.accion ='Editar' : this.accion ='Registrar';
 
   }
   closeVentana(): void {
@@ -110,32 +112,26 @@ export class ListarVentasComponent implements OnInit {
   FormularioRegistroVenta(datos: any){
   console.log(datos)
     this. registroVenta = this.fb.group({
-     fecha: [ '',Validators.required],
-     precio : ['',Validators.required],
-     descripcion : ['',Validators.required],
-     cantidad : ['',Validators.required],
-     producto : ['',Validators.required],
-     codigo : ['',Validators.required],
+      nombre: [datos.nombre ? datos.nombre : '',[Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
+      precioventa : [datos.precioventa ? datos.precioventa :'',[Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
+      cantidad : [datos.cantidad ? datos.cantidad :'',[Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
+      codigo: [datos.codigo ? datos.codigo :'',[Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
 
     });
 
   }
+  get getNombre() {
+    return this.  registroVenta.get('nombre');
+  }
 
-  get getFecha() {
-    return this.registroVenta.get('fecha');
+  get getPrecioventa() {
+    return this.  registroVenta.get('precioventa');
   }
-  get getPrecio() {
-    return this.registroVenta.get('precio');
-  }
-  get getDescripcion() {
-    return this.registroVenta.get('descripcion');
-  }
+
   get getCantidad() {
     return this.registroVenta.get('cantidad');
   }
-  get getProducto() {
-    return this.registroVenta.get('producto');
-  }
+
   get getCodigo() {
     return this.registroVenta.get('codigo');
   }
@@ -169,7 +165,113 @@ export class ListarVentasComponent implements OnInit {
       })
     } 
   }
+
+
+
+
   
+  registroventas() {
+    if (this.accion === 'Registrar') {
+    if(this.registroVenta.valid){
+      console.log(this.registroVenta.value);
+      const datos = {
+        nombre: this.registroVenta.value.nombre,
+        precioventa: this.registroVenta.value.precioventa,
+        cantidad: this.registroVenta.value.cantidad,
+        codigo: this.registroVenta.value.codigo,
+        
+    
+      }
+    this.gestionUsuariosService.editarProducto(datos).subscribe(respuesta =>{
+      if (respuesta.ok === true){
+        Swal.fire({
+          title : 'edicion exitosa',
+          text: `${respuesta.message}`,
+          icon: 'success'
+        });
+           this.consultarproductoId();
+      }else if(respuesta.ok === false){
+        Swal.fire({
+          title: 'Mensaje',
+          text: `${respuesta.message}`,
+          icon: 'info'
+        });            
+    }
+
+    });
+  }
+}
+}
+
+
+editarproductos() {
+  if(this.registroVenta.valid){
+    console.log(this.registroVenta.value);
+    const datos = {
+      id: this.registroVenta.value.id,
+      nombre: this.registroVenta.value.nombre,
+      marca: this.registroVenta.value.marca,
+      categoria: this.registroVenta.value.categoria,
+      precioventa: this.registroVenta.value.precioventa,
+      cantidad: this.registroVenta.value.cantidad,
+      codigo: this.registroVenta.value.codigo,
+    
+  
+    }
+  console.log(this.base64textString);
+
+  if (this.accion === 'Registrar') {
+   // console.log('entro 1');
+    this.gestionUsuariosService.crearProducto(datos).subscribe(respuesta => {
+
+      if (respuesta.ok === true) {
+        Swal.fire({
+          title: 'OK',
+          text: `${respuesta.message}`,
+          icon: 'success'
+        });
+        
+        this.ventanaModal.hide();
+      
+      } else if (respuesta.ok === false) {
+        Swal.fire({
+          title: 'Alerta',
+          text: `${respuesta.message}`,
+          icon: 'info'
+        });
+      }
+    });
+  } else {
+   // console.log('entro 2');
+    this.gestionUsuariosService.editarProducto(datos).subscribe(respuesta =>{
+      this.ventanaModal.hide();
+      if (respuesta.ok === true){
+        Swal.fire({
+          title : 'edicion exitosa',
+          text: `${respuesta.message}`,
+          icon: 'success'
+        });
+        this.ventanaModal.hide();
+    
+      }else if(respuesta.ok === false){
+        Swal.fire({
+          title: 'Mensaje',
+          text: `${respuesta.message}`,
+          icon: 'info'
+        });            
+    }
+
+    });
+  }
+ //  this.cargarListaProducto();
+  this.base64textString='';
+  this.seleccioneArchivo= '';
+}
+
+}
+
+
+
 
   handleFileSelect(evt:any) {
     const files = evt.target.files;

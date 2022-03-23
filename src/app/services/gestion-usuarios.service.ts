@@ -5,6 +5,9 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class GestionUsuariosService {
+  cargarListaProducto() {
+    throw new Error('Method not implemented.');
+  }
   headers = new HttpHeaders({
     
   });
@@ -16,11 +19,7 @@ export class GestionUsuariosService {
 
   constructor(private httpClient: HttpClient) { }
 
-  /*loginUsuario(datos:any){
-    return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/loginUsuario`,datos);
-  } */
 
-  
   loginCliente(datos:any){
    return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/loginCliente`,datos);
   }  
@@ -140,7 +139,10 @@ export class GestionUsuariosService {
  eliminarEmpresa(id: any) {
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/eliminarEmpresa`, {id});
  }
- 
+
+ eliminarCotizacion(id: any) {
+  return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/eliminarCotizacion`, {id});
+ }
  eliminarUsuarioRol(id: any) {
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/eliminarUsuarioRol`, {id});
  }
@@ -172,9 +174,7 @@ export class GestionUsuariosService {
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/editarClientes`, datos);
  }
 
- editarCotizacion(datos: any){
-  return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/editarCotizacion`, datos);
-}
+
  editarMarca(datos: any){
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/editarMarca`, datos);
  }
@@ -202,6 +202,10 @@ consultarListaVentas(){
 
 consultarroles(){
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarroles`, '');
+}
+
+consultarCantidad(){
+  return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarCantidad`, '');
 }
 consultaIdproducto(){
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultaIdproducto`, '');
