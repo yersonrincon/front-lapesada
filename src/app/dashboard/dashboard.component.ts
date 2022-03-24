@@ -11,6 +11,8 @@ export class DashboardComponent implements OnInit {
   datosInsertados!:any;
 
   totalcantidad: any;
+  totalventa: any;
+  totalcotizacion: any;
 
   constructor(
     private gestionUsuariosService: GestionUsuariosService,
@@ -75,13 +77,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
      this.cargarListaProducto();
-      const dataDailySalesChart: any = {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          series: [
-              [12, 17, 7, 17, 23, 18, 38]
-          ]
-      };
-
+     this.cargarListaVentas();
+     this.cargarListaCotizaciones();
+      
      const optionsDailySalesChart: any = {
           lineSmooth: Chartist.Interpolation.cardinal({
               tension: 0
@@ -91,10 +89,7 @@ export class DashboardComponent implements OnInit {
           chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
       }
 
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-      this.startAnimationForLineChart(dailySalesChart);
-
+      
 
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
@@ -156,19 +151,32 @@ export class DashboardComponent implements OnInit {
   
   cargarListaProducto(){
     this.gestionUsuariosService.consultarCantidad().subscribe(respuesta=> {
-      console.log(respuesta);
       if (respuesta.ok) {
       this.totalcantidad = respuesta.cantidad.count;
-      console.log('productos',this.totalcantidad);
-      }
-      else{
-      }
+      }  
      
+    });
+  
+  }
+
+
+  cargarListaVentas(){
+    this.gestionUsuariosService.consultarCantidadventas().subscribe(respuesta=> {
+      if (respuesta.ok) {
+      this.totalventa = respuesta.ventas.count;
+      }  
     });
 
   
   }
-
   
+  cargarListaCotizaciones(){
+    this.gestionUsuariosService.consultarCantidadCotizaciones().subscribe(respuesta=> { 
+      if (respuesta.ok) {
+      this.totalcotizacion = respuesta.cotizacion.count;
+      }  
+    });
+  }
+
 
 }

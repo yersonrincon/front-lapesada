@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 
@@ -30,11 +31,13 @@ export class ListarProductosComponent implements OnInit {
   seleccioneArchivo!: string;
   base64textString: any;
   image!:string;
-  logo = `assets/images/carge2.svg`;
+  logo = `assets/img/Recurso3.png`;
   imagePath: any;
+  
   element: any;
   listaCategorias:any;
   datos = true;  
+  sizeByte: any;
 
   constructor(
     private fb: FormBuilder,
@@ -42,6 +45,7 @@ export class ListarProductosComponent implements OnInit {
     private modalService: BsModalService,
     private validador : ValidacionService,
     private route :Router,
+    private spinner: NgxSpinnerService,
     private _sanitizer: DomSanitizer
     
  ){ } 
@@ -136,7 +140,7 @@ imagenproducto(datos:any){
   }
    ngOnInit(): void {
    this.cargarListaProducto();
-    
+  
    }
    applyFilterUsuarios(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -161,13 +165,6 @@ imagenproducto(datos:any){
 
   
   }
- 
-
-
-
-
-
-   
  
   cargarListaProducto(){
     this.datos = false;
@@ -220,8 +217,6 @@ imagenproducto(datos:any){
  } 
 }
 )}
-
-
 
 
 
@@ -313,6 +308,17 @@ editarproductos() {
 handleFileSelect(evt:any) {
   const files = evt.target.files;
   const file = files[0];
+  this.sizeByte = files[0].size;
+  console.log('tamaño', this.sizeByte)
+  let siezekiloByte = this.sizeByte / 1024;
+  
+    if(siezekiloByte > 100){
+      
+    alert('El tamaño supera el limite permitido');
+ 
+    return false;
+    }
+    
   if (files && file) {
     const reader = new FileReader();
     this.seleccioneArchivo = files[0].name;
@@ -325,7 +331,6 @@ _handleReaderLoaded(readerEvt:any) {
   this.base64textString = btoa(binaryString);
 }
 
- 
 openInputFile(): void {
   this.element = document.getElementById('file-1');
   this.element.click();

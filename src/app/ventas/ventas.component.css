@@ -9,11 +9,11 @@
     color: rgb(235, 94, 13);
   }
   
-.modal-content {
+.modal-body {
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 250%;
+  width: 80%;
   left: 50%;
   top: 50%;
   margin-left: -250px;
@@ -30,3 +30,4 @@
   background-color: #f05d23;
   color: #fff;
 }
+

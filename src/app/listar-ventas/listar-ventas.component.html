@@ -1,170 +1,157 @@
 <div class="col-md-12 mb-3 form-group" > 
-    <div class="container py-8">
-      <div class="card rounded-3 text-black">
-        <br>
-        <br>
-        <br>
-        <div class="text-center">
-          <H2>LISTAR PRODUCTOS PARA VENTA</H2><br>
-        </div>
-   
-            <div *ngIf="datos">
-                <div class="col-md-4 mb-3 form-group">
-              <i class="fa fa-search mr-2" style="font-size: 20px;"></i>                  
+      <div class="container py-8">
+        <div class="card rounded-3 text-black">
+          <div class="text-center">
+            <H2>LISTAR PRODUCTOS PARA VENTA</H2><br>
+          </div>
+     
+              <div *ngIf="datos">
           
-          <mat-form-field>
-            <mat-label>buscar</mat-label>
-            <input matInput (keyup)="applyFilterListarventas($event)" placeholder="Filtro" #input>
-        </mat-form-field>   
-      </div>
-                    <div class="col-md-4 mb-3 form-group">
-                        <i class="fa fa-search mr-2" style="font-size: 20px;"></i>                  
-                    </div> 
-                  
-      
-                    <div class="col-md-8 mb-3 form-group text-right">     
-                    </div>
-                    
-                     
-                      
-                        <table mat-table [dataSource]="datosInsertados" class="mat-elevation-z2" matSort>
-                        <!-- idApiKey Column -->
-                        <ng-container matColumnDef="id">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>ID</h4> </th>
-                            <td mat-cell *matCellDef="let row"(click)="openModalVenta(templateVenta, row)" style="cursor: pointer;"> {{row.id}} </td>
-                        </ng-container>
+                <div class="col-md-4 mb-3 form-group">
+                  <i class="fa fa-search mr-2" style="font-size: 20px;"></i>                  
   
-                        <ng-container matColumnDef="nombre">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>NOMBRE</h4>  </th>
-                            <td mat-cell *matCellDef="let row"(click)="openModalVenta(templateVenta, row)" style="cursor: pointer;"> {{row.nombre}} </td>
-                        </ng-container>
-  
-  
+              <mat-form-field>
+                <mat-label>buscar</mat-label>
+                <input matInput (keyup)="applyFilterProductos($event)" placeholder="Filtro" #input>
+            </mat-form-field>   
+
+              <div class="col-md-8 mb-3 form-group text-right">     
+              </div>
+            </div> 
+               
+                
                        
-                        <ng-container matColumnDef="precioventa">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>PRECIOVENTA</h4></th>
-                          <td mat-cell *matCellDef="let row"(click)="openModalVenta(templateVenta, row)" style="cursor: pointer;"> {{row.precioventa}} </td>
-                      </ng-container>
                         
-  
-                        <ng-container matColumnDef="cantidad">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>CANTIDAD</h4> </th>
-                            <td mat-cell *matCellDef="let row" (click)="openModalVenta(templateVenta, row)" style="cursor: pointer;"> {{row.cantidad}} </td>
+                          <table mat-table [dataSource]="datosInsertados" class="mat-elevation-z2" matSort>
+                          <!-- idApiKey Column -->
+                          <ng-container matColumnDef="id">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>ID</h4> </th>
+                              <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                          </ng-container>
+    
+                          <ng-container matColumnDef="nombre">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>NOMBRE</h4>  </th>
+                              <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+                          </ng-container>
+    
+                        
+                          <ng-container matColumnDef="precioventa">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>PRECIOVENTA</h4></th>
+                            <td mat-cell *matCellDef="let row"> {{row.precioventa}} </td>
                         </ng-container>
-                      
-                        <ng-container matColumnDef="codigo">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>CODIGO</h4> </th>
-                          <td mat-cell *matCellDef="let row"(click)="openModalVenta(templateVenta, row)"  style="cursor: pointer;"> {{row.codigo}} </td>
-                      </ng-container>
-                   
-                  
-                      <ng-container matColumnDef="venta">
-                          <th mat-header-cell *matHeaderCellDef> <h4>VENTA</h4></th>
-                          <td mat-cell *matCellDef="let row">
-                            <i class="fa fa-briefcase"(click)="openModalVenta(templateVenta, row)"  style="cursor: pointer;"></i>
-                          </td>
-                      </ng-container>
-            
-  
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-                        <!-- isActiveKey Column -->
-                
-                        <!-- Row shown when there is no matching data. -->             
-                    </table>
-                
-                      <mat-paginator matSort [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                
-                
-                </div>   
-                <div class="col-md-6 form-group mt-4">
-                  <button class="btn btn-primary" type="button" 
-                  (click)="openModalVenta(templateVenta,'')"> 
-                  REGISTRAR VENTAS</button> 
-                </div>
-               
-</div> 
-</div>
-
-</div>                 
-
-
-  <ng-template #templateVenta>
-    <div class="modal-content">
-      <div class="modal-body text-center">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeVentana()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+                          
     
-        <div class="modal-body">
+                          <ng-container matColumnDef="cantidad">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>CANTIDAD</h4> </th>
+                              <td mat-cell *matCellDef="let row"> {{row.cantidad}} </td>
+                          </ng-container>
+                        
+                          <ng-container matColumnDef="codigo">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>CODIGO</h4> </th>
+                            <td mat-cell *matCellDef="let row"> {{row.codigo}} </td>
+                        </ng-container>
+                     
+                          
+                        
+                        <ng-container matColumnDef="venta">
+                            <th mat-header-cell *matHeaderCellDef> <h4>VENTA</h4></th>
+                            <td mat-cell *matCellDef="let row">
+                              <i class="fas fa-paper-plane"(click)="openModalVenta(templateVenta, row)"></i>
+                            </td>
+                        </ng-container>
+              
     
-          <form [formGroup]="registroVenta" (ngSubmit)="registroventas()" >
-            <div class="card-body p-md-2 mx-md-1">
-              <div class="col-lg-12">
-            <div class="text-center">
-              <H2>REGISTRA VENTA</H2><br>
-            </div>
-              <div class="form-row">       
-               
-               
-                  
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
-                    <div class="col-md-6 form-group">
-                      <div role= "group">
-                      <label for="fecha">Ingrese la fecha de la compra {{fechaActual | date: 'yyy-mm-dd'}}</label>
-                      <input type="text" id="fecha" class="form-control" formControlName ="fecha" placeholder="{{fechaActual | date: 'yyy-mm-dd'}}">
-                      <small *ngIf="getFecha?.errors?.required  && getFecha?.touched" class="text-danger animated fadeIn">el campo fecha es requerido</small>
+                        
+                      </table>
+                      <div class="text-right col-md-12">
+                        <mat-paginator matSort [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
                     </div>
-                  </div>
+                  
+                  </div>   
+                 
+  </div> 
+  </div>
+                     
+    </div> 
+   
+    <ng-template #templateVenta>
+        <div class="modal-content">
+          <div class="modal-body text-center">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeVentana()">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      
+      
+            <form [formGroup]="registroVenta" (ngSubmit)="editarventa()" >
+              <div class="card-body p-md-2 mx-md-1">
+                <div class="col-lg-12">
+              <div class="text-center">
+                <H2>REGISTRA VENTA</H2><br>
+              </div>
+                <div class="form-row">       
+                 
+                 
+                  <div class="col-md-6">
                     
-                  
-            
-                    <div class="col-md-6 form-group">
-                      <div role= "group">
-                    <label for="precio">Ingrese su precio venta </label>
-                    <input type="number" id="precio" class="form-control" formControlName="precio" placeholder="Precio">
-                   <small *ngIf="getPrecio?.errors?.required  && getPrecio?.touched" class="text-danger animated fadeIn">el  campo no es valido</small>
-                  
+                    <mat-form-field class="example-full-width">
+                      <label>Nombre producto</label>
+                      <input matInput type="text" readonly formControlName="nombre" placeholder="Nombre">
+                    </mat-form-field>
+                        <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
+                        <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                        <small *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
                   </div>
-                  </div>
-              
-               
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                      <label>Precio producto</label>
+                        <input matInput type="number" formControlName="precioventa" placeholder="Precioventa">                        
+                      </mat-form-field>
+                      <small *ngIf="getPrecioventa.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1 carácteres</small>
+                        <small *ngIf="getPrecioventa.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                        <small *ngIf="getPrecioventa.invalid  && getPrecioventa.touched && !getPrecioventa.errors?.minlength && !getPrecioventa.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                      </div>
                 
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                          <label>Cantidad</label>
+                          <input matInput type="text" disabled=true  formControlName="cantidad"  placeholder="Cantidad">                          
+                        </mat-form-field>
+                        <small *ngIf="getCantidad.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1 carácteres</small>
+                        <small *ngIf="getCantidad.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                        <small *ngIf="getCantidad.invalid  && getCantidad.touched && !getCantidad.errors?.minlength && !getCantidad.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                        <mat-error *ngIf="ventaMayor" class="text-danger animated fadeIn">La cantidad supera las existencias en el inventario</mat-error>
+                        
+                        
+                      </div>     
+                      <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                      <label>Còdigo</label>
+
+                      <input matInput type="text" readonly formControlName="codigo" placeholder="Codigo">
+                      </mat-form-field>
+                        <small *ngIf="getCodigo.errors?.minlength" class="text-danger animated fadeIn">Mínimo 4 carácteres</small>
+                        <small *ngIf="getCodigo.errors?.maxlength" class="text-danger animated fadeIn">Máximo 15 carácteres</small>
+                        <small *ngIf="getCodigo.invalid  && getCodigo.touched && !getCodigo.errors?.minlength && !getCodigo.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                    </div>
+                 
+                  <div class="col-md-6 form-group mt-4">
+                    <button type="submit" class="btn btn-primary">GUARDAR COMPRA</button>
+                    </div>
+          
                   
-                <div class="col-md-6 form-group">
-                  <div role= "group">
-                <label for="cantidad">Ingrese  su la cantidad </label>
-                <input type="number" id="cantidad" class="form-control" formControlName="cantidad" placeholder="Cantidad">
-               <small *ngIf="getCantidad?.errors?.required  && getCantidad?.touched" class="text-danger animated fadeIn">el campo no es valido</small>
-              
-              </div>
-              </div>
-                               
-              <div class="col-md-6 form-group">
-                <div role= "group">
-              <label for="codigo">Ingrese su codigo del producto </label>
-              <input type="text" id="codigo" class="form-control" formControlName="codigo" placeholder="Codigo">
-             <small *ngIf="getCodigo?.errors?.required  && getCodigo?.touched" class="text-danger animated fadeIn">el campo no es valido</small>        
-            </div>
-            </div>
-              
-    
-                <div class="col-md-6 form-group mt-4">
-                  <button type="submit" class="btn btn-primary">GUARDAR COMPRA</button>
-                  </div>
+                </div>       
+              </div> 
+            </div>        
+                
+            </form>
+                </div>
         
-                
-              </div>       
-              </div>
-            </div>
-              
-          </form>
-              </div>
-                  </div>
-     
        
-    
-     
-    </ng-template>
+         
+      
+       
+      </ng-template>

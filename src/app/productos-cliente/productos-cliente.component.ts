@@ -130,7 +130,7 @@ export class ProductosClienteComponent implements OnInit {
   }
 
   agregarProductosData(datos){
- 
+  
     const filtro =  this.productosCarrito.find(dato => dato.id === datos.id);
     
 
@@ -150,17 +150,18 @@ export class ProductosClienteComponent implements OnInit {
       ]
     }
     
-    
     console.log('this.datosCotizacionTotal', this.productosCarrito);
 
-    this.total = this.productosCarrito.reduce((
-      acc,
-       obj,
-    
-    ) => acc + (obj.precioventa), 0);
-    console.log("Total: ", this.total)
-  
+
+
+    this.total = 0;
+    this.productosCarrito.forEach(datos => {  
+      this.total = Number(datos.precioventa) + this.total;
+      console.log("Total: ", this.total)
+
+    });
   }
+  
   
   eliminarProducto(datos){
     this.productosCarrito.forEach(( element,index) => {

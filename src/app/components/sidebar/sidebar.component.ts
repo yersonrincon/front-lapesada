@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import jwt_decode from 'jwt-decode';
+import { SocialAuthService, SocialUser } from 'angularx-social-login';
+import { Router } from '@angular/router';
+
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -37,10 +40,16 @@ declare interface RouteInfo {
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-  token=localStorage.getItem('tokenlapesada');
+  token: any;
   decoded: any;
   roles:number;
-  constructor() { }
+
+
+  constructor(
+    private router: Router,
+    private authGoogle: SocialAuthService,
+    private authService: SocialAuthService,
+  ) { }
 
   ngOnInit() {
     this.token = localStorage.getItem('tokenlapesada');
@@ -55,4 +64,12 @@ export class SidebarComponent implements OnInit {
       }
       return true;
   };
+
+    
+  signOut(): void {
+    this.authGoogle.signOut();
+    localStorage.removeItem('tokenlapesada');
+    this.router.navigateByUrl('/demoPages/login'); 
+  }
+
 }

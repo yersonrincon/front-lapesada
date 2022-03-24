@@ -139,7 +139,7 @@
               <div class="col-md-6">
                 <mat-form-field class="example-full-width">
                 <mat-label>Ingrese sus telefono</mat-label>
-                   <input matInput type="number"  formControlName="telefono" placeholder="Telefono">
+                   <input matInput type="text"  formControlName="telefono" placeholder="Telefono">
                   <small *ngIf="getTelefono.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
                  <small *ngIf="getTelefono.errors?.maxlength" class="text-danger animated fadeIn">Máximo 10 carácteres</small>
                <small *ngIf="getTelefono.invalid  && getTelefono.touched && !getTelefono.errors?.minlength && !getTelefono.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
@@ -167,12 +167,12 @@
               </div>
             </div>
               <div class="col-md-6 form-group mt-4">
-                <button type="submit" class="btn btn-primary"  *ngIf="!accionEditar">GUARDAR DATOS</button>
+                <button type="submit" class="btn btn-primary"  *ngIf="!accionEditar"  style=" cursor: pointer; left: 140%; top: 94%;">GUARDAR DATOS</button>
                 </div>
       
                 <div class="col-md-6 form-group mt-4">
         
-                  <button type="submit" class="btn btn-primary" *ngIf="accionEditar" >ACTUALIZAR</button>
+                  <button type="submit" class="btn btn-primary" *ngIf="accionEditar " style=" cursor: pointer; left: 40%; top: 94%;" >ACTUALIZAR</button>
               </div>
             </div>       
             </div>

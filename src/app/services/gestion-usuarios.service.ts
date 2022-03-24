@@ -106,6 +106,15 @@ export class GestionUsuariosService {
     return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarListaProductos`, '');
   }
 
+
+  consultarCantidadventas() {
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarCantidadventas`, '');
+  }
+
+
+  consultarCantidadCotizaciones() {
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarCantidadCotizaciones`, '');
+  }
   consultarListaCategorias() {
     return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarListaCategorias`, '');
   }
@@ -156,6 +165,10 @@ export class GestionUsuariosService {
 
   editarUsuario(datos: any){
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/editarUsuario`, datos);
+ }
+
+ editarVenta(datos: any){
+  return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/editarVenta`, datos);
  }
 
   editarProducto(datos: any){

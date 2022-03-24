@@ -170,7 +170,6 @@ export class CotizacionComponent implements OnInit {
     console.log('this.datosCotizacionTotal', this.datosCotizacionTotal);
 
 
-    console.log('this.datosCotizacionTotal', this.datosCotizacionTotal);
 
     this.total = 0;
     this.datosCotizacionTotal.forEach(datos => {  
@@ -187,7 +186,12 @@ export class CotizacionComponent implements OnInit {
         this.datosCotizacionTotal.splice(index,1);
       }
       });
-console.log(this.datosCotizacionTotal)
+      this.total = 0;
+      this.datosCotizacionTotal.forEach(datos => {  
+        this.total = Number(datos.precioventa) + this.total;
+        console.log("Total: ", this.total)
+  
+      });
   }
 
 

@@ -57,7 +57,9 @@ body {
       padding: 70px 0px;
     }
   }
-  
+  .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 1.4375em 0;
+}
   /* line 33, /Applications/MAMP/htdocs/palash/cl/july 2019/190 Pexcon Construction/190 Pexcon Construction html/sass/_common.scss */
   .single_padding_top {
     padding-top: 140px !important;

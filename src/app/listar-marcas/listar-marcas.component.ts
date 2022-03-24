@@ -90,7 +90,7 @@ export class ListarMarcasComponent implements OnInit {
       id: this.registrarMarca.value.id,
       nombre: this.registrarMarca.value.nombre,
       descripcion: this.registrarMarca.value.descripcion,
-      estado:this.registrarMarca.value.estado,
+   
      
  
     }

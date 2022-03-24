@@ -116,7 +116,7 @@ export class VentasComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = [ 'id','nombre','precioventa', 'cantidad'];
+  displayedColumns: string[] = [ 'id','nombre','precioventa', 'cantidad' ,'venta'];
            datosInsertados!: MatTableDataSource<any>;
            @ViewChild(MatPaginator ,{static: false }) listaCotizaciones!: MatPaginator;
            @ViewChild(MatSort, {static :true }) sortCotizaciones!: MatSort;

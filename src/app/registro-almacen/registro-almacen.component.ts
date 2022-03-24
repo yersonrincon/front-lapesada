@@ -21,7 +21,7 @@ export class RegistroAlmacenComponent implements OnInit {
   image!:string;
   ventanaModal!: BsModalRef<any>;
   accion!:string;
-  logo = `assets/images/Recursoyer.svg`;
+  logo = `assets/img/Recurso3.png`;
   seleccioneArchivo : any;
   element: any;
   sizeByte: any;
@@ -112,11 +112,14 @@ export class RegistroAlmacenComponent implements OnInit {
   ngOnInit(): void {
     this.cargarListaEmpresa();
   }
+  closeVentana(): void {
+    this.ventanaModal.hide();
+  }
   editarEmpresa() {
     if(this.registroAlmacen.valid){
       console.log(this.registroAlmacen.value);
       const datos = {
-        id: this.registroAlmacen.value.id,
+   
         nombre: this.registroAlmacen.value.nombre,
         nit: this.registroAlmacen.value.nit,
         correo: this.registroAlmacen.value.correo,
@@ -138,7 +141,7 @@ export class RegistroAlmacenComponent implements OnInit {
             icon: 'success'
           });
           
-          this.ventanaModal.hide();
+        
           this.cargarListaEmpresa();
         
         } else if (respuesta.ok === false) {
@@ -215,7 +218,7 @@ eliminarEmpresa(id :any ) {
             text: `${respuesta.message}`,
             icon: 'success'
           });
-       
+          this.ventanaModal.hide();
           this.cargarListaEmpresa();
         } else if(respuesta.ok === false){
           Swal.fire({
@@ -237,9 +240,12 @@ handleFileSelect(evt:any) {
   let siezekiloByte = this.sizeByte / 1024;
   
     if(siezekiloByte > 100){
+      
     alert('El tamaño supera el limite permitido');
-
+ 
+    return false;
     }
+    
   if (files && file) {
     const reader = new FileReader();
     this.seleccioneArchivo = files[0].name;

@@ -165,10 +165,13 @@
             </a>
         </li>
         <li routerLinkActive="active"*ngIf="decoded.roles ===3 || decoded.roles ===1 || decoded.roles ===2" class="nav-item">
-            <a class="nav-link" routerLink="demoPages/login">
+            
+            
+            <a class="nav-link" (click)="signOut()">
                 <i class="material-icons">power_settings_new</i>
                 <p>Cerrar Secion</p>
             </a>
+           
         </li>
     </ul>
 </div>

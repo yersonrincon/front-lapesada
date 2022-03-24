@@ -7,6 +7,7 @@ import { ValidacionService } from './validacion.service';
 import * as _moment from 'moment';
 import jwt_decode from 'jwt-decode';
 import { subscribeOn } from 'rxjs-compat/operator/subscribeOn';
+import Swal from 'sweetalert2';
 
 
 
@@ -35,11 +36,24 @@ export class LoginService {
             if(respuesta.ok){
               localStorage.setItem('tokenlapesada', `${respuesta.token}`);
            
-              this.ValidacionService.showNotification('top','right','success', respuesta.message);
+           
+             this.ValidacionService;
+             Swal.fire({
+                        
+              title: 'OK',
+              text: `${respuesta.message}`,
+              icon: 'info'
+            });
               this.router.navigateByUrl('/dashboard');
               this.loading = false;
             } else {
-              this.ValidacionService.showNotification('top','right','danger', respuesta.message);
+              this.ValidacionService;
+            Swal.fire({
+                        
+              title: 'Alerta!!',
+              text: `${respuesta.message}`,
+              icon: 'info'
+            });
               this.loading = false;
             }       
       
@@ -78,6 +92,8 @@ export class LoginService {
               this.router.navigateByUrl('/demoPages/login');  
        
           }
+
+          
            
       
       }

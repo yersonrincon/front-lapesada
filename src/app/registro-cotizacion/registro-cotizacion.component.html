@@ -103,12 +103,15 @@
            
                 
                 <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
+                  
+
+                    <mat-form-field class="example-full-width">
                         <mat-label>Ingrese su correo</mat-label>
-                        <input matInput type="text"  formControlName="correo" placeholder="Correo">
+                        <input matInput type="text" formControlName="correo" placeholder="Correo">
                       <mat-error *ngIf="getCorreo?.errors?.required  && getCorreo?.touched">el correo no es valido</mat-error>
-                    </mat-form-field>
-                  </div>
+                  </mat-form-field>
+
+                    </div>
                   <div class="col-md-6">
                   <mat-form-field class="example-full-width">
                     <mat-label>Archivo cotizaciòn</mat-label>

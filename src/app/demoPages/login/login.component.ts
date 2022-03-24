@@ -38,7 +38,7 @@ hide = true;
       private authGoogle: SocialAuthService, 
       private router: Router, 
       private authService: SocialAuthService,
-
+     
     //  private gestionUsuarioService: GestionUsuariosService,
   //  private validador: ValidacionService,
       ) { }
