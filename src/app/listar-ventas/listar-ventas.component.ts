@@ -34,7 +34,7 @@ export class ListarVentasComponent implements OnInit {
     private route: Router
   ) { }
   datos = false;
-  displayedColumns: string[] = ['id','nombre', 'precioventa', 'cantidad','codigo','venta'];
+  displayedColumns: string[] = ['id','nombre', 'precioventa','cantidad','codigo','venta'];
   datosInsertados!: MatTableDataSource<any>;
   @ViewChild(MatPaginator ,{static: false }) ListaproductosCompra!: MatPaginator;
   @ViewChild(MatSort, {static :true }) sortProductosCompra!: MatSort;
@@ -104,7 +104,7 @@ export class ListarVentasComponent implements OnInit {
       precioventa : [datos.precioventa ? datos.precioventa :'',[Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
       cantidad : [datos.cantidad ? datos.cantidad :'',[Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
       codigo: [datos.codigo ? datos.codigo :'',[Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
-
+      descripcion: [datos.descripcion ? datos.descripcion : '',[Validators.required, Validators.minLength(6), Validators.maxLength(150)]],
     });
 
   }
@@ -123,24 +123,27 @@ export class ListarVentasComponent implements OnInit {
   get getCodigo() {
     return this.registroVenta.get('codigo');
   }
+  get getDescripcion() {
+    return this.registroVenta.get('descripcion');
+  }
   get ventaMayor() {
     const cantidadFormualrio = this.registroVenta.get('cantidad').value;
     const cantidadBasse = this.datosGlobales.cantidad;
   return (cantidadFormualrio > cantidadBasse)? true: false;
 
   }
+  
 
   
   editarventa() {
     if(this.registroVenta.valid){
       console.log(this.registroVenta.value);
       const datos = {
-        id: this.registroVenta.value.id,
-        nombre: this.registroVenta.value.nombre,
+     
         precioventa: this.registroVenta.value.precioventa,
         cantidad: this.registroVenta.value.cantidad,
         codigo: this.registroVenta.value.codigo,
-    
+        descripcion: this.registroVenta.value.descripcion,
      
       }
 
@@ -157,6 +160,7 @@ export class ListarVentasComponent implements OnInit {
                 `${respuesta.message}`,
                 'success'
               );
+            
               this.closeVentana();
               this.ventanaModal.hide();
               this.route.navigateByUrl('/registro-ventas');
@@ -180,10 +184,11 @@ export class ListarVentasComponent implements OnInit {
            this.ventanaModal.hide();
            if (respuesta.ok === true){
              Swal.fire({
-               title : 'edicion exitosa',
+               title : 'venta exitosa',
                text: `${respuesta.message}`,
                icon: 'success'
              });
+             this.cargarlistaProductos();
              this.ventanaModal.hide();
            }else if(respuesta.ok === false){
              Swal.fire({

@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgxSpinnerService } from "ngx-spinner";
+import { NgStyle } from '@angular/common';
 
 
 
@@ -36,6 +37,7 @@ export class ListarProductosComponent implements OnInit {
   
   element: any;
   listaCategorias:any;
+  listaAlmacen:any;
   datos = true;  
   sizeByte: any;
 
@@ -81,6 +83,7 @@ imagenproducto(datos:any){
     this.registroproducto(datos);
     this.consultarcategorias();
     this.consultarmarca();
+    this.consultaralmacenes();
   
     console.log('resultado',datos);
     this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-sm' });
@@ -125,6 +128,9 @@ imagenproducto(datos:any){
   }
   get getCantidad() {
     return this.registroProducto.get('cantidad');
+  }
+  get getAlmacen() {
+    return this.registroProducto.get('almacen');
   }
   get getCodigo() {
     return this.registroProducto.get('codigo');
@@ -234,6 +240,23 @@ consultarcategorias(){
 
   
   }
+
+  consultaralmacenes(){
+    this.gestionUsuariosService.consultaralmacenes().subscribe(respuesta=> {
+      console.log(respuesta);
+      if (respuesta.ok) {
+      this.listaAlmacen = respuesta.almacen;
+      console.log(this.listaAlmacen);
+      }
+      else{
+      }
+     
+    });
+
+  
+  }
+
+ 
 
  
 

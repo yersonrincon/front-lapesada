@@ -47,8 +47,8 @@ export class CotizacionComponent implements OnInit {
     datos ? this.accion ='Editar' : this.accion ='Registrar';
   }
   ngOnInit(): void {
-    this.cargarListaProducto();
-    this.cargarListaEmpresa();
+    this.cargarListaProductos();
+
   }
 
   applyFilterProductos(event: Event) {
@@ -64,7 +64,6 @@ export class CotizacionComponent implements OnInit {
   registrocotizacion(datos:any){
     this. registroCotizacion = this.fb.group({
      id: [datos.id],
-     empresa: [datos.empresa ? datos.empresa :'',Validators.required],
      direccion: [datos.direccion ? datos.direccion :'',Validators.required],
      telefono:[datos.telefono ? datos.telefono:'',Validators.required],
      correo: [datos.correo ? datos.correo:'', [Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
@@ -76,9 +75,7 @@ export class CotizacionComponent implements OnInit {
 
   }
 
-  get getEmpresa() {
-    return this.  registroCotizacion.get('empresa');
-  }
+
   get getdireccion() {
     return this.  registroCotizacion.get('direccion');
   }
@@ -101,9 +98,9 @@ export class CotizacionComponent implements OnInit {
     return this.  registroCotizacion.get('precio');
   }
   
-  cargarListaProducto(){
+  cargarListaProductos(){
 
-    this.gestionUsuariosService.consultarListaProductos().subscribe(respuesta=> {
+    this.gestionUsuariosService.consultarparacotizacion().subscribe(respuesta=> {
 
 
       console.log('listaproductos',this.datosInsertados);
@@ -185,13 +182,16 @@ export class CotizacionComponent implements OnInit {
       if(element.id === datos.id){
         this.datosCotizacionTotal.splice(index,1);
       }
+
+      
+    this.total = 0;
+    this.datosCotizacionTotal.forEach(datos => {  
+      this.total = Number(datos.precioventa) + this.total;
+      console.log("Total: ", this.total)
+
+    });
       });
-      this.total = 0;
-      this.datosCotizacionTotal.forEach(datos => {  
-        this.total = Number(datos.precioventa) + this.total;
-        console.log("Total: ", this.total)
-  
-      });
+console.log(this.datosCotizacionTotal)
   }
 
 
@@ -199,29 +199,7 @@ export class CotizacionComponent implements OnInit {
 
 
   downloadPDF() {
-    // Extraemos el
-   /*const DATA = document.getElementById('htmlData');
-    const doc = new jsPDF('p', 'pt', 'a4');
-    const options = {
-      background: 'white',
-      scale: 3
-    };
-    html2canvas(DATA, options).then((canvas) => {
-
-      const img = canvas.toDataURL('image/PNG');
-
-      // Add image Canvas to PDF
-      const bufferX = 15;
-      const bufferY = 15;
-      const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-      return doc;
-    }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
-     this.blob = doc.output('blob');
-    });*/
+    
     const newArray =[ [{text:'Nombre'}, {text:'Precio'}, {text:'cantidad'}]];
     this.datosCotizacionTotal.forEach(datos=>{
       newArray.push([{ text: datos.nombre},{ text: datos.precioventa},{ text: datos.cantidad}])

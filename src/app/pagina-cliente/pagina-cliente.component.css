@@ -54,6 +54,7 @@ mat-grid-tile {
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
+  margin-top: 130px;
   background-color: rgb(253, 253, 253);
   background-clip: border-box;
   border: 1.5px solid rgba(236, 98, 6, 0.979);

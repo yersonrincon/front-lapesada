@@ -40,7 +40,7 @@ export class RegistroCotizacionComponent implements OnInit {
              
            ){ } 
          
-           displayedColumns: string[] = ['id', 'fecha', 'correo', ];
+           displayedColumns: string[] = ['id', 'fecha', 'correo','eliminar' ];
            datosInsertados!: MatTableDataSource<any>;
            @ViewChild(MatPaginator ,{static: false }) listaCotizaciones!: MatPaginator;
            @ViewChild(MatSort, {static :true }) sortCotizaciones!: MatSort;
@@ -165,6 +165,39 @@ export class RegistroCotizacionComponent implements OnInit {
 
   
   }
+
+  eliminarregistrocotizacion(id :any ) {
+    Swal.fire({
+      title: 'Seguro!!',
+      text: 'Esta seguro que desea eliminar el resgirto.',
+      icon: 'question',
+      showConfirmButton: true,
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+    }).then(res => {
+      if (res.value) {
+        this.gestionUsuariosService.eliminarregistrocotizacion(id).subscribe(respuesta=> {
+  
+          if (respuesta.ok === true) {
+            Swal.fire({
+              title: 'OK',
+              text: `${respuesta.message}`,
+              icon: 'success'
+            });
+         
+            this.cargarListaCotizaciones();
+          } else if(respuesta.ok === false){
+            Swal.fire({
+              title: 'Mensaje',
+              text: `${respuesta.message}`,
+              icon: 'info'
+            });            
+        }
+        });
+  
+  } 
+  }
+  )}
   imagencotizacion(datos:any){
     console.log('datos',datos);
     this.imagenCotizacion = this.fb.group({

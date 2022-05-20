@@ -2,6 +2,9 @@
       <div class="container py-8">
         <div class="card rounded-3 text-black">
           <div class="text-center">
+            <br>
+            <br>
+            <br>
             <H2>LISTAR PRODUCTOS PARA VENTA</H2><br>
           </div>
      
@@ -40,7 +43,7 @@
                             <td mat-cell *matCellDef="let row"> {{row.precioventa}} </td>
                         </ng-container>
                           
-    
+                      
                           <ng-container matColumnDef="cantidad">
                               <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>CANTIDAD</h4> </th>
                               <td mat-cell *matCellDef="let row"> {{row.cantidad}} </td>
@@ -127,6 +130,16 @@
                         
                         
                       </div>     
+
+                      <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                        <mat-label>Ingrese su descripción  </mat-label>  
+                        <input matInput type="text"  placeholder="Descripcion">
+                        <small *ngIf="getDescripcion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
+                        <small *ngIf="getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
+                        <small *ngIf="getDescripcion.invalid  && getDescripcion.touched && !getDescripcion.errors?.minlength && !getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+                      </mat-form-field>
+                      </div>
                       <div class="col-md-6">
                       <mat-form-field class="example-full-width">
                       <label>Còdigo</label>
@@ -139,7 +152,7 @@
                     </div>
                  
                   <div class="col-md-6 form-group mt-4">
-                    <button type="submit" class="btn btn-primary">GUARDAR COMPRA</button>
+                    <button type="submit" class="btn btn-primary" style=" cursor: pointer; left: 150%; top: 94%;">GUARDAR COMPRA</button>
                     </div>
           
                   

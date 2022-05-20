@@ -23,12 +23,10 @@ declare interface RouteInfo {
      {path:'/cotizacion',title: 'cotizacion',  icon:'unarchive', class: '' },
      {path:'/registro-almacen',title: 'almacen',  icon:'unarchive', class: '' },
      {path:'/listar-usuariovendedor',title: 'usuario',  icon:'unarchive', class: '' },
-     {path:'/ventas',title:'ventas',   icon:'unarchive', class: '' },
      {path:'/registro-ventas',title: 'registroventas',  icon:'unarchive', class: '' },
      {path:'/registro-cotizacion',title: 'cotizacion',  icon:'unarchive', class: '' },
      {path:'/listar-clientes',title: 'clientes',  icon:'unarchive', class: '' },
      {path:'/productos-cliente',title: 'produto almacen',  icon:'unarchive', class: '' },
-     {path:'/ver-tienda',title: 'ver tienda',  icon:'unarchive', class: '' },
      {path: 'demoPages/login', title: 'Cerrar sesión',  icon:'power_settings_new', class: 'active-pro',  },
   
 ];

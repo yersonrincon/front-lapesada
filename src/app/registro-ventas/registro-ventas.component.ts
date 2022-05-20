@@ -19,7 +19,7 @@ export class RegistroVentasComponent implements OnInit {
    
   ) { }
 
- displayedColumns: string[] = ['id', 'fecha', 'precio','descripcion','cantidad',];
+ displayedColumns: string[] = ['id', 'fecha','descripcion','cantidad',];
  datosInsertados!: MatTableDataSource<any>;
  @ViewChild(MatPaginator ,{static: false }) listaVentas!: MatPaginator;
  @ViewChild(MatSort, {static :true }) sortVentas!: MatSort;

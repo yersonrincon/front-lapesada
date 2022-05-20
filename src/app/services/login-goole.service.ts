@@ -63,7 +63,7 @@ export class LoginGoogleService {
                       }
                       if(respuesta.roles === 3){
                         this.getdatosGmail();
-                        this.router.navigateByUrl('/ver-tienda');                   
+                        this.router.navigateByUrl('/productos-cliente');                   
                        }
                       this.loading = false;
                     } else {

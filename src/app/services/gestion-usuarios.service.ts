@@ -105,8 +105,10 @@ export class GestionUsuariosService {
   consultarListaProductos() {
     return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarListaProductos`, '');
   }
-
-
+  
+  consultarparacotizacion() {
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarparacotizacion`, '');
+  }
   consultarCantidadventas() {
     return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarCantidadventas`, '');
   }
@@ -142,6 +144,9 @@ export class GestionUsuariosService {
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/eliminarMarca`, {id});
  }
 
+ eliminarregistrocotizacion(id: any) {
+  return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/eliminarregistrocotizacion`, {id});
+ }
  eliminarClientealmacen(id: any) {
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/eliminarClientealmacen`, {id});
  }
@@ -200,6 +205,10 @@ export class GestionUsuariosService {
 
  consultarcategorias(){
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarcategorias`, '');
+}
+
+consultaralmacenes(){
+  return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultaralmacenes`, '');
 }
 
 consultarmarca(){

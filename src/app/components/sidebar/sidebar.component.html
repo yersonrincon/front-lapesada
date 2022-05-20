@@ -138,12 +138,7 @@
                 <p>registro cotizacion</p>
             </a>
         </li>
-        <li routerLinkActive="active" *ngIf="decoded.roles ===1 || decoded.roles ===2"class="nav-item">
-            <a class="nav-link" routerLink="/ventas">
-                <i class="material-icons"> receipt_long</i>
-                <p>ventas</p>
-            </a>
-        </li>
+     
         <li routerLinkActive="active" *ngIf="decoded.roles ===1 || decoded.roles ===2"class="nav-item">
             <a class="nav-link" routerLink="/listar-clientes">
                 <i class="material-icons">person_add</i>
@@ -151,12 +146,7 @@
             </a>
         </li>
 
-        <li routerLinkActive="active" *ngIf="decoded.roles ===3"class="nav-item">
-            <a class="nav-link" routerLink="/ver-tienda">
-                <i class="material-icons">storefront</i>
-                <p>ver tienda</p>
-            </a>
-        </li>
+
         
         <li routerLinkActive="active" *ngIf="decoded.roles ===3"class="nav-item">
             <a class="nav-link" routerLink="/productos-cliente">

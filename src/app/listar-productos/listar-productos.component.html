@@ -1,6 +1,9 @@
 <div class="col-md-12 mb-3 form-group" > 
   <div class="container py-8">
     <div class="card rounded-3 text-black">
+      <br>
+       <br>
+      <br>
       <div class="text-center">
         <H2>LISTAR PRODUCTOS</H2><br>
       </div>
@@ -145,14 +148,15 @@
               <mat-form-field class="example-full-width">
               <mat-label>Ingrese su precio venta </mat-label>  
               <input matInput type="number"  formControlName="precioventa" placeholder="Precioventa">
+              <span matPrefix>$&nbsp;</span>
               <small *ngIf="getPrecioventa.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1 carácteres</small>
               <small *ngIf="getPrecioventa.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
               <small *ngIf="getPrecioventa.invalid  && getPrecioventa.touched && !getPrecioventa.errors?.minlength && !getPrecioventa.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
             </mat-form-field>
             </div>
            
-           
-              <div class="col-md-6 ">
+     
+              <div class="col-md-6 form-group ">
                 <mat-form-field appearance="fill">
                   <mat-label>Categoria</mat-label>
                   <select matNativeControl formControlName="categoria">
@@ -162,7 +166,7 @@
                 </mat-form-field>
                 </div>
         
-                <div class="col-md-6 ">
+                <div class="col-md-6 form-group">
                   <mat-form-field appearance="fill">
                     <mat-label>Marca</mat-label>
                     <select matNativeControl formControlName="marca">
@@ -172,6 +176,16 @@
                   </mat-form-field>
                   </div>
 
+                  
+                <div class="col-md-6 form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>ALMACEN</mat-label>
+                    <select matNativeControl formControlName="almacen">
+                      <option *ngFor="let almacen of  listaAlmacen" [value]="almacen.id"> {{almacen.nombre}}</option>   
+                    </select>
+                    <small *ngIf="getAlmacen?.errors?.required  && getAlmacen?.touched" class="text-danger animated fadeIn">el campo es requerido</small>
+                  </mat-form-field>
+                  </div>
           <div class="col-md-6">
             <mat-form-field class="example-full-width">
             <mat-label>Ingrese su descripción  </mat-label>  
@@ -197,8 +211,6 @@
             <mat-form-field appearance="fill" floatLabel="always">
               <mat-label>Ingrese su cantidad</mat-label>
               <input matInput type="number"   formControlName="cantidad"class="example-right-align" placeholder="0">
-              <span matPrefix>$&nbsp;</span>
-      
               <small *ngIf="getCantidad.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1 carácteres</small>
               <small *ngIf="getCantidad.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
               <small *ngIf="getCantidad.invalid  && getCantidad.touched && !getCantidad.errors?.minlength && !getCantidad.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
@@ -218,12 +230,12 @@
         </div>
       
         <div class="col-md-6 form-group mt-4">
-          <button type="submit" class="btn btn-primary"  *ngIf="!accionEditar" style=" cursor: pointer; left: 150%; top: 94%;">GUARDAR DATOS</button>
+          <button type="submit" class="btn btn-primary"  *ngIf="!accionEditar" style=" cursor: pointer; left: 45%; top: 94%;">GUARDAR DATOS</button>
           </div>
 
           <div class="col-md-6 form-group mt-4">
   
-            <button type="submit" class="btn btn-primary" *ngIf="accionEditar"  style=" cursor: pointer; left: 60%; top: 94%;" >ACTUALIZAR</button>
+            <button type="submit" class="btn btn-primary" *ngIf="accionEditar"  style=" cursor: pointer; left: 160%; top: 94%;" >ACTUALIZAR</button>
 
         </div>
       </div>       
@@ -248,9 +260,7 @@
 </div>
 <div class="modal-body">    
   <form [formGroup]="imagenProducto" > 
-    <div class="text-center">
-      <input type="text" id="nombre" formControlName ="nombre" >
-    </div>
+    
 
 
     <div class="col-md-6 form-group">

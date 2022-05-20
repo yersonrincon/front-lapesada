@@ -15,9 +15,9 @@ import { RegistroCotizacionComponent } from 'app/registro-cotizacion/registro-co
 import { ListarClientesComponent } from 'app/listar-clientes/listar-clientes.component';
 //import { PaginaClienteComponent } from 'app/pagina-cliente/pagina-cliente.component';
 import { GuardGuard } from 'app/guards/guard.guard';
-import { VerTiendaComponent } from 'app/ver-tienda/ver-tienda.component';
+
 import { ProductosClienteComponent } from 'app/productos-cliente/productos-cliente.component';
-import { VentasComponent } from 'app/ventas/ventas.component';
+
 //import { VigilateGuard } from 'app/demoPages/guards/vigilate.guard';
 
 
@@ -71,7 +71,6 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'listar-proveedor', canActivate: [GuardGuard],component: ListarProveeedorComponent},
     {path:'listar-marcas',  canActivate: [GuardGuard],component: ListarMarcasComponent},
     {path:'cotizacion',  canActivate: [GuardGuard],component:CotizacionComponent},
-    {path:'ventas',  canActivate: [GuardGuard],component:VentasComponent},
     {path:'listar-categorias', canActivate: [GuardGuard],component:ListarCategoriasComponent},
     {path:'listar-ventas',  canActivate: [GuardGuard],component:ListarVentasComponent},
     {path:'listar-productos', canActivate: [GuardGuard],component:ListarProductosComponent},
@@ -80,7 +79,6 @@ export const AdminLayoutRoutes: Routes = [
     {path:'registro-ventas', canActivate: [GuardGuard],component:RegistroVentasComponent},
     {path:'registro-cotizacion', canActivate: [GuardGuard],component:RegistroCotizacionComponent},
     {path:'listar-clientes', canActivate: [GuardGuard],component:ListarClientesComponent},
-    {path:'ver-tienda', canActivate: [GuardGuard],component:VerTiendaComponent},
     {path:'productos-cliente', canActivate: [GuardGuard],component:ProductosClienteComponent},
    
    // {path:'pagina-cliente',component:PaginaClienteComponent},

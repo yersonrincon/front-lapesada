@@ -42,8 +42,6 @@ import { ListarUsuariovendedorComponent } from 'app/listar-usuariovendedor/lista
 import { RegistroVentasComponent } from 'app/registro-ventas/registro-ventas.component';
 import { RegistroCotizacionComponent } from 'app/registro-cotizacion/registro-cotizacion.component';
 import { ListarClientesComponent } from 'app/listar-clientes/listar-clientes.component';
-import { VerTiendaComponent } from 'app/ver-tienda/ver-tienda.component';
-import { VentasComponent } from 'app/ventas/ventas.component';
 import { ProductosClienteComponent } from 'app/productos-cliente/productos-cliente.component';
 
 
@@ -77,11 +75,9 @@ import { ProductosClienteComponent } from 'app/productos-cliente/productos-clien
     ListarMarcasComponent,
 
     ProductosClienteComponent,
-    VerTiendaComponent,
     ListarProveeedorComponent,
     ListarProductosComponent,
     ListarVentasComponent,
-    VentasComponent,
     CotizacionComponent,
     RegistroAlmacenComponent,
     ListarUsuariovendedorComponent,

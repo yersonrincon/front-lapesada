@@ -14,3 +14,7 @@ img {
 
 
 
+.fa-trash-o {
+  content: "\f044";
+  color: rgb(235, 94, 13);
+}

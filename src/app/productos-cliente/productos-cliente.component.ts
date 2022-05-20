@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import jsPDF from 'jspdf';
+import pdfMake from 'pdfmake/build/pdfmake';
 import html2canvas from 'html2canvas'
 
 @Component({
@@ -29,6 +30,7 @@ export class ProductosClienteComponent implements OnInit {
   element: any;
   blob:any;
   total:number;
+  dd: any;
   listaCategorias:any;
   listaMarca:any;
   cantidades:any;
@@ -54,12 +56,7 @@ export class ProductosClienteComponent implements OnInit {
      this.cargarListaEmpresa();
     
 
-  /*  this.total = this.totales.reduce((
-      acc,
-      obj,
-    ) => acc + (obj.precioventa + obj.precioventa),
-    0);
-    console.log("Total: ", this.total) */
+ 
      
     }
 
@@ -169,35 +166,61 @@ export class ProductosClienteComponent implements OnInit {
         this.productosCarrito.splice(index,1);
       }
       });
-console.log(this.productosCarrito)
+      this.total = 0;
+      this.productosCarrito.forEach(datos => {  
+        this.total = Number(datos.precioventa) + this.total;
+        console.log("Total: ", this.total)
+  
+      });
 
   }
 
 
-  ownloadPDF() {
-    // Extraemos el
-    const DATA = document.getElementById('htmlData');
-    const doc = new jsPDF('p', 'pt', 'a4');
-    const options = {
-      background: 'white',
-      scale: 3
-    };
-    html2canvas(DATA, options).then((canvas) => {
-
-      const img = canvas.toDataURL('image/PNG');
-
-      // Add image Canvas to PDF
-      const bufferX = 15;
-      const bufferY = 15;
-      const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-      return doc;
-    }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
-     this.blob = doc.output('blob');
+  downloadPDF() {
+   
+    const newArray =[ [{text:'Nombre'}, {text:'Precio'}, {text:'cantidad'}]];
+    this.productosCarrito.forEach(datos=>{
+      newArray.push([{ text: datos.nombre},{ text: datos.precioventa},{ text: datos.cantidad}])
     });
-  }
+  
+
+    console.log(newArray);
+    this.dd = {
+      content: [
+        {
+          
+          table: {
+            widths:['*', '*', '*'],
+            body: 
+              //['Nombre', 'Precio', 'cantidad'],
+              newArray
+           
+          }
+        },
+        {
+          text: [
+            `TOTAL :${formatterPeso.format(this.total)}`
+          ],
+          style: 'header',
+          bold: false
+        }
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          alignment: 'right'
+        }
+      }
+    }
+    pdfMake.createPdf(this.dd).download('archivo');
   }
 
+ 
+}
+
+const formatterPeso = new Intl.NumberFormat('es-CO', {
+  style: 'currency',
+  currency: 'COP',
+  minimumFractionDigits: 0
+})
