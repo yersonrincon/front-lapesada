@@ -75,9 +75,18 @@
                       <!-- Row shown when there is no matching data. -->             
                 
                  
-                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                  
                   </thead>
                       </table>
+                      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+   
+              <div class="col-md-6 form-group mt-4">
+                  <button class="btn btn-primary" type="button" 
+                  (click)="openModalRegistroCategorias(templateRegistro, '')"> 
+                  REGISTAR CATEGORIA</button>    
+                  </div>
           </div>
                       </div>
                   </div>
@@ -85,20 +94,11 @@
           </div>
       </div>
   </div>
-  <div class="col-md-6 form-group mt-4">
-    <button class="btn btn-primary" type="button" 
-    (click)="openModalRegistroCategorias(templateRegistro, '')"> 
-    REGISTAR CATEGORIA</button>    
-    </div>
-
 </div>
 
                      
-               
 
 
-   
-          
                        
 
 

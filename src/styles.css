@@ -185,7 +185,7 @@ body {
   
   /* line 94, /Applications/MAMP/htdocs/palash/cl/july 2019/190 Pexcon Construction/190 Pexcon Construction html/sass/_common.scss */
   p {
-    color: #83868c;
+    color: #1348b3;
     font-family: "Roboto", sans-serif;
     line-height: 1.929;
     font-size: 20px;
@@ -6371,7 +6371,7 @@ body {
   .footer-area .single-footer-widget p {
     font-size: 14px;
     line-height: 1.8;
-    color: #83868c;
+    color: #174fc1;
   }
   
   /* line 34, /Applications/MAMP/htdocs/palash/cl/july 2019/190 Pexcon Construction/190 Pexcon Construction html/sass/_footer.scss */
@@ -6404,7 +6404,7 @@ body {
   
   /* line 50, /Applications/MAMP/htdocs/palash/cl/july 2019/190 Pexcon Construction/190 Pexcon Construction html/sass/_footer.scss */
   .footer-area .single-footer-widget ul li a {
-    color: #83868c;
+    color: #1a47a1;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     font-size: 15px;
@@ -6682,13 +6682,43 @@ body {
   .footer-area .btn_1 {
     margin-top: 0px;
   }
+  .sidebar .sidebar-wrapper {
+    position: relative;
+    height: calc(100vh - 75px);
+    overflow: auto;
+    background: #ffffff;
+    width: 260px;
+    z-index: 4;
+    padding-bottom: 30px;
+}
   
   
+.sidebar .logo {
+  padding: 15px 0px;
+  margin: 0;
+  background: #ffffff;
+  display: block;
+  position: relative;
+  z-index: 4;
+}
   
   
+
   
   
+.fa-trash-o {
+  content: "\f044";
+  color: rgb(235, 94, 13);
+}
+.fa-edit:before {
+  content: "\f044";
+  color: rgb(9, 83, 219);
+}
   
+.fa-eye:before {
+  content: "\f06e";
+  color: rgb(0, 129, 39);
+}
   
   
   
@@ -6725,32 +6755,7 @@ body {
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   
   
   

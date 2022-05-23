@@ -1,31 +1,27 @@
-<div class="col-md-12 mb-3 form-group" > 
-    <div class="container py-8">
-      <div class="card rounded-3 text-black">
-        <div class="text-center">
-          <br>
-          <br>
-          <br>
-          <H2>REGISRO ALMACEN</H2><br>
-        </div>
-   
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Registro Almacen</h4>
+                   
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
             <div *ngIf="datos">
-              <div class="col-md-4 mb-3 form-group">
-                <i class="fa fa-search mr-2" style="font-size: 20px;"></i>                  
-           
-            <div class="col-md-8 mb-3 form-group text-right">     
+             
             
             <mat-form-field>
               <mat-label>buscar</mat-label>
               <input matInput (keyup)="applyFilterAlmacen($event)" placeholder="Filtro" #input>
           </mat-form-field>   
-        </div> 
-      </div>
-              
+     
                     
                      
                       
-                        <table mat-table [dataSource]="datosInsertados" class="mat-elevation-z2" matSort>
-                        <!-- idApiKey Column -->
+                        <table mat-table [dataSource]="datosInsertados" class="table" matSort>
+                          <thead class= "text-primary">
                         <ng-container matColumnDef="id">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>ID</h4> </th>
                             <td mat-cell *matCellDef="let row"> {{row.id}} </td>
@@ -76,9 +72,7 @@
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   
-                        <!-- isActiveKey Column -->
-                
-                        <!-- Row shown when there is no matching data. -->             
+                          </thead>
                     </table>
                   
                       <mat-paginator matSort [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
@@ -91,10 +85,14 @@
                     <button class="btn btn-primary" type="button" 
                     (click)="openModalRegistroEmpresa(templateRegistro, '')"> 
                     REGISTRAR EMPRESA </button>    
+                  </div>
+                </div>
+                            </div>
+                        </div>
                     </div>
-  </div> 
-  </div>
-
+                </div>
+                </div>
+                </div>
 
 <ng-template #templateRegistro>
   <div class="modal-content">
