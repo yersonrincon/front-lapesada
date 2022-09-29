@@ -49,9 +49,6 @@ import { subscribeOn } from 'rxjs-compat/operator/subscribeOn';
             }
           }
     
-  
-    
-               
                signOut(): void {
                 localStorage.removeItem('tokenlapesada');
         
