@@ -9,7 +9,6 @@
           <div class="card-body">
             <div class="table-responsive">
               <div *ngIf="datos">
-
                 <mat-form-field>
                   <mat-label>buscar</mat-label>
                   <input matInput (keyup)="applyFilterMarca($event)" placeholder="Filtro" #input>
@@ -36,7 +35,7 @@
                       </th>
                       <td mat-cell *matCellDef="let row"> {{row.descripcion}} </td>
                     </ng-container>
-                    
+
                     <ng-container matColumnDef="estado">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
                       <td mat-cell *matCellDef="let row">

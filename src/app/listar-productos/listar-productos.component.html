@@ -1,249 +1,264 @@
 <div class="main-content">
   <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Listar Productos</h4>
-                   
-                  </div>
-                  <div class="card-body">
-                      <div class="table-responsive">
- 
-          <div *ngIf="datos">
-      
-               
-                  <mat-form-field>
-                    <mat-label>buscar</mat-label>
-                    <input matInput (keyup)="applyFilterProductos($event)" placeholder="Filtro" #input>
-                </mat-form-field>   
-    
-               
-                    
-                      <table mat-table [dataSource]="datosInsertados" width="100" class="table" matSort>
-                        <thead class= "text-primary">
-                      <ng-container matColumnDef="id">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>ID</h4> </th>
-                          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-                      </ng-container>
-
-                      <ng-container matColumnDef="nombre">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>NOMBRE</h4>  </th>
-                          <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
-                      </ng-container>
-
-                      <ng-container matColumnDef="marca">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>MARCA</h4> </th>
-                          <td mat-cell *matCellDef="let row"> {{row.nombremarca}} </td>
-                      </ng-container>
-
-                    
-
-                      <ng-container matColumnDef="categoria">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>CATEGORIA</h4></th>
-                          <td mat-cell *matCellDef="let row"> {{row.nombrecategoria}} </td>
-                      </ng-container>
-                      <ng-container matColumnDef="precioventa">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>PRECIO</h4></th>
-                        <td mat-cell *matCellDef="let row"> {{row.precioventa | currency}} </td>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Listar Productos</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <div *ngIf="datos">
+                <mat-form-field>
+                  <mat-label>buscar</mat-label>
+                  <input matInput (keyup)="applyFilterProductos($event)" placeholder="Filtro" #input>
+                </mat-form-field>
+                <table mat-table [dataSource]="datosInsertados" width="100" class="table" matSort>
+                  <thead class="text-primary">
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>ID</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
                     </ng-container>
-                      <ng-container matColumnDef="descripcion">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>DESCRIPCION</h4> </th>
-                          <td mat-cell *matCellDef="let row"> {{row.descripcion}} </td>
-                      </ng-container>
-
-                      <ng-container matColumnDef="cantidad">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>CANTIDAD</h4> </th>
-                          <td mat-cell *matCellDef="let row"> {{row.cantidad}} </td>
-                      </ng-container>
-                      <ng-container matColumnDef="codigo">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>CODIGO</h4>  </th>
-                        <td mat-cell *matCellDef="let row"> {{row.codigo}} </td>
+                    <ng-container matColumnDef="nombre">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>NOMBRE</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
                     </ng-container>
-                      <ng-container matColumnDef="imagen" >
-                        <th mat-header-cell *matHeaderCellDef>  <h4>IMAGEN</h4></th>
-                        <td mat-cell *matCellDef="let row">  
-                          <i class="fa fa-eye " (click)="openModalVerIMG(templateVerIMG, row)"></i>                             
-                      </td>     
-                    </ng-container>   
-                
-
-                    <ng-container matColumnDef="editar" >
-                      <th mat-header-cell *matHeaderCellDef>  <h4>EDITAR</h4></th>
-                      <td mat-cell *matCellDef="let row">  
-                        <i  class="fa fa-edit botonEditar " (click)="openModalRegistroProducto(templateRegistro, row)"></i>                             
-                    </td>     
-                  </ng-container>    
-                  <ng-container matColumnDef="eliminar">
-                    <th mat-header-cell *matHeaderCellDef> <h4>ELIMINAR</h4></th>
-                    <td mat-cell *matCellDef="let row">
-                  <i class="fa fa-trash-o " (click)="eliminarProducto(row.id)"></i>
-                    </td>
-                </ng-container>
-        
-
-                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-                      <!-- isActiveKey Column -->
-              
-                      <!-- Row shown when there is no matching data. -->             
-                        </thead>
-                    </table>
-           
-                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-           
-              
+                    <ng-container matColumnDef="marca">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>MARCA</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.nombremarca}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="categoria">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>CATEGORIA</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.nombrecategoria}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="precioventa">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>PRECIO</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.precioventa | currency}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="descripcion">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>DESCRIPCION</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.descripcion}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="cantidad">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>CANTIDAD</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.cantidad}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="codigo">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>CODIGO</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.codigo}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="imagen">
+                      <th mat-header-cell *matHeaderCellDef>
+                        <h4>IMAGEN</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row">
+                        <i class="fa fa-eye " (click)="openModalVerIMG(templateVerIMG, row)"></i>
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="editar">
+                      <th mat-header-cell *matHeaderCellDef>
+                        <h4>EDITAR</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row">
+                        <i class="fa fa-edit botonEditar "
+                          (click)="openModalRegistroProducto(templateRegistro, row)"></i>
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="eliminar">
+                      <th mat-header-cell *matHeaderCellDef>
+                        <h4>ELIMINAR</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row">
+                        <i class="fa fa-trash-o " (click)="eliminarProducto(row.id)"></i>
+                      </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </thead>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
               </div>
-         
-   
-          <div class="col-md-6 form-group mt-4">
-          <button class="btn btn-primary" type="button" 
-          (click)="openModalRegistroProducto(templateRegistro, '')"> 
-          REGISTAR PRODUCTOS</button>  
-          <button class="btn btn-primary" type="button" 
-          [routerLink]="['/cotizacion']">
-        REGISTRO COTIZACION </button>     
+              <div class="col-md-6 form-group mt-4">
+                <button class="btn btn-primary" type="button" (click)="openModalRegistroProducto(templateRegistro, '')">
+                  REGISTAR PRODUCTOS</button>
+                <button class="btn btn-primary" type="button" [routerLink]="['/cotizacion']">
+                  REGISTRO COTIZACION </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    
+  </div>
+</div>
+
 
 <ng-template #templateRegistro>
-<div class="modal-content">
-  <div class="modal-body text-center">
-   
+  <div class="modal-content">
+    <div class="modal-body text-center">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeVentana()">
-          <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
       </button>
-  </div>
-
-  
-
-
-
-  <form [formGroup]="registroProducto" (ngSubmit)="editarproductos()">
-        
-    <div class="card-body p-md-2 mx-md-1">
-      <div class="col-lg-12">
-    <div class="text-center">
-      <H2>LISTAR PRODUCTOS</H2><br>
     </div>
-      <div class="form-row">       
-        <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-            <mat-label> Ingrese el nombre del producto</mat-label>  
-            <input matInput type="text"  formControlName="nombre" placeholder="Nombre">
-                <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-                <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                <small *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+    <form [formGroup]="registroProducto" (ngSubmit)="editarproductos()">
+      <div class="card-body p-md-2 mx-md-1">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <H2>LISTAR PRODUCTOS</H2><br>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <mat-label> Ingrese el nombre del producto</mat-label>
+                <input matInput type="text" formControlName="nombre" placeholder="Nombre">
+                <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6
+                  carácteres</small>
+                <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50
+                  carácteres</small>
+                <small
+                  *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength"
+                  class="text-danger animated fadeIn">Campo requerido</small>
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="example-full-width">
-              <mat-label>Ingrese su precio venta </mat-label>  
-              <input matInput type="number"  formControlName="precioventa" placeholder="Precioventa">
-              <span matPrefix>$&nbsp;</span>
-              <small *ngIf="getPrecioventa.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1 carácteres</small>
-              <small *ngIf="getPrecioventa.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-              <small *ngIf="getPrecioventa.invalid  && getPrecioventa.touched && !getPrecioventa.errors?.minlength && !getPrecioventa.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-            </mat-form-field>
+                <mat-label>Ingrese su precio venta </mat-label>
+                <input matInput type="number" formControlName="precioventa" placeholder="Precioventa">
+                <span matPrefix>$&nbsp;</span>
+                <small *ngIf="getPrecioventa.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1
+                  carácteres</small>
+                <small *ngIf="getPrecioventa.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50
+                  carácteres</small>
+                <small
+                  *ngIf="getPrecioventa.invalid  && getPrecioventa.touched && !getPrecioventa.errors?.minlength && !getPrecioventa.errors?.maxlength"
+                  class="text-danger animated fadeIn">Campo requerido</small>
+              </mat-form-field>
             </div>
-           
-     
-              <div class="col-md-6 form-group ">
-                <mat-form-field appearance="fill">
-                  <mat-label>Categoria</mat-label>
-                  <select matNativeControl formControlName="categoria">
-                    <option *ngFor="let categoria of listaCategorias" [value]="categoria.id"> {{categoria.nombre}}</option>   
-                  </select>
-                  <small *ngIf="getCategoria?.errors?.required  && getCategoria?.touched" class="text-danger animated fadeIn">el campo es requerido</small>
-                </mat-form-field>
+
+
+            <div class="col-md-6 form-group ">
+              <mat-form-field appearance="fill">
+                <mat-label>Categoria</mat-label>
+                <select matNativeControl formControlName="categoria">
+                  <option *ngFor="let categoria of listaCategorias" [value]="categoria.id"> {{categoria.nombre}}
+                  </option>
+                </select>
+                <small *ngIf="getCategoria?.errors?.required  && getCategoria?.touched"
+                  class="text-danger animated fadeIn">el campo es requerido</small>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <mat-form-field appearance="fill">
+                <mat-label>Marca</mat-label>
+                <select matNativeControl formControlName="marca">
+                  <option *ngFor="let marca of listaMarca" [value]="marca.id"> {{marca.nombre}}</option>
+                </select>
+                <small *ngIf="getMarca?.errors?.required  && getMarca?.touched" class="text-danger animated fadeIn">el
+                  campo es requerido</small>
+              </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6 form-group">
+              <mat-form-field appearance="fill">
+                <mat-label>ALMACEN</mat-label>
+                <select matNativeControl formControlName="almacen">
+                  <option *ngFor="let almacen of  listaAlmacen" [value]="almacen.id"> {{almacen.nombre}}</option>
+                </select>
+                <small *ngIf="getAlmacen?.errors?.required  && getAlmacen?.touched"
+                  class="text-danger animated fadeIn">el campo es requerido</small>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Ingrese su descripción </mat-label>
+                <input matInput type="text" formControlName="descripcion" placeholder="Descripcion">
+                <small *ngIf="getDescripcion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6
+                  carácteres</small>
+                <small *ngIf="getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50
+                  carácteres</small>
+                <small
+                  *ngIf="getDescripcion.invalid  && getDescripcion.touched && !getDescripcion.errors?.minlength && !getDescripcion.errors?.maxlength"
+                  class="text-danger animated fadeIn">Campo requerido</small>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Ingrese el Codigo </mat-label>
+                <input matInput type="text" formControlName="codigo" placeholder="Codigo">
+                <small *ngIf="getCodigo.errors?.minlength" class="text-danger animated fadeIn">Mínimo 4
+                  carácteres</small>
+                <small *ngIf="getCodigo.errors?.maxlength" class="text-danger animated fadeIn">Máximo 15
+                  carácteres</small>
+                <small
+                  *ngIf="getCodigo.invalid  && getCodigo.touched && !getCodigo.errors?.minlength && !getCodigo.errors?.maxlength"
+                  class="text-danger animated fadeIn">Campo requerido</small>
+              </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label>Ingrese su cantidad</mat-label>
+                <input matInput type="number" formControlName="cantidad" class="example-right-align" placeholder="0">
+                <small *ngIf="getCantidad.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1
+                  carácteres</small>
+                <small *ngIf="getCantidad.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50
+                  carácteres</small>
+                <small
+                  *ngIf="getCantidad.invalid  && getCantidad.touched && !getCantidad.errors?.minlength && !getCantidad.errors?.maxlength"
+                  class="text-danger animated fadeIn">Campo requerido</small>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <div role="group">
+                <div class="file-container">
+                  <img *ngIf="image" [src]="'data:image/jpg;base64,'+this.image" alt="" class="rounded-circle"
+                    (click)="openInputFile()">
+                  <img *ngIf="!image" [src]="logo" alt="" (click)="openInputFile()">
+                  <input type="file" formControlName="imagen" id="file-1" (change)="handleFileSelect($event)"
+                    accept=".png, .jpg, .jpeg" />
+                  <label *ngIf="!!seleccioneArchivo" for="file-1"><span
+                      class="iborrainputfile">{{seleccioneArchivo}}</span></label>
                 </div>
-        
-                <div class="col-md-6 form-group">
-                  <mat-form-field appearance="fill">
-                    <mat-label>Marca</mat-label>
-                    <select matNativeControl formControlName="marca">
-                      <option *ngFor="let marca of listaMarca" [value]="marca.id"> {{marca.nombre}}</option>   
-                    </select>
-                    <small *ngIf="getMarca?.errors?.required  && getMarca?.touched" class="text-danger animated fadeIn">el campo es requerido</small>
-                  </mat-form-field>
-                  </div>
+              </div>
+            </div>
 
-                  
-                <div class="col-md-6 form-group">
-                  <mat-form-field appearance="fill">
-                    <mat-label>ALMACEN</mat-label>
-                    <select matNativeControl formControlName="almacen">
-                      <option *ngFor="let almacen of  listaAlmacen" [value]="almacen.id"> {{almacen.nombre}}</option>   
-                    </select>
-                    <small *ngIf="getAlmacen?.errors?.required  && getAlmacen?.touched" class="text-danger animated fadeIn">el campo es requerido</small>
-                  </mat-form-field>
-                  </div>
-          <div class="col-md-6">
-            <mat-form-field class="example-full-width">
-            <mat-label>Ingrese su descripción  </mat-label>  
-            <input matInput type="text"  formControlName="descripcion" placeholder="Descripcion">
-            <small *ngIf="getDescripcion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-            <small *ngIf="getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-            <small *ngIf="getDescripcion.invalid  && getDescripcion.touched && !getDescripcion.errors?.minlength && !getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-          </mat-form-field>
-          </div>
-          
-          <div class="col-md-6">
-            <mat-form-field class="example-full-width">
-            <mat-label>Ingrese el Codigo   </mat-label>  
-            <input matInput type="text"  formControlName="codigo" placeholder="Codigo">
-            <small *ngIf="getCodigo.errors?.minlength" class="text-danger animated fadeIn">Mínimo 4 carácteres</small>
-            <small *ngIf="getCodigo.errors?.maxlength" class="text-danger animated fadeIn">Máximo 15 carácteres</small>
-            <small *ngIf="getCodigo.invalid  && getCodigo.touched && !getCodigo.errors?.minlength && !getCodigo.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-          </mat-form-field>
-          </div>
-       
-        
-          <div class="col-md-6">
-            <mat-form-field appearance="fill" floatLabel="always">
-              <mat-label>Ingrese su cantidad</mat-label>
-              <input matInput type="number"   formControlName="cantidad"class="example-right-align" placeholder="0">
-              <small *ngIf="getCantidad.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1 carácteres</small>
-              <small *ngIf="getCantidad.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-              <small *ngIf="getCantidad.invalid  && getCantidad.touched && !getCantidad.errors?.minlength && !getCantidad.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
-            </mat-form-field>
-          </div>
-        <div class="col-md-6">
-          <div role="group">
-            <div class="file-container">
-              <img *ngIf="image" [src]="'data:image/jpg;base64,'+this.image" alt="" class="rounded-circle" (click)="openInputFile()">
-              <img *ngIf="!image" [src]="logo" alt="" (click)="openInputFile()">
-              <input type="file" formControlName="imagen" id="file-1" (change)="handleFileSelect($event)"
-                accept=".png, .jpg, .jpeg" />
-              <label *ngIf="!!seleccioneArchivo" for="file-1"><span
-                  class="iborrainputfile">{{seleccioneArchivo}}</span></label>
+            <div class="col-md-6 form-group mt-4">
+              <button type="submit" class="btn btn-primary" *ngIf="!accionEditar"
+                style=" cursor: pointer; left: 45%; top: 94%;">GUARDAR DATOS</button>
+            </div>
+
+            <div class="col-md-6 form-group mt-4">
+
+              <button type="submit" class="btn btn-primary" *ngIf="accionEditar"
+                style=" cursor: pointer; left: 160%; top: 94%;">ACTUALIZAR</button>
+
             </div>
           </div>
         </div>
-      
-        <div class="col-md-6 form-group mt-4">
-          <button type="submit" class="btn btn-primary"  *ngIf="!accionEditar" style=" cursor: pointer; left: 45%; top: 94%;">GUARDAR DATOS</button>
-          </div>
-
-          <div class="col-md-6 form-group mt-4">
-  
-            <button type="submit" class="btn btn-primary" *ngIf="accionEditar"  style=" cursor: pointer; left: 160%; top: 94%;" >ACTUALIZAR</button>
-
-        </div>
-      </div>       
       </div>
-    </div>
-  </form>
-      </div>
-       
+    </form>
+  </div>
+
 
 
 
@@ -252,28 +267,24 @@
 
 <ng-template #templateVerIMG>
 
-<div class="modal-header" >
+  <div class="modal-header">
 
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeVentana()">
-        <span aria-hidden="true">&times;</span>
+      <span aria-hidden="true">&times;</span>
     </button>
-</div>
-<div class="modal-body">    
-  <form [formGroup]="imagenProducto" > 
-    
-
-
-    <div class="col-md-6 form-group">
-      <div role="group">
-      </div>              
-    </div>
-    <div class="text-center">
-        <img src="{{'data:image/jpg;base64,' + this.image}}"height="300" />
-    </div>             
-  </form>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="imagenProducto">
+      <div class="col-md-6 form-group">
+        <div role="group">
+        </div>
       </div>
-        
-      <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
-        <p style="font-size: 20px; color: white">Por favor, espere.</p>
-      </ngx-spinner>
-</ng-template> 
+      <div class="text-center">
+        <img src="{{'data:image/jpg;base64,' + this.image}}" height="300" />
+      </div>
+    </form>
+  </div>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Por favor, espere.</p>
+  </ngx-spinner>
+</ng-template>
