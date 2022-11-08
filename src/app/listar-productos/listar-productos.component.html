@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
+          <div class="card-header card-header-success">
             <h4 class="card-title ">Listar Productos</h4>
           </div>
           <div class="card-body">
@@ -95,9 +95,9 @@
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
               </div>
               <div class="col-md-6 form-group mt-4">
-                <button class="btn btn-primary" type="button" (click)="openModalRegistroProducto(templateRegistro, '')">
+                <button class="btn btn-warning" type="button" (click)="openModalRegistroProducto(templateRegistro, '')">
                   REGISTAR PRODUCTOS</button>
-                <button class="btn btn-primary" type="button" [routerLink]="['/cotizacion']">
+                <button class="btn btn-warning" type="button" [routerLink]="['/cotizacion']">
                   REGISTRO COTIZACION </button>
               </div>
             </div>
@@ -150,8 +150,6 @@
                   class="text-danger animated fadeIn">Campo requerido</small>
               </mat-form-field>
             </div>
-
-
             <div class="col-md-6 form-group ">
               <mat-form-field appearance="fill">
                 <mat-label>Categoria</mat-label>
@@ -174,8 +172,6 @@
                   campo es requerido</small>
               </mat-form-field>
             </div>
-
-
             <div class="col-md-6 form-group">
               <mat-form-field appearance="fill">
                 <mat-label>ALMACEN</mat-label>
@@ -184,6 +180,19 @@
                 </select>
                 <small *ngIf="getAlmacen?.errors?.required  && getAlmacen?.touched"
                   class="text-danger animated fadeIn">el campo es requerido</small>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 form-group">
+              <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label>Ingrese su cantidad</mat-label>
+                <input matInput type="number" formControlName="cantidad" class="example-right-align" placeholder="0">
+                <small *ngIf="getCantidad.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1
+                  carácteres</small>
+                <small *ngIf="getCantidad.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50
+                  carácteres</small>
+                <small
+                  *ngIf="getCantidad.invalid  && getCantidad.touched && !getCantidad.errors?.minlength && !getCantidad.errors?.maxlength"
+                  class="text-danger animated fadeIn">Campo requerido</small>
               </mat-form-field>
             </div>
             <div class="col-md-6">
@@ -199,7 +208,6 @@
                   class="text-danger animated fadeIn">Campo requerido</small>
               </mat-form-field>
             </div>
-
             <div class="col-md-6">
               <mat-form-field class="example-full-width">
                 <mat-label>Ingrese el Codigo </mat-label>
@@ -213,25 +221,10 @@
                   class="text-danger animated fadeIn">Campo requerido</small>
               </mat-form-field>
             </div>
-
-
-            <div class="col-md-6">
-              <mat-form-field appearance="fill" floatLabel="always">
-                <mat-label>Ingrese su cantidad</mat-label>
-                <input matInput type="number" formControlName="cantidad" class="example-right-align" placeholder="0">
-                <small *ngIf="getCantidad.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1
-                  carácteres</small>
-                <small *ngIf="getCantidad.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50
-                  carácteres</small>
-                <small
-                  *ngIf="getCantidad.invalid  && getCantidad.touched && !getCantidad.errors?.minlength && !getCantidad.errors?.maxlength"
-                  class="text-danger animated fadeIn">Campo requerido</small>
-              </mat-form-field>
-            </div>
             <div class="col-md-6">
               <div role="group">
                 <div class="file-container">
-                  <img *ngIf="image" [src]="'data:image/jpg;base64,'+this.image" alt="" class="rounded-circle"
+                  <img *ngIf="image" [src]="'data:image/jpg;base64,'+this.image" width="83" class="rounded-circle"
                     (click)="openInputFile()">
                   <img *ngIf="!image" [src]="logo" alt="" (click)="openInputFile()">
                   <input type="file" formControlName="imagen" id="file-1" (change)="handleFileSelect($event)"
@@ -241,34 +234,22 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-6 form-group mt-4">
-              <button type="submit" class="btn btn-primary" *ngIf="!accionEditar"
-                style=" cursor: pointer; left: 45%; top: 94%;">GUARDAR DATOS</button>
+              <button type="submit" class="btn btn-success" *ngIf="!accionEditar"
+                style=" cursor: pointer; left: 60%; top: 150%;">GUARDAR DATOS</button>
             </div>
-
             <div class="col-md-6 form-group mt-4">
-
-              <button type="submit" class="btn btn-primary" *ngIf="accionEditar"
-                style=" cursor: pointer; left: 160%; top: 94%;">ACTUALIZAR</button>
-
+              <button type="submit" class="btn btn-success" *ngIf="accionEditar"
+                style=" cursor: pointer; left: 170%; top: 80%;">ACTUALIZAR</button>
             </div>
           </div>
         </div>
       </div>
     </form>
   </div>
-
-
-
-
-
 </ng-template>
-
 <ng-template #templateVerIMG>
-
   <div class="modal-header">
-
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeVentana()">
       <span aria-hidden="true">&times;</span>
     </button>

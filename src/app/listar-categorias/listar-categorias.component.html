@@ -1,159 +1,138 @@
 <div class="main-content">
   <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Categorias</h4>
-                   
-                  </div>
-                  <div class="card-body">
-                      <div class="table-responsive">
-                        
- 
-          <div *ngIf="datos">
-      
-                  
-                  
-         
-                  <mat-form-field>
-                    <mat-label>buscar</mat-label>
-                    <input matInput (keyup)="applyFilterCategoria($event)" placeholder="Filtro" #input>
-                </mat-form-field>   
-             
-                    
-                      <table mat-table [dataSource]="datosInsertados" class="table" matSort>
-                        <thead class=" text-primary">
-                      <!-- idApiKey Column -->
-                      <ng-container matColumnDef="id">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>ID</h4> </th>
-                          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-                      </ng-container>
-
-                      <ng-container matColumnDef="nombre">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header><h4>NOMBRE</h4>  </th>
-                          <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
-                      </ng-container>
-                    
-                      <ng-container matColumnDef="descripcion">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4>DESCRIPCION</h4> </th>
-                          <td mat-cell *matCellDef="let row"> {{row.descripcion}} </td>
-                      </ng-container>
-      
-                      <ng-container matColumnDef="estado">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-                           <td mat-cell *matCellDef="let row"> 
-                       
-                             <mat-slide-toggle [checked]="row.estado"  (click)="actualizarEstadoCategoria(row)"></mat-slide-toggle> 
-                     
-                           <span *ngIf="row.estado === true"  (click)="actualizarEstadoCategoria"> ACTIVO</span>
-                               <span *ngIf="row.estado === false" (click)="actualizarEstadoCategoria">INACTIVO</span> 
-                           </td>
-                     
-                       </ng-container>
-                       <ng-container matColumnDef="editar" >
-                        <th mat-header-cell *matHeaderCellDef>  <h4>EDITAR</h4></th>
-                        <td mat-cell *matCellDef="let row">  
-                          <i  class="fa fa-edit botonEditar" (click)="openModalRegistroCategorias(templateRegistro, row)"></i>                             
-                      </td>     
-                    </ng-container> 
-                    <ng-container matColumnDef="eliminar">
-                      <th mat-header-cell *matHeaderCellDef> <h4>ELIMINAR</h4></th>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-success">
+            <h4 class="card-title ">Categorias</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <div *ngIf="datos">
+                <mat-form-field>
+                  <mat-label>buscar</mat-label>
+                  <input matInput (keyup)="applyFilterCategoria($event)" placeholder="Filtro" #input>
+                </mat-form-field>
+                <table mat-table [dataSource]="datosInsertados" class="table" matSort>
+                  <thead class=" text-primary">
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>ID</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="nombre">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>NOMBRE</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="descripcion">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <h4>DESCRIPCION</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row"> {{row.descripcion}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="estado">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
                       <td mat-cell *matCellDef="let row">
-                    <i class="fa fa-trash-o" (click)="eliminarCategoria(row.id)"></i>
+
+                        <mat-slide-toggle [checked]="row.estado" (click)="actualizarEstadoCategoria(row)">
+                        </mat-slide-toggle>
+
+                        <span *ngIf="row.estado === true" (click)="actualizarEstadoCategoria"> ACTIVO</span>
+                        <span *ngIf="row.estado === false" (click)="actualizarEstadoCategoria">INACTIVO</span>
                       </td>
-                  </ng-container>
 
-                     
-                  
-
-                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-                      <!-- isActiveKey Column -->
-              
-                      <!-- Row shown when there is no matching data. -->             
-                
-                 
-                  
+                    </ng-container>
+                    <ng-container matColumnDef="editar">
+                      <th mat-header-cell *matHeaderCellDef>
+                        <h4>EDITAR</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row">
+                        <i class="fa fa-edit botonEditar"
+                          (click)="openModalRegistroCategorias(templateRegistro, row)"></i>
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="eliminar">
+                      <th mat-header-cell *matHeaderCellDef>
+                        <h4>ELIMINAR</h4>
+                      </th>
+                      <td mat-cell *matCellDef="let row">
+                        <i class="fa fa-trash-o" (click)="eliminarCategoria(row.id)"></i>
+                      </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                   </thead>
-                      </table>
-                      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-
-
-   
-              <div class="col-md-6 form-group mt-4">
-                  <button class="btn btn-primary" type="button" 
-                  (click)="openModalRegistroCategorias(templateRegistro, '')"> 
-                  REGISTAR CATEGORIA</button>    
-                  </div>
-          </div>
-                      </div>
-                  </div>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                <div class="col-md-6 form-group mt-4">
+                  <button class="btn btn-warning" type="button"
+                    (click)="openModalRegistroCategorias(templateRegistro, '')">
+                    REGISTAR CATEGORIA</button>
+                </div>
               </div>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
-
-                     
-
-
-                       
-
-
 <ng-template #templateRegistro>
-<div class="modal-content">
-  <div class="modal-body text-center">
-   
+  <div class="modal-content">
+    <div class="modal-body text-center">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeVentana()">
-          <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
       </button>
-  </div>
-
+    </div>
+    <div class="modal-body">
       <form [formGroup]="registrarCategoria" (ngSubmit)="editarcategoria()">
         <div class="card-body p-md-2 mx-md-1">
           <div class="col-lg-12">
-        <div class="text-center">
-          <H2>LISTAR CATEGORIAS</H2><br>
-        </div>
-        
-          <div class="form-row">       
-
-                <div class="col-md-6">
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Ingrese  nombre productos </mat-label>
-                    <input matInput type="text"  formControlName="nombre" placeholder="Nombre">
-                    <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-                    <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50 carácteres</small>
-                    <small *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>
+            <div class="text-center">
+              <H2>REGISTRO CATEGORIA</H2><br>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 mt-5">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Ingrese nombre productos </mat-label>
+                  <input matInput type="text" formControlName="nombre" placeholder="Nombre">
+                  <small *ngIf="getNombre.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6
+                    carácteres</small>
+                  <small *ngIf="getNombre.errors?.maxlength" class="text-danger animated fadeIn">Máximo 50
+                    carácteres</small>
+                  <small
+                    *ngIf="getNombre.invalid  && getNombre.touched && !getNombre.errors?.minlength && !getNombre.errors?.maxlength"
+                    class="text-danger animated fadeIn">Campo requerido</small>
                 </mat-form-field>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mt-5">
                 <mat-form-field class="example-full-width">
-                  <mat-label> Ingrese la descripcion</mat-label>  
-                  <input matInput type="text"  formControlName="descripcion" placeholder="Descripcion">
-                  <small *ngIf="getDescripcion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6 carácteres</small>
-                  <small *ngIf="getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 150 carácteres</small>
-                  <small *ngIf="getDescripcion.invalid  && getDescripcion.touched && !getDescripcion.errors?.minlength && !getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Campo requerido</small>  
-              </mat-form-field>
-            </div>
-                      
-             
-           
-            <div class="col-md-6 form-group mt-4">
-              <button type="submit" class="btn btn-primary"  *ngIf="!accionEditar">GUARDAR DATOS</button>
+                  <mat-label> Ingrese la descripción</mat-label>
+                  <input matInput type="text" formControlName="descripcion" placeholder="Descripcion">
+                  <small *ngIf="getDescripcion.errors?.minlength" class="text-danger animated fadeIn">Mínimo 6
+                    carácteres</small>
+                  <small *ngIf="getDescripcion.errors?.maxlength" class="text-danger animated fadeIn">Máximo 150
+                    carácteres</small>
+                  <small
+                    *ngIf="getDescripcion.invalid  && getDescripcion.touched && !getDescripcion.errors?.minlength && !getDescripcion.errors?.maxlength"
+                    class="text-danger animated fadeIn">Campo requerido</small>
+                </mat-form-field>
               </div>
-    
               <div class="col-md-6 form-group mt-4">
-      
-                <button type="submit" class="btn btn-primary" *ngIf="accionEditar"  style=" cursor: pointer; left: 60%; top: 94%;" >ACTUALIZAR</button>
-
+                <button type="submit" class="btn btn-success"  *ngIf="!accionEditar"
+                style=" cursor: pointer; left: 160%; top: 94%;"> GUARDAR DATOS</button>
+              </div>
+              <div class="col-md-6 form-group  mt-4">
+                <button type="submit" class="btn btn-success" *ngIf="accionEditar"
+                style=" cursor: pointer; left: 65%; top: 94%;"> ACTUALIZAR</button>
+              </div>
             </div>
-          </div>       
           </div>
         </div>
       </form>
-          </div>
-          
-</ng-template> 
+    </div>
+  </div>
+</ng-template>

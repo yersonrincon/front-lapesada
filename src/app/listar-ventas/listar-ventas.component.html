@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
+          <div class="card-header card-header-success">
             <h4 class="card-title ">Listar Proveedores</h4>
           </div>
           <div class="card-body">
@@ -109,7 +109,6 @@
                 </div>
                 <div class="col-md-6">
                   <mat-form-field class="example-full-width">
-                    <label>Cantidad</label>
                     <input matInput type="text" disabled=true formControlName="cantidad" placeholder="Cantidad">
                   </mat-form-field>
                   <small *ngIf="getCantidad.errors?.minlength" class="text-danger animated fadeIn">Mínimo 1
@@ -137,7 +136,7 @@
                 </div>
                 <div class="col-md-6">
                   <mat-form-field class="example-full-width">
-                    <label>Còdigo</label>
+                    <label>Codigo</label>
                     <input matInput type="text" readonly formControlName="codigo" placeholder="Codigo">
                   </mat-form-field>
                   <small *ngIf="getCodigo.errors?.minlength" class="text-danger animated fadeIn">Mínimo 4
@@ -149,7 +148,7 @@
                     class="text-danger animated fadeIn">Campo requerido</small>
                 </div>
                 <div class="col-md-6 form-group mt-4">
-                  <button type="submit" class="btn btn-primary" style=" cursor: pointer; left: 150%; top: 94%;">GUARDAR
+                  <button type="submit" class="btn btn-success" style=" cursor: pointer; left: 55%; top: 94%;">GUARDAR
                     COMPRA</button>
                 </div>
               </div>

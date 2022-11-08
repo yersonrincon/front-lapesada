@@ -44,7 +44,7 @@ export class ListarClientesComponent implements OnInit {
           
     openModalRegistroClientes(templateRegistro: TemplateRef<any>,datos:any) {
       this.registroclientes(datos);
-      this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-sm' });
+      this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-lg' });
       this.accionEditar =!! datos;
       datos ? this.accion ='Editar' : this.accion ='Registrar';
     }

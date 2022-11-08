@@ -42,7 +42,7 @@ export class CotizacionComponent implements OnInit {
                
   openModalRegistroCotizacion(templateRegistro: TemplateRef<any>,datos:any) {
     this.registrocotizacion(datos);
-    this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-sm' });
+    this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-lg' });
     this.accionEditar =!! datos;
     datos ? this.accion ='Editar' : this.accion ='Registrar';
   }

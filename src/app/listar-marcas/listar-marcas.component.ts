@@ -39,34 +39,25 @@ export class ListarMarcasComponent implements OnInit {
   openModalRegistroMarcas(templateRegistro: TemplateRef<any>,datos: any) {
     this.registrarmarca(datos);
     console.log('resultado',datos);
-    this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-sm' });
+    this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-lg' });
     this.accionEditar =!! datos;
     datos ? this.accion ='Editar' : this.accion ='Registrar';
    
   }
-
-
-
 
   registrarmarca(datos:any){
    this.registrarMarca = this.fb.group({
      id: [datos.id],
      nombre: [datos.nombre ? datos.nombre : '',[Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
      descripcion: [datos.descripcion ? datos.descripcion : '',[Validators.required, Validators.minLength(6), Validators.maxLength(150)]],
-
-  
-
-
    })
  }
-
  get getNombre(){
    return this.registrarMarca.get('nombre');
  }
   get getDescripcion(){
    return this.registrarMarca.get('descripcion')
  }
-
 
  closeVentana(): void {
   this.ventanaModal.hide();

@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
-            <h4 class="card-title ">Listar Roles</h4>
+          <div class="card-header card-header-success">
+            <h4 class="card-title ">Listar Marcas</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -68,7 +68,7 @@
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
               </div>
               <div class="col-md-6 form-group mt-4">
-                <button class="btn btn-primary" type="button" (click)="openModalRegistroMarcas(templateRegistro, '')">
+                <button class="btn btn-warning" type="button" (click)="openModalRegistroMarcas(templateRegistro, '')">
                   REGISTAR MARCAS</button>
               </div>
             </div>
@@ -124,12 +124,12 @@
                 </mat-form-field>
               </div>
               <div class="col-md-6 form-group mt-4">
-                <button type="submit" class="btn btn-primary" *ngIf="!accionEditar"
-                  style=" cursor: pointer; left: 150%; top: 94%;">GUARDAR DATOS</button>
+                <button type="submit" class="btn btn-success" *ngIf="!accionEditar"
+                  style=" cursor: pointer; left: 160%; top: 94%;">GUARDAR DATOS</button>
               </div>
               <div class="col-md-6 form-group mt-4">
-                <button type="submit" class="btn btn-primary" *ngIf="accionEditar"
-                  style=" cursor: pointer; left: 60%; top: 94%;">ACTUALIZAR</button>
+                <button type="submit" class="btn btn-success" *ngIf="accionEditar"
+                  style=" cursor: pointer; left: 65%; top: 94%;">ACTUALIZAR</button>
               </div>
             </div>
           </div>

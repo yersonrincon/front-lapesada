@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { ThisReceiver } from '@angular/compiler';
+
 
 @Component({
   selector: 'listar-usuariovendedor',
@@ -49,7 +49,7 @@ export class ListarUsuariovendedorComponent implements OnInit {
  
       openModalRegistroUsuario(templateRegistro: TemplateRef<any>,datos :any ) {
        this.registrovendedor(datos);
-        this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-sm' });
+        this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-lg' });
        this.accionEditar = !!datos;
        datos ? this.accion = "Editar" : this.accion = "Registrar";
       }
