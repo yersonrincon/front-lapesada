@@ -234,14 +234,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 form-group mt-4">
-              <button type="submit" class="btn btn-success" *ngIf="!accionEditar"
-                style=" cursor: pointer; left: 60%; top: 150%;">GUARDAR DATOS</button>
-            </div>
-            <div class="col-md-6 form-group mt-4">
-              <button type="submit" class="btn btn-success" *ngIf="accionEditar"
-                style=" cursor: pointer; left: 170%; top: 80%;">ACTUALIZAR</button>
-            </div>
+            <button type="submit" class="btn btn-success mt-5"*ngIf="!accionEditar"> GUARDAR DATOS</button>
+            <button type="submit" class="btn btn-success mt-5"*ngIf="accionEditar"> ACTUALIZAR</button>
           </div>
         </div>
       </div>
