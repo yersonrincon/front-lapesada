@@ -177,10 +177,7 @@ export class CotizacionComponent implements OnInit {
           ],
           alignment: 'right'
         },
-        {
-          image : 'imagenes64'
-        },
-        //this.image = imagenes64,
+       this.image = imagenes64,
         {
           bold: true,
           ul: [
