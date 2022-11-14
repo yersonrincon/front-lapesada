@@ -7,8 +7,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { MatSort } from '@angular/material/sort';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import { imagenes64 } from '../imagenes64/imagenes';
-
+//import { imagenes64 } from '../imagenes64/imagenes';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -158,26 +157,59 @@ export class CotizacionComponent implements OnInit {
     });
     console.log(this.datosCotizacionTotal)
   }
+  getBase64ImageFromURL(url: string) {
+    return new Promise((resolve, reject) => {
+      let img = new Image();
+      img.setAttribute("crossOrigin", "anonymous");
 
+      img.onload = () => {
+        let canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
 
-  downloadPDF() {
-    const newArray = [[{ text: 'Nombre', }, { text: 'Precio' }, { text: 'cantidad' }]];
-    
-    this.datosCotizacionTotal.forEach(datos => {
-    newArray.push([{ text: datos.nombre }, { text: datos.precioventa }, { text: datos.cantidad }])
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        let dataURL = canvas.toDataURL("image/png");
+
+        resolve(dataURL);
+      };
+
+      img.onerror = error => {
+        reject(error);
+      };
+
+      img.src = url;
     });
-    console.log(newArray);
+  }
+
+  async downloadPDF() {
+    const newArray = [[{ text: 'Nombre', }, { text: 'Precio' }, { text: 'cantidad' }]];
+  
+    this.datosCotizacionTotal.forEach(datos => {
+      newArray.push([{ text: datos.nombre }, { text: datos.precioventa }, { text: datos.cantidad }])
+      
+    });
     
+    console.log(newArray);
+
     this.dd = {
       content: [
         this.date = new Date(),
         {
           text: [
-            `Fecha :${( this.date.toUTCString())}`
+            `Fecha :${(this.date.toUTCString())}`
           ],
           alignment: 'right'
         },
-       this.image = imagenes64,
+        {
+          image: await this.getBase64ImageFromURL("../../assets/img/Recurso93.png"),
+          width: 180,
+          margin: 5,
+        },
+
+        // this.image = imagenes64,
+
         {
           bold: true,
           ul: [
