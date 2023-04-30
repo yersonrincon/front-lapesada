@@ -187,6 +187,7 @@ export class ProductosClienteComponent implements OnInit {
     console.log(newArray);
     this.dd = {
       content: [
+        
         {
           
           table: {

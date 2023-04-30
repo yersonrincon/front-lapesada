@@ -85,15 +85,11 @@ export class LoginService {
           }
         }
   
-
-  
              signOut(): void {
               localStorage.removeItem('tokenlapesada');
-              this.router.navigateByUrl('/demoPages/login');  
+               this.router.navigateByUrl('/demoPages/login');  
        
           }
-
-          
-           
+  
       
       }
