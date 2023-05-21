@@ -235,6 +235,7 @@ export class RegistroCotizacionComponent implements OnInit {
               text: `${respuesta.message}`,
               icon: 'success'
             });
+            this.ventanaModal.hide();
             this.cargarListaCotizaciones();
 
           } else if (respuesta.ok === false) {

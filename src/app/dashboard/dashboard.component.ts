@@ -13,6 +13,9 @@ export class DashboardComponent implements OnInit {
   totalcantidad: any;
   totalventa: any;
   totalcotizacion: any;
+  totalempresa: any;
+
+
 
   constructor(
     private gestionUsuariosService: GestionUsuariosService,
@@ -79,6 +82,7 @@ export class DashboardComponent implements OnInit {
      this.cargarListaProducto();
      this.cargarListaVentas();
      this.cargarListaCotizaciones();
+     this.cargarListaAlmacenes();
       
      const optionsDailySalesChart: any = {
           lineSmooth: Chartist.Interpolation.cardinal({
@@ -178,5 +182,13 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  cargarListaAlmacenes(){
+    this.gestionUsuariosService.consultarCantidadAlmacenes().subscribe(respuesta=> { 
+      console.log(this.totalempresa);
+      if (respuesta.ok) {
+      this.totalempresa = respuesta.empresa.count;
+      }  
+    })
+  }
 
 }

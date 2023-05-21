@@ -11,25 +11,12 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
-
-
-
-
 import { ModalModule } from 'ngx-bootstrap/modal';
-
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
-
-
 import { MatTableModule } from '@angular/material/table';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
-
-
-
-
 import { ListarCategoriasComponent } from 'app/listar-categorias/listar-categorias.component';
 import { ListarMarcasComponent } from 'app/listar-marcas/listar-marcas.component';
 import { CotizacionComponent } from 'app/cotizacion/cotizacion.component';
@@ -70,7 +57,6 @@ import { ProductosClienteComponent } from 'app/productos-cliente/productos-clien
   declarations: [
     DashboardComponent,
     UserProfileComponent,
-  
     ListarCategoriasComponent,
     ListarMarcasComponent,
 

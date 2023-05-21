@@ -162,6 +162,7 @@ export class ListarClientesComponent implements OnInit {
               text: `${respuesta.message}`,
               icon: 'success'
             });
+            this.ventanaModal.hide();
             this.cargarListaClientes();
          
           } else if (respuesta.ok === false) {
@@ -173,13 +174,14 @@ export class ListarClientesComponent implements OnInit {
           }
         });
       } else {
-        this.gestionUsuariosService.editarClientes(this.registroClientes.value).subscribe(respuesta =>{
+        this.gestionUsuariosService.editarClientesAlmacen(this.registroClientes.value).subscribe(respuesta =>{
           if (respuesta.ok === true){
             Swal.fire({
               title : 'edicion exitosa',
               text: `${respuesta.message}`,
               icon: 'success'
             });
+               this.ventanaModal.hide();
                this.cargarListaClientes();
           }else if(respuesta.ok === false){
             Swal.fire({
@@ -192,10 +194,9 @@ export class ListarClientesComponent implements OnInit {
         });
       }
     }
-  
-  
   }
-    }
+
+ }
   
   
   

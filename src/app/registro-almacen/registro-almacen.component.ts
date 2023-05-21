@@ -43,7 +43,6 @@ export class RegistroAlmacenComponent implements OnInit {
 
   openModalRegistroEmpresa(templateRegistro: TemplateRef<any>, datos: any) {
     this.registroalmacen(datos);
-    console.log('resultado', datos);
     this.ventanaModal = this.modalService.show(templateRegistro, { class: 'modal-lg' });
     this.accionEditar = !!datos;
     datos ? this.accion = 'Editar' : this.accion = 'Registrar';
@@ -113,12 +112,13 @@ export class RegistroAlmacenComponent implements OnInit {
     if (this.registroAlmacen.valid) {
       console.log(this.registroAlmacen.value);
       const datos = {
+        id: this.registroAlmacen.value.id,
         nombre: this.registroAlmacen.value.nombre,
         nit: this.registroAlmacen.value.nit,
         correo: this.registroAlmacen.value.correo,
         telefono: this.registroAlmacen.value.telefono,
         direccion: this.registroAlmacen.value.direccion,
-        imagen: this.base64textString
+        imagen: this.base64textString ? this.base64textString : this.image
 
       }
       console.log(this.base64textString);
@@ -131,7 +131,8 @@ export class RegistroAlmacenComponent implements OnInit {
               title: 'OK',
               text: `${respuesta.message}`,
               icon: 'success'
-            });
+            });+
+  
             this.ventanaModal.hide();
             this.cargarListaEmpresa();
           } else if (respuesta.ok === false) {
@@ -198,7 +199,6 @@ export class RegistroAlmacenComponent implements OnInit {
               text: `${respuesta.message}`,
               icon: 'success'
             });
-            this.ventanaModal.hide();
             this.cargarListaEmpresa();
           } else if (respuesta.ok === false) {
             Swal.fire({

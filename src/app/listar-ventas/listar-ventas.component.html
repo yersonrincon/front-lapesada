@@ -11,7 +11,7 @@
               <div *ngIf="datos">
                 <mat-form-field>
                   <mat-label>buscar</mat-label>
-                  <input matInput (keyup)="applyFilterProductos($event)" placeholder="Filtro" #input>
+                  <input matInput (keyup)="applyFilterVentas($event)" placeholder="Filtro" #input>
                 </mat-form-field>
                 <table mat-table [dataSource]="datosInsertados" class="table" matSort>
                   <thead class="text-primary">

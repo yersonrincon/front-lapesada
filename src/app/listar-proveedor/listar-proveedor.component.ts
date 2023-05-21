@@ -128,7 +128,6 @@ export class ListarProveeedorComponent implements OnInit {
     }
     )
   }
-
   editarusuarioproveedor() {
     if (this.registroProveedor.valid) {
       if (this.accion === 'Registrar') {
@@ -139,7 +138,8 @@ export class ListarProveeedorComponent implements OnInit {
               text: `${respuesta.message}`,
               icon: 'success'
             });
-            this.cargarListaProveedor(); 
+            this.ventanaModal.hide();
+            this.cargarListaProveedor();
           } else if (respuesta.ok === false) {
             Swal.fire({
               title: 'Alerta',

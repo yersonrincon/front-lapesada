@@ -117,6 +117,10 @@ export class GestionUsuariosService {
   consultarCantidadCotizaciones() {
     return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarCantidadCotizaciones`, '');
   }
+
+  consultarCantidadAlmacenes() {
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarCantidadAlmacenes`, '');
+  }
   consultarListaCategorias() {
     return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/consultarListaCategorias`, '');
   }
@@ -188,8 +192,8 @@ export class GestionUsuariosService {
  editarRoles(datos: any){
   return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/editarRoles`, datos);
  }
- editarClientes(datos: any){
-  return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/editarClientes`, datos);
+ editarClientesAlmacen(datos: any){
+  return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/editarClientesAlmacen`, datos);
  }
 
 
