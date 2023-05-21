@@ -5,7 +5,7 @@ import { LoginService } from 'app/services/login.service';
 //import { ValidacionService } from 'app/services/validacion.service';
 import Swal from 'sweetalert2';
 import { SocialAuthService } from "angularx-social-login";
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 import { Router } from '@angular/router';
@@ -27,13 +27,11 @@ export class LoginComponent implements OnInit {
   user: SocialUser;
 
   loggedIn: boolean;
-  ventanaModal!: BsModalRef<any>;
 hide = true;
   listausuarios:any;
     constructor(
       private loginGoogle: LoginGoogleService,
       private fb: FormBuilder,
-      private modalService: BsModalService,
       private loginService: LoginService,
       private authGoogle: SocialAuthService, 
       private router: Router, 
@@ -49,12 +47,6 @@ hide = true;
           this.user = user;
           this.loggedIn = (user != null);
         });
-      }
-    
-      openModalEliminarRegistro(templateEliminarRegistro: TemplateRef<any>) {
-   
-        this.ventanaModal = this.modalService.show(templateEliminarRegistro, { class: 'modal-lg' });
-        this.ventanaModal.hide();
       }
       signInWithGoogle(): void {
         this.authGoogle.signIn(GoogleLoginProvider.PROVIDER_ID).then(respuesta =>{

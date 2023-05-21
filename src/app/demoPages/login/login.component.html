@@ -1,112 +1,30 @@
-
 <body style="
-background-color: #ffffff;" >
-    <!--::header part start::-->
-    <header class="main_menu home_menu">
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <img src="../../assets/img/Recurso93.png" width="210px"> 
-              <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" [routerLink]="['demoPages/pagina-inicio']">Inicio</a>
-                  </li>
-                  <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"[routerLink]="['demoPages/login']">Login</a>
-                  </li>
-                
-                </ul>
-              </div>
-            </div>
-          </nav>
-    </header>
-    <section class="vh-100 gradient-custom" >
-      <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card bg-white text-white" style="border-radius : 1rem; border: 1px solid rgba(236, 98, 6, 0.979);">
-              <div class="card-body p-5 text-center">
-    
-                    <div class="text-center">
-                    <h2>!Login a través  de cuenta Google!</h2>
-                      <h4 class="mt-1 mb-5 pb-1"></h4>
-                    </div>
-                  
-    
-                 
-    
-                      
-                      <div class="form-outline form-white mb-4">
-                       <button class="btn btn-primary  fa-lg rounded-pill" (click)="signInWithGoogle()">
-                        <i class="fa fa-google"></i>  
-                        Login Google</button>
-    
-                       
-                    </div>
-    
-                    <label class="form-check-label" for="form2Example3">
-                       Teminos y condiciones 
-                      <a
-                        class="text-muted"
-                        (click)="
-                          openModalEliminarRegistro(templateEliminarRegistro)
-                        "
-                      >
-                      Ver  Terminos
-                      </a>
-                    </label>
-                    <div class=" text-center">
-    
-    +                      
-                 
-         
-                    
-                     
-                       
-        
-    
-                  
-                  </div>
-                  
-                </div>
-               
-              </div>
-            </div>
-          </div>
-      </div>
-        </section>
-    
-        <ng-template #templateEliminarRegistro>
-          <div class="modal-content">
-            <div class="modal-body text-center">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeVentana()">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-      
-        
-            <div class="modal-body">
-              <h1>Tu contenido en nuestros Servicios</h1>
-        
-              <p class="masthead-subheading font-weight-light mb-0">
-                Es requisito necesario para la adquisición de los productos que se ofrecen en este sitio, que lea y acepte los siguientes Términos y Condiciones que a continuación se redactan. El uso de nuestros servicios así como la compra de nuestros productos implicará que usted ha leído y aceptado los Términos y Condiciones de Uso en el presente documento. Todas los productos  que son ofrecidos por nuestro sitio web pudieran ser creadas, cobradas, enviadas o presentadas por una página web tercera y en tal caso estarían sujetas a sus propios Términos y Condiciones. En algunos casos, para adquirir un producto, será necesario el registro por parte del usuario, con ingreso de datos personales fidedignos y definición de una contraseña.
+background-color: #ffffff;">
+  <!--::header part start::-->
+  <header class="main_menu home_menu">
+  </header>
+  <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-white text-white"
+            style="border-radius : 1rem; border: 1px solid rgba(236, 98, 6, 0.979);">
+            <div class="card-body p-5 text-center">
 
-                El usuario puede elegir y cambiar la clave para su acceso de administración de la cuenta en cualquier momento, en caso de que se haya registrado y que sea necesario para la compra de alguno de nuestros productos.  no asume la responsabilidad en caso de que entregue dicha clave a terceros.
-                
-                Todas las compras y transacciones que se lleven a cabo por medio de este sitio web, están sujetas a un proceso de confirmación y verificación, el cual podría incluir la verificación del stock y disponibilidad de producto, validación de la forma de pago, validación de la factura (en caso de existir) y el cumplimiento de las condiciones requeridas por el medio de pago seleccionado. En algunos casos puede que se requiera una verificación por medio de correo electrónico.
-                
-                Los precios de los productos ofrecidos en esta Tienda Online es válido solamente en las compras realizadas en este sitio web.
-              </p>
-        
-          
+              <div class="text-center">
+                <img src="../../assets/img/Recurso93.png" width="300px">
+                <h2>!Login a través de cuenta Google!</h2>
+                <h4 class="mt-1 mb-5 pb-1"></h4>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <button class="btn btn-primary  fa-lg rounded-pill" (click)="signInWithGoogle()">
+                  <i class="fa fa-google"></i>
+                  Login Google</button>
+              </div>
             </div>
-           
           </div>
-        </ng-template>
-  
-    </body>
-    
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

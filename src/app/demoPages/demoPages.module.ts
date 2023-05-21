@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
+//import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -27,7 +27,7 @@ import { LoginComponent } from './login/login.component';
     MatButtonModule
   ],
   declarations: [
-  PaginaInicioComponent,
+ // PaginaInicioComponent,
   LoginComponent,
  
   //PaginaClienteComponent

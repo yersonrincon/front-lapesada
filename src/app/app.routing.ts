@@ -4,7 +4,7 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { PaginaInicioComponent } from './demoPages/pagina-inicio/pagina-inicio.component';
+//import { PaginaInicioComponent } from './demoPages/pagina-inicio/pagina-inicio.component';
 import { LoginComponent } from './demoPages/login/login.component';
 
 
@@ -25,8 +25,8 @@ import { DemoPagesModule } from './demoPages/demoPages.module';
 ];*/
 
 const routes: Routes =[
-   { path: '', redirectTo: 'demoPages/pagina-inicio',  pathMatch: 'full' },   
-   { path: '',component: PaginaInicioComponent, children:  [{path: 'demoPages/pagina-inicio', component: PaginaInicioComponent, data: {extraparameter: ''}}]},
+   { path: '', redirectTo: 'demoPages/login',  pathMatch: 'full' },   
+ //  { path: '',component: PaginaInicioComponent, children:  [{path: 'demoPages/pagina-inicio', component: PaginaInicioComponent, data: {extraparameter: ''}}]},
    { path: '',component: LoginComponent, children:  [{path: 'demoPages/login', component: LoginComponent, data: {extraparameter: ''}}]},
    { path: '',component: PaginaClienteComponent, children:  [{path: 'demoPages/pagina-cliente', component: PaginaClienteComponent, data: {extraparameter: ''}}]},
    { path: '',component: AdminLayoutComponent, children:  [{path: '',loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)}]},
