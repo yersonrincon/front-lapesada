@@ -55,7 +55,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <button *ngIf="datosCotizacionTotal.length > 0 == true" class="btn btn-danger" (click)="downloadPDF()">Generar  contizacion</button>
+                            <button *ngIf="datosCotizacionTotal.length > 0 == true" class="btn btn-danger" (click)="downloadPDF()">Generar  cotizacion</button>
                             <button class="btn btn-warning" type="button" [routerLink]="['/registro-cotizacion']"> REGISTRAR  COTIZACION </button>
                             <div class="card-body" style="display: flex;">
                                
@@ -67,7 +67,7 @@
                                     style="width:100%;">
                                     <tr>
                                         <th>nombre</th>
-                                        <th>precion</th>
+                                        <th>precio</th>
                                         <th>cantidad</th>
                                         <th>eliminar</th>
                                     </tr>
