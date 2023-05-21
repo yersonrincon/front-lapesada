@@ -36,10 +36,7 @@ export class LoginGoogleService {
   validarCorreoGmail(email: any, id: any) {
     const user = { email, id };
     return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/validarCorreoGmail`, user);
-  }
-
-  
-  
+  }  
            loginUsuario(datos){
             this.loading = true;
             return this.httpClient.post<any>(`${environment.apiUrl}/api/administrador/loginUsuario`,{datos}).subscribe( respuesta =>{

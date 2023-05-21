@@ -4,89 +4,94 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <p>productos</p>
-                        <mat-form-field>
-                            <mat-label>buscar</mat-label>
-                            <input matInput (keyup)="applyFilterProductos($event)" placeholder="Filtro" #input>
-                        </mat-form-field>
+                        <div class="table-responsive">
+                            <p>productos</p>
+                            <mat-form-field>
+                                <mat-label>buscar</mat-label>
+                                <input matInput (keyup)="applyFilterProductos($event)" placeholder="Filtro" #input>
+                            </mat-form-field>
 
-                        <table mat-table [dataSource]="datosInsertados" class="mat-elevation-z2" matSort
-                            style="width: 100%;">
-                            <ng-container matColumnDef="id">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                    <h4>ID</h4>
-                                </th>
-                                <td mat-cell *matCellDef="let row" (click)="agregarProductosData(row)"
-                                    style="cursor: pointer;"> {{row.id}} </td>
-                            </ng-container>
+                            <table mat-table [dataSource]="datosInsertados" class="mat-elevation-z2" matSort
+                                style="width: 100%;">
+                                <ng-container matColumnDef="id">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        <h4>ID</h4>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" (click)="agregarProductosData(row)"
+                                        style="cursor: pointer;"> {{row.id}} </td>
+                                </ng-container>
 
-                            <ng-container matColumnDef="nombre">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                    <h4>NOMBRE</h4>
-                                </th>
-                                <td mat-cell *matCellDef="let row" (click)="agregarProductosData(row)"
-                                    style="cursor: pointer;"> {{row.nombre}} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="precioventa">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                    <h4>PRECIOVENTA</h4>
-                                </th>
-                                <td mat-cell *matCellDef="let row" (click)="agregarProductosData(row)"
-                                    style="cursor: pointer;"> {{row.precioventa | currency }} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="cantidad">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                    <h4>CANTIDAD</h4>
-                                </th>
-                                <td mat-cell *matCellDef="let row" (click)="agregarProductosData(row)"
-                                    style="cursor: pointer;"> {{row.cantidad}} </td>
-                            </ng-container>
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                        </table>
+                                <ng-container matColumnDef="nombre">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        <h4>NOMBRE</h4>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" (click)="agregarProductosData(row)"
+                                        style="cursor: pointer;"> {{row.nombre}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="precioventa">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        <h4>PRECIOVENTA</h4>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" (click)="agregarProductosData(row)"
+                                        style="cursor: pointer;"> {{row.precioventa | currency }} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="cantidad">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                        <h4>CANTIDAD</h4>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" (click)="agregarProductosData(row)"
+                                        style="cursor: pointer;"> {{row.cantidad}} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-body" style="display: flex;">
-                        <button  *ngIf="datosCotizacionTotal.length > 0 == true"class="btn col col-lg-4 btn-danger btn-block ml-4" (click)="downloadPDF()">Generar
-                            contizacion</button>
-                        <button class="btn btn-warning" type="button" [routerLink]="['/registro-cotizacion']"> REGISTRAR
-                            COTIZACION </button>
-                    </div>
+
                     <div class="card-body">
-                        <p>productos</p>
-                        <div id="htmlData">
-                            <table *ngIf="datosCotizacionTotal.length > 0" style="width:100%;">
-                                <tr>
-                                    <th>nombre</th>
-                                    <th>precion</th>
-                                    <th>cantidad</th>
-                                    <th>eliminar</th>
-                                </tr>
-                                <tr *ngFor="let datos of datosCotizacionTotal">
-                                    <td>{{datos.nombre}} </td>
-                                    <td>{{datos.precioventa | currency}}</td>
-                                    <td>{{datos.cantidad}}</td>
-                                    <i style="cursor: pointer;" class="fa fa-trash-o"
-                                        (click)="eliminarProducto(datos)"></i>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Total:</td>
-                                    <td>{{ total | currency }}</td>
-                                </tr>
-                            </table>
+                        <div class="table-responsive">
+                            <button *ngIf="datosCotizacionTotal.length > 0 == true" class="btn btn-danger" (click)="downloadPDF()">Generar  contizacion</button>
+                            <button class="btn btn-warning" type="button" [routerLink]="['/registro-cotizacion']"> REGISTRAR  COTIZACION </button>
+                            <div class="card-body" style="display: flex;">
+                               
+                            </div>
+
+                            <p>productos</p>
+                            <div id="htmlData">
+                                <table *ngIf="datosCotizacionTotal.length > 0" class="mat-elevation-z2" matSort
+                                    style="width:100%;">
+                                    <tr>
+                                        <th>nombre</th>
+                                        <th>precion</th>
+                                        <th>cantidad</th>
+                                        <th>eliminar</th>
+                                    </tr>
+                                    <tr *ngFor="let datos of datosCotizacionTotal">
+                                        <td>{{datos.nombre}} </td>
+                                        <td>{{datos.precioventa | currency}}</td>
+                                        <td>{{datos.cantidad}}</td>
+                                        <i style="cursor: pointer;" class="fa fa-trash-o"
+                                            (click)="eliminarProducto(datos)"></i>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Total:</td>
+                                        <td>{{ total | currency }}</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

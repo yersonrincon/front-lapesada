@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 
+
 //import { PaginaClienteComponent } from '../pagina-cliente/pagina-cliente.component';
 //import { PaginaClienteComponent } from '../pagina-cliente/pagina-cliente.component';
 
@@ -25,6 +26,7 @@ import { LoginComponent } from './login/login.component';
     MatIconModule,
     NgxSpinnerModule,
     MatButtonModule
+
   ],
   declarations: [
  // PaginaInicioComponent,
