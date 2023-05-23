@@ -9,7 +9,6 @@ import { SocialUser } from "angularx-social-login";
 import { LoginGoogleService } from 'app/services/login-goole.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -17,7 +16,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 
 export class LoginComponent implements OnInit {
-
   loginForma!: FormGroup;
   show: boolean = true;
   user: SocialUser;
@@ -39,7 +37,7 @@ export class LoginComponent implements OnInit {
   ) {
 
 
-   }
+  }
 
   ngOnInit() {
 
@@ -49,22 +47,21 @@ export class LoginComponent implements OnInit {
     });
   }
   signInWithGoogle(): void {
-    this.spinner.show();   
+    this.spinner.show();
     this.authGoogle.signIn(GoogleLoginProvider.PROVIDER_ID).then(respuesta => {
       if (respuesta) {
-       
+
         console.log(respuesta)
         this.loginGmail(respuesta.email, respuesta.id);
       }
-    
+
     })
-  
+
   }
   loginGmail(correoConsulta, id) {
-    
     this.loginGoogle.validarCorreoGmail(correoConsulta, id).subscribe(respuesta => {
       if (respuesta.ok === false) {
-    
+
         Swal.fire({
           title: 'Alerta!!',
           text: `${respuesta.message}`,
@@ -73,14 +70,13 @@ export class LoginComponent implements OnInit {
         this.signOut();
         localStorage.removeItem('tokenlapesada');
         this.router.navigateByUrl('/demoPages/login');
-      
 
-      } 
-      
+      }
+
       else if (respuesta.ok === true) {
         this.spinner.hide();
         this.loginGoogle.loginUsuario(correoConsulta);
-       
+
       }
     })
   }
@@ -88,7 +84,6 @@ export class LoginComponent implements OnInit {
   signOut(): void {
     this.authGoogle.signOut();
   }
-
 
   /* loginUsuario(){
       console.log(this.loginForma);
@@ -116,6 +111,5 @@ export class LoginComponent implements OnInit {
         })
       }
   }*/
-
 
 }

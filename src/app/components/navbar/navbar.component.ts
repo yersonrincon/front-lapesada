@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-
 import { Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import jwt_decode from 'jwt-decode';
@@ -42,12 +41,9 @@ export class NavbarComponent implements OnInit {
         ngOnInit() {
           this.datosGoogle = JSON.parse(localStorage.getItem('TokenGoogle'));
           console.log(this.datosGoogle);
-         
             this.nombres = this.datosGoogle.name;
             this.email = this.datosGoogle.email;
             this.photoUrl = this.datosGoogle.photoUrl;
-
-
             this.token = localStorage.getItem('tokenlapesada');
             this.decoded= jwt_decode(this.token);
             this.nombreRol=this.decoded.nombrerol;
