@@ -66,21 +66,21 @@ export const AdminLayoutRoutes: Routes = [
     //         component: UpgradeComponent
     //     }]
     // }
-    {path: 'dashboard',  canActivate: [GuardGuard],component: DashboardComponent},
-    {path:'listar-roles', component:ListarRolesComponent},
-    {path: 'listar-proveedor', canActivate: [GuardGuard],component: ListarProveeedorComponent},
-    {path:'listar-marcas',component: ListarMarcasComponent},
-    {path:'cotizacion',component:CotizacionComponent},
-    {path:'listar-categorias', canActivate: [GuardGuard],component:ListarCategoriasComponent},
-    {path:'listar-ventas',  canActivate: [GuardGuard],component:ListarVentasComponent},
-    {path:'listar-productos', canActivate: [GuardGuard],component:ListarProductosComponent},
-    {path:'registro-almacen', canActivate: [GuardGuard],component:RegistroAlmacenComponent},
-    {path:'listar-usuariovendedor',  component:ListarUsuariovendedorComponent},
-    {path:'registro-ventas', canActivate: [GuardGuard],component:RegistroVentasComponent},
-    {path:'registro-cotizacion', canActivate: [GuardGuard],component:RegistroCotizacionComponent},
-    {path:'listar-clientes', canActivate: [GuardGuard],component:ListarClientesComponent},
-    {path:'productos-cliente', canActivate: [GuardGuard],component:ProductosClienteComponent},
-   
-   // {path:'pagina-cliente',component:PaginaClienteComponent},
+    { path: 'dashboard', canActivate: [GuardGuard], component: DashboardComponent },
+    { path: 'listar-roles', canActivate: [GuardGuard], component: ListarRolesComponent },
+    { path: 'listar-proveedor', canActivate: [GuardGuard], component: ListarProveeedorComponent },
+    { path: 'listar-marcas', canActivate: [GuardGuard], component: ListarMarcasComponent },
+    { path: 'cotizacion', canActivate: [GuardGuard], component: CotizacionComponent },
+    { path: 'listar-categorias', canActivate: [GuardGuard], component: ListarCategoriasComponent },
+    { path: 'listar-ventas', canActivate: [GuardGuard], component: ListarVentasComponent },
+    { path: 'listar-productos', canActivate: [GuardGuard], component: ListarProductosComponent },
+    { path: 'registro-almacen', canActivate: [GuardGuard], component: RegistroAlmacenComponent },
+    { path: 'listar-usuariovendedor', canActivate: [GuardGuard], component: ListarUsuariovendedorComponent },
+    { path: 'registro-ventas', canActivate: [GuardGuard], component: RegistroVentasComponent },
+    { path: 'registro-cotizacion', canActivate: [GuardGuard], component: RegistroCotizacionComponent },
+    { path: 'listar-clientes', canActivate: [GuardGuard], component: ListarClientesComponent },
+    { path: 'productos-cliente', canActivate: [GuardGuard], component: ProductosClienteComponent },
+
+    // {path:'pagina-cliente',component:PaginaClienteComponent},
 
 ];
